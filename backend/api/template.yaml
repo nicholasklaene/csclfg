@@ -1,0 +1,96 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: api.csclfg.com
+Globals:
+  Function:
+    Timeout: 5
+    Runtime: python3.9
+
+Parameters:
+  UserPoolId:
+    Type: String
+    Description: User pool id for Cognito provider
+  Audience:
+    Type: String
+    Description: Client id for user pool
+
+Resources:
+  UtilsLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: src/lambda_layers/utils_layer
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  LibLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: src/lambda_layers/lib_layer
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Auth:
+        Authorizers:
+          GeneralAuth:
+            AuthorizationScopes:
+              - email
+              - openid
+              - profile
+            IdentitySource: "$request.header.Authorization"
+            JwtConfiguration:
+              issuer: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPoolId}
+              audience:
+                - !Ref Audience
+
+      CorsConfiguration:
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        AllowOrigins:
+          - http://localhost:8080
+
+  GetPostsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/resources/posts/get_posts
+      Handler: app.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /posts
+            Method: GET
+            ApiId: !Ref HttpApi
+      Layers:
+        - !Ref LibLambdaLayer
+        - !Ref UtilsLambdaLayer
+
+  AdminFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/resources/posts/get_posts
+      Handler: app.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Auth:
+              Authorizer: GeneralAuth
+              AuthorizationScopes:
+                - !Sub Admins-${Audience}
+
+            Path: /admin
+            Method: GET
+            ApiId: !Ref HttpApi
+      Layers:
+        - !Ref LibLambdaLayer
+        - !Ref UtilsLambdaLayer
