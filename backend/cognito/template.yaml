@@ -74,6 +74,14 @@ Resources:
       Precedence: 0
       UserPoolId: !Ref UserPool
 
+  RegularUserGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: Users
+      Description: Regular user group
+      Precedence: 1
+      UserPoolId: !Ref UserPool
+
   AdminUser:
     Type: AWS::Cognito::UserPoolUser
     Properties:
@@ -111,6 +119,7 @@ Resources:
       Environment:
         Variables:
           TABLE: !Ref Table
+          USER_POOL: !Ref UserPool
       Events:
         CognitoTrigger:
           Type: Cognito
