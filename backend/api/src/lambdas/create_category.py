@@ -30,7 +30,7 @@ def lambda_handler(event, context):
         logger.info("Invalid request body: " + ", ".join(validation.errors))
         return lambda_response(status_code=400, headers={}, body={ "errors": validation.errors })
 
-    category_id = f'CATEGORY#{uuid.uuid4().hex}'
+    category_id = f'CATEGORY#{create_category_request.label}'
     data = {
         'PK': category_id,
         'SK': category_id,
@@ -48,7 +48,6 @@ def lambda_handler(event, context):
         return lambda_response(status_code=500, headers={}, body=body)
 
     body = { 
-        "category_id": category_id.split("#")[-1],
         "label": create_category_request.label
     }
 
