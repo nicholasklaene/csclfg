@@ -14,9 +14,9 @@ class Validation:
 class IRequest:
     __metaclass__ = ABCMeta
 
+    @staticmethod
     @abstractmethod
     def parse(event): raise NotImplementedError
 
-    @staticmethod
     @abstractmethod
     def validate(self) -> Validation: raise NotImplementedError

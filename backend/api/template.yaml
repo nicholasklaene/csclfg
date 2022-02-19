@@ -121,8 +121,35 @@ Resources:
               Authorizer: GeneralAuth
               AuthorizationScopes:
                 - !Sub Admins-${Audience}
-
             Path: /categories
+            Method: POST
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref Table
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref Table
+      Layers:
+        - !Ref LibLambdaLayer
+        - !Ref UtilsLambdaLayer
+        - !Ref ModelsLambdaLayer
+
+  CreatePostFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/lambdas
+      Handler: create_post.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Auth:
+              Authorizer: GeneralAuth
+              AuthorizationScopes:
+                - !Sub Users-${Audience}
+                - !Sub Admins-${Audience}
+            Path: /posts
             Method: POST
             ApiId: !Ref HttpApi
       Environment:

@@ -2,9 +2,9 @@ import json
 import logging
 import os
 import boto3
-import uuid
-from models.category import CreateCategoryRequest
-from models.shared import BodyParsingException
+
+from requests.create_category_request import CreateCategoryRequest
+from requests.shared import BodyParsingException
 from utils.lambda_response import lambda_response
 
 logger = logging.getLogger()
