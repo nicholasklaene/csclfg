@@ -13,12 +13,24 @@ Parameters:
   Audience:
     Type: String
     Description: Client id for user pool
+  Table:
+    Type: String
+    Default: csclfg-db
 
 Resources:
   UtilsLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       ContentUri: src/lambda_layers/utils_layer
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  ModelsLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: src/lambda_layers/models_layer
       CompatibleRuntimes:
         - python3.9
     Metadata:
@@ -61,8 +73,8 @@ Resources:
   GetPostsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/resources/posts/get_posts
-      Handler: app.lambda_handler
+      CodeUri: src/lambdas
+      Handler: get_posts.lambda_handler
       Events:
         ApiGet:
           Type: HttpApi
@@ -74,11 +86,11 @@ Resources:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
 
-  AdminFunction:
+  CreateCategoryFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/resources/posts/get_posts
-      Handler: app.lambda_handler
+      CodeUri: src/lambdas
+      Handler: create_category.lambda_handler
       Events:
         ApiGet:
           Type: HttpApi
@@ -88,9 +100,16 @@ Resources:
               AuthorizationScopes:
                 - !Sub Admins-${Audience}
 
-            Path: /admin
-            Method: GET
+            Path: /categories
+            Method: POST
             ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref Table
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref Table
       Layers:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
+        - !Ref ModelsLambdaLayer
