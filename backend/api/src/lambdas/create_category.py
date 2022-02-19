@@ -36,7 +36,6 @@ def lambda_handler(event, context):
         'SK': category_id,
         'GSI1PK': "CATEGORIES",
         'GSI1SK': category_id,
-        'name': create_category_request.label
     }
 
     logger.info('Inserting data: ' + json.dumps(data))
