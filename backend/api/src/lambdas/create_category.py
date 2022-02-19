@@ -34,6 +34,8 @@ def lambda_handler(event, context):
     data = {
         'PK': category_id,
         'SK': category_id,
+        'GSI1PK': "CATEGORIES",
+        'GSI1SK': category_id,
         'name': create_category_request.label
     }
 

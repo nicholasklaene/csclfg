@@ -86,6 +86,28 @@ Resources:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
 
+  GetCategoriesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/lambdas
+      Handler: get_categories.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /categories
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref Table
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref Table
+      Layers:
+        - !Ref LibLambdaLayer
+        - !Ref UtilsLambdaLayer
+
   CreateCategoryFunction:
     Type: AWS::Serverless::Function
     Properties:
