@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import { InitialPostStoreState, PostStoreState } from "../types/post";
+import { baseUrl } from "../config";
 import axios from "axios";
-
-const baseUrl = "https://08spkh2273.execute-api.us-east-1.amazonaws.com";
 
 export const usePostStore = defineStore("post", {
   state: (): PostStoreState => InitialPostStoreState,

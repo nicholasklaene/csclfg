@@ -4,11 +4,14 @@ import { usePostStore } from "../stores/postStore";
 import AppProgressBar from "../components/AppProgressBar.vue";
 import SearchResultList from "../components/SearchResultList.vue";
 import SearchBox from "../components/SearchBox.vue";
+import { useCategoryStore } from "../stores/categoryStore";
 
 const postStore = usePostStore();
+const categoryStore = useCategoryStore();
 
 onMounted(async () => {
-  await postStore.getPosts();
+  const promises = [postStore.getPosts(), categoryStore.getCategories()];
+  await Promise.all(promises);
 });
 </script>
 
