@@ -14,19 +14,16 @@ def lambda_handler(event, context):
         return lambda_response(status_code=400, headers={}, body={ "errors": "Category required" })
     
     category = query_parameters['category']
-    current_time = get_time()
+    start = query_parameters["start"] if "start" in query_parameters else get_time()
+    limit = min(100, int(query_parameters["limit"])) if "limit" in query_parameters else 10
 
-    kce = Key("GSI3PK").eq(f"{CategoryRepository.prefix}#{category}")
-    if "start" in query_parameters and "end" in query_parameters:
-        kce = kce & Key("GSI3SK").between(query_parameters["start"], query_parameters["end"]) 
-    else:
-        kce = kce & Key("GSI3SK").lt(current_time)
+    kce = Key("GSI3PK").eq(f"{CategoryRepository.prefix}#{category}") & Key("GSI3SK").lt(start)
 
     results = dynamodb.query(
         IndexName="GSI3",
         KeyConditionExpression=kce,
         ScanIndexForward = False,
-        Limit = 10
+        Limit = limit
     )["Items"]
 
     posts = []
