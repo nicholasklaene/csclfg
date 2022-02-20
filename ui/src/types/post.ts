@@ -1,4 +1,5 @@
 import { SearchCriteria } from "./search";
+import { defaultCategory } from "../config";
 
 export interface Post {
   post_id: string;
@@ -19,6 +20,6 @@ export const InitialPostStoreState: PostStoreState = {
   loading: false,
   posts: [],
   search: {
-    category: "Algorithms",
+    category: defaultCategory,
   },
 };

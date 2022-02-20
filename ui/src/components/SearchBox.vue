@@ -1,15 +1,18 @@
 <script setup lang="ts">
+import { defaultCategory } from "../config";
 import { useCategoryStore } from "../stores/categoryStore";
+import { usePostStore } from "../stores/postStore";
 
 const categoryStore = useCategoryStore();
+const postStore = usePostStore();
 </script>
 
 <template>
   <div class="border-b-[1rem] border-gray-900 px-4 py-6">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <select class="bg-gray-900 p-2">
-        <option v-if="categoryStore.loading" :value="categoryStore.default">
-          {{ categoryStore.default }}
+      <select class="bg-gray-900 p-2" v-model="postStore.search.category">
+        <option v-if="categoryStore.loading" :value="defaultCategory">
+          {{ defaultCategory }}
         </option>
         <option
           v-else
@@ -23,7 +26,10 @@ const categoryStore = useCategoryStore();
       <select class="bg-gray-900 p-2">
         <option>Past 24 Hours</option>
       </select>
-      <button class="bg-blue-300 hover:opacity-90 p-2 text-gray-900">
+      <button
+        class="bg-blue-300 hover:opacity-90 p-2 text-gray-900"
+        @click="postStore.getPosts()"
+      >
         Go!
       </button>
     </div>
