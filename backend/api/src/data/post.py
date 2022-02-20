@@ -23,7 +23,7 @@ class PostRepository:
             "created_at": timestamp, 
             "title": request.title,
             "description": request.description,
-            "tags": request.tags 
+            "tags": request.tags, 
         })
 
         post_data = {
