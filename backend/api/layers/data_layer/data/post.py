@@ -18,7 +18,13 @@ class PostRepository:
         post_id = f'{PostRepository.prefix}#{uuid4().hex}'
         user_id = f'{UserRepository.prefix}#{user_information.email}'
         timestamp = get_time()
-        attributes = json.dumps({ "created_at": timestamp, "title": request.title, "description": request.description })
+        
+        attributes = json.dumps({ 
+            "created_at": timestamp, 
+            "title": request.title,
+            "description": request.description,
+            "tags": request.tags 
+        })
 
         post_data = {
             "PK": post_id,
@@ -62,7 +68,8 @@ class PostRepository:
                     { 
                         "title": post["title"],
                         "description": post["description"], 
-                        "created_at": post["created_at"] 
+                        "created_at": post["created_at"],
+                        "tags": tags 
                     })
             }
             try:

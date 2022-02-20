@@ -16,6 +16,7 @@ class UserInformation:
         return UserInformation(event)
 
 def lambda_response(status_code: int, headers: Dict, body: Dict) -> Dict:
+    headers["Content-Type"] = "application/json"
     return {
         'statusCode': status_code,
         'headers': headers,
