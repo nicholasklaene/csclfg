@@ -14,7 +14,10 @@ onMounted(async () => {
 
 <template>
   <AppProgressBar v-if="postStore.loading" class="absolute" />
-  <div class="py-16 mx-8">
+  <div class="py-8 mx-8">
+    <div class="mb-2">
+      <img src="../assets/logo.jpg" class="mx-auto mb-8" />
+    </div>
     <main class="max-w-screen-lg mx-auto bg-gray-800 text-white min-h-[800px]">
       <SearchBox />
       <SearchResultList />
