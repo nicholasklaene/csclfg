@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <router-view />
+  <div class="text-4xl">Hello, home!</div>
 </template>
