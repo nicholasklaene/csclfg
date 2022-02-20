@@ -10,13 +10,13 @@ export interface Post {
 }
 
 export interface PostStoreState {
-  page: number;
+  loading: boolean;
   posts: Post[];
   search: SearchCriteria;
 }
 
 export const InitialPostStoreState: PostStoreState = {
-  page: 1,
+  loading: false,
   posts: [],
   search: {
     category: "Algorithms",

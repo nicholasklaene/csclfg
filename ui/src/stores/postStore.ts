@@ -8,6 +8,8 @@ export const usePostStore = defineStore("post", {
   state: (): PostStoreState => InitialPostStoreState,
   actions: {
     async getPosts() {
+      this.loading = true;
+
       const searchParams = new URLSearchParams();
 
       searchParams.append("category", this.search.category);
@@ -24,7 +26,11 @@ export const usePostStore = defineStore("post", {
 
       const response = await axios.get(searchUrl);
 
-      console.log(response);
+      if (response.status === 200) {
+        this.posts = response.data.posts;
+      }
+
+      this.loading = false;
     },
   },
 });
