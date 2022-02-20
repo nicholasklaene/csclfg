@@ -22,11 +22,16 @@ const handleScroll = (e: Event) => {
 </script>
 
 <template>
-  <section class="flex flex-col" ref="scrollComponent">
-    <SearchResult
-      v-for="post in postStore.posts"
-      :key="post.post_id"
-      :post="post"
-    />
+  <section ref="scrollComponent">
+    <template v-if="postStore.posts.length > 0">
+      <SearchResult
+        v-for="post in postStore.posts"
+        :key="post.post_id"
+        :post="post"
+      />
+    </template>
+    <p v-else class="text-center pt-4">
+      Doesn't look like we found anything...
+    </p>
   </section>
 </template>
