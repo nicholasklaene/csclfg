@@ -27,6 +27,8 @@ class PostRepository:
             "GSI1SK": post_id,
             "GSI2PK": category_id,
             "GSI2SK": post_id,
+            "GSI3PK": category_id,
+            "GSI3SK": timestamp,
             "attributes": attributes
         }
 

@@ -91,7 +91,14 @@ Resources:
             Path: /posts
             Method: GET
             ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref Table
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref Table
       Layers:
+        - !Ref ModelsLambdaLayer
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
         - !Ref DataLambdaLayer
