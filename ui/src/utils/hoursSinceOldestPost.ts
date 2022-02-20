@@ -1,6 +1,5 @@
 import { usePostStore } from "../stores/postStore";
 
-// yuck
 export default function () {
   const postStore = usePostStore();
   return Math.floor(

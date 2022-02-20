@@ -11,6 +11,8 @@ export const usePostStore = defineStore("post", {
       this.loading = true;
 
       this.search.start = undefined;
+      this.reachedEnd = false;
+
       const searchUrl = buildSearch();
       const response = await axios.get(searchUrl);
 
@@ -20,10 +22,14 @@ export const usePostStore = defineStore("post", {
 
       this.loading = false;
     },
-    // Infinite scroll - the above completely replaces posts
     async getMorePosts() {
-      if (this.posts.length === 0) return;
-      if (hoursSinceOldestPost() > this.search.end) return;
+      if (
+        this.posts.length === 0 ||
+        this.reachedEnd ||
+        hoursSinceOldestPost() > this.search.end
+      ) {
+        return;
+      }
 
       this.loading = true;
       this.search.start = this.posts[this.posts.length - 1].created_at;
@@ -34,6 +40,7 @@ export const usePostStore = defineStore("post", {
 
       if (response.status === 200) {
         this.posts = [...this.posts, ...response.data.posts];
+        if (response.data.posts.length === 0) this.reachedEnd = true;
       }
 
       this.loading = false;

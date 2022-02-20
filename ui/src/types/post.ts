@@ -14,10 +14,12 @@ export interface PostStoreState {
   loading: boolean;
   posts: Post[];
   search: SearchCriteria;
+  reachedEnd: boolean;
 }
 
 export const InitialPostStoreState: PostStoreState = {
   loading: false,
+  reachedEnd: false,
   posts: [],
   search: {
     end: defaultSearchTimeSpanHours,
