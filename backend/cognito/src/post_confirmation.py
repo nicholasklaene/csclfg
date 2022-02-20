@@ -5,15 +5,16 @@ import os
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
 cognito = boto3.client('cognito-idp')
 dynamodb = boto3.resource('dynamodb').Table(os.environ.get("TABLE"))
 
 def lambda_handler(event, context):
     """
     Post confirmation lambda trigger
-    Adds the newly confirmed user to DynamoDB
+    Adds the newly confirmed user to DynamoDB 
+    & adds them the the 'Users' group
     """
-
     logger.info("Post confirmation trigger running.")
     logger.info("Recieved event: " + json.dumps(event))
 
@@ -36,8 +37,7 @@ def lambda_handler(event, context):
 
     try:
         logger.info("Adding user to Users group")
-        username = event["request"]["userAttributes"]["username"]
-        cognito.admin_add_user_to_group(UserPoolId=os.environ.get("USER_POOL"), Username=username, GroupName="Users")
+        cognito.admin_add_user_to_group(UserPoolId=event["userPoolId"], Username=event["userName"], GroupName="Users")
     except Exception as exception:
         logger.error("Error adding user to users group: " + str(exception))
 

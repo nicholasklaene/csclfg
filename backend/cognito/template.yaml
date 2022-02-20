@@ -119,7 +119,6 @@ Resources:
       Environment:
         Variables:
           TABLE: !Ref Table
-          USER_POOL: !Ref UserPool
       Events:
         CognitoTrigger:
           Type: Cognito
@@ -129,6 +128,12 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref Table
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - cognito-idp:AdminAddUserToGroup
+              Resource: !Sub "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*"
 
   AddUserToGroup:
     Type: AWS::Cognito::UserPoolUserToGroupAttachment
