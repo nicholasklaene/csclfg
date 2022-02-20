@@ -21,7 +21,7 @@ Resources:
   UtilsLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: src/lambda_layers/utils_layer
+      ContentUri: layers/utils_layer
       CompatibleRuntimes:
         - python3.9
     Metadata:
@@ -30,7 +30,16 @@ Resources:
   ModelsLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: src/lambda_layers/models_layer
+      ContentUri: layers/models_layer
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  DataLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: layers/data_layer
       CompatibleRuntimes:
         - python3.9
     Metadata:
@@ -39,7 +48,7 @@ Resources:
   LibLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: src/lambda_layers/lib_layer
+      ContentUri: layers/lib_layer
       CompatibleRuntimes:
         - python3.9
     Metadata:
@@ -85,6 +94,7 @@ Resources:
       Layers:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
+        - !Ref DataLambdaLayer
 
   GetCategoriesFunction:
     Type: AWS::Serverless::Function
@@ -107,6 +117,7 @@ Resources:
       Layers:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
+        - !Ref DataLambdaLayer
 
   CreateCategoryFunction:
     Type: AWS::Serverless::Function
@@ -134,6 +145,7 @@ Resources:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
         - !Ref ModelsLambdaLayer
+        - !Ref DataLambdaLayer
 
   CreatePostFunction:
     Type: AWS::Serverless::Function
@@ -162,3 +174,4 @@ Resources:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
         - !Ref ModelsLambdaLayer
+        - !Ref DataLambdaLayer

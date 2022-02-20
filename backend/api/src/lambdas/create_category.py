@@ -1,55 +1,27 @@
 import json
-import logging
-import os
-import boto3
 
-from requests.create_category_request import CreateCategoryRequest
-from requests.shared import BodyParsingException
-from utils.lambda_response import lambda_response
+from data.category import CategoryRepository
+from models.category import CreateCategoryRequest
+from utils import get_dynamodb, get_logger, lambda_response
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-
-dynamodb = boto3.resource('dynamodb').Table(os.environ.get("TABLE"))
+logger, dynamodb = get_logger(), get_dynamodb()
 
 def lambda_handler(event, context):
-    logger.info("Receieved request to create new category: " + json.dumps(event))
+    logger.info(f"Receieved request to create new category: {json.dumps(event)}")
 
-    create_category_request = None
-    try:
-        create_category_request = CreateCategoryRequest.parse(event)
-    except BodyParsingException as exception:
-        logger.error("Error parsing request body: " + str(exception))
-        body = { "errors": ["Could not parse request body"] }
-        return lambda_response(status_code=400, headers={}, body=body)
+    parse_result = CreateCategoryRequest.parse(event)
+    if len(parse_result.errors) > 0:
+        logger.info(f"Parse failed with errors: {json.dumps(parse_result.errors)}")
+        return lambda_response(status_code=400, headers={}, body={ "errors": parse_result.errors })
     
-    logger.info("Successfully parsed request body")
-
+    create_category_request = parse_result.result
     validation = create_category_request.validate()
     if len(validation.errors) > 0:
-        logger.info("Invalid request body: " + ", ".join(validation.errors))
+        logger.info(f"Validation failed with errors: {json.dumps(validation.errors)}")
         return lambda_response(status_code=400, headers={}, body={ "errors": validation.errors })
 
-    category_id = f'CATEGORY#{create_category_request.label}'
-    data = {
-        'PK': category_id,
-        'SK': category_id,
-        'GSI1PK': "CATEGORIES",
-        'GSI1SK': category_id,
-    }
-
-    logger.info('Inserting data: ' + json.dumps(data))
-
-    try:
-        dynamodb.put_item(Item=data)
-        logger.info('Inserted data: ' + json.dumps(data))
-    except Exception as exception:
-        logger.error('Error inserting data: ' + str(exception))
-        body = { "errors": ["Error creating category"]}
-        return lambda_response(status_code=500, headers={}, body=body)
-
-    body = { 
-        "label": create_category_request.label
-    }
-
-    return lambda_response(status_code=201, headers={}, body=body)
+    create_result = CategoryRepository.create(create_category_request)
+    if len(create_result["errors"]) > 0:
+        return lambda_response(status_code=500, headers={}, body={ "errors": create_result["errors"] })    
+    
+    return lambda_response(status_code=201, headers={}, body=create_result["result"])

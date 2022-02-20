@@ -1,22 +1,23 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-class BodyParsingException(Exception):
-    def __init__(self, message):            
-        super().__init__(message)
-
-
 class Validation:
     def __init__(self, errors: List[str]):
         self.errors = errors
 
+
+class ParseResult:
+    def __init__(self, result, errors: List[str]):
+        self.result = result
+        self.errors = errors
     
+
 class IRequest:
     __metaclass__ = ABCMeta
 
     @staticmethod
     @abstractmethod
-    def parse(event): raise NotImplementedError
+    def parse(event) -> ParseResult: raise NotImplementedError
 
     @abstractmethod
     def validate(self) -> Validation: raise NotImplementedError

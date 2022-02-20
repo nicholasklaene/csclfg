@@ -1,11 +1,9 @@
 import json
-import logging
-from utils.extract_claims import extract_claims 
+from utils import UserInformation, get_logger 
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger = get_logger()
 
 def lambda_handler(event, context):
-    claims = extract_claims(event)
+    claims = UserInformation.extract(event)
     return json.dumps({ "email": claims.email, "groups": claims.groups})
     
