@@ -32,9 +32,7 @@ const timeSincePost = () => {
 </script>
 
 <template>
-  <div
-    class="border-b last-of-type:border-0 border-collapse border-gray-500 px-4 py-6"
-  >
+  <div class="border-b border-collapse border-gray-500 px-4 py-6">
     <div class="flex">
       <h3 class="text-xl w-[90%]">
         <router-link to="/">

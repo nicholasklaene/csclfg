@@ -23,8 +23,12 @@ const postStore = usePostStore();
           {{ category.label }}
         </option>
       </select>
-      <select class="bg-gray-900 p-2">
-        <option>Past 24 Hours</option>
+      <select class="bg-gray-900 p-2" v-model="postStore.search.end">
+        <option :value="1">Past Hour</option>
+        <option :value="24">Past Day</option>
+        <option :value="24 * 7">Past Week</option>
+        <option :value="24 * 31">Past Month</option>
+        <option :value="-1">All Time</option>
       </select>
       <button
         class="bg-blue-300 hover:opacity-90 p-2 text-gray-900"

@@ -1,5 +1,5 @@
 import { SearchCriteria } from "./search";
-import { defaultCategory } from "../config";
+import { defaultCategory, defaultSearchTimeSpanHours } from "../config";
 
 export interface Post {
   post_id: string;
@@ -20,6 +20,7 @@ export const InitialPostStoreState: PostStoreState = {
   loading: false,
   posts: [],
   search: {
+    end: defaultSearchTimeSpanHours,
     category: defaultCategory,
   },
 };

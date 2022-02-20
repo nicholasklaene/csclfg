@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { InitialPostStoreState, PostStoreState } from "../types/post";
-import { baseUrl } from "../config";
+import buildSearch from "../utils/buildSearch";
+import hoursSinceOldestPost from "../utils/hoursSinceOldestPost";
 import axios from "axios";
 
 export const usePostStore = defineStore("post", {
@@ -9,24 +10,30 @@ export const usePostStore = defineStore("post", {
     async getPosts() {
       this.loading = true;
 
-      const searchParams = new URLSearchParams();
-
-      searchParams.append("category", this.search.category);
-
-      if (this.search.limit) {
-        searchParams.append("limit", this.search.limit.toString());
-      }
-
-      if (this.search.start) {
-        searchParams.append("start", this.search.start.toString());
-      }
-
-      const searchUrl = `${baseUrl}/posts?${searchParams.toString()}`;
-
+      this.search.start = undefined;
+      const searchUrl = buildSearch();
       const response = await axios.get(searchUrl);
 
       if (response.status === 200) {
         this.posts = response.data.posts;
+      }
+
+      this.loading = false;
+    },
+    // Infinite scroll - the above completely replaces posts
+    async getMorePosts() {
+      if (this.posts.length === 0) return;
+      if (hoursSinceOldestPost() > this.search.end) return;
+
+      this.loading = true;
+      this.search.start = this.posts[this.posts.length - 1].created_at;
+
+      const searchUrl = buildSearch();
+
+      const response = await axios.get(searchUrl);
+
+      if (response.status === 200) {
+        this.posts = [...this.posts, ...response.data.posts];
       }
 
       this.loading = false;
