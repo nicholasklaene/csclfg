@@ -8,7 +8,7 @@ class TagRepository:
 
     @staticmethod
     def batch_create_tags(batch_writer, tags: List[str]):
-        result, errors = []
+        result, errors = [], []
         for tag in tags:
             tag_data = { "PK": f'TAG#{tag}', "SK": f'TAG#{tag}' }
             try:

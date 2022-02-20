@@ -116,6 +116,7 @@ Resources:
             TableName: !Ref Table
       Layers:
         - !Ref LibLambdaLayer
+        - !Ref ModelsLambdaLayer
         - !Ref UtilsLambdaLayer
         - !Ref DataLambdaLayer
 
