@@ -1,4 +1,5 @@
 import json
+import math
 from data.category import CategoryRepository
 from utils import get_dynamodb, get_logger, get_time, remove_prefix, lambda_response 
 from boto3.dynamodb.conditions import Key
@@ -32,9 +33,10 @@ def lambda_handler(event, context):
         post = {
             "post_id": remove_prefix(result["PK"]),
             "category": remove_prefix(result["GSI3PK"]),
-            "created_at": result["GSI3SK"],
+            "created_at": math.floor(float(result["GSI3SK"])),
             "description": attributes["description"],
-            "title": attributes["title"]
+            "title": attributes["title"],
+            "tags": attributes["tags"]
         }
         posts.append(post)
 
