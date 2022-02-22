@@ -7,6 +7,9 @@ Globals:
     Runtime: python3.9
 
 Parameters:
+  ENV:
+    Type: String
+    Description: Deployment enivronment
   UserPoolId:
     Type: String
     Description: User pool id for Cognito provider
@@ -45,7 +48,6 @@ Resources:
               issuer: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPoolId}
               audience:
                 - !Ref Audience
-
       CorsConfiguration:
         AllowMethods:
           - GET

@@ -1,12 +1,24 @@
 Transform: AWS::Serverless-2016-10-31
 
 Parameters:
+  ENV:
+    Type: String
+    Description: Deployment environment
+    AllowedValues:
+      - "prod"
+      - "test"
   AppName:
     Type: String
     Description: Name of the application
   AdminEmail:
     Type: String
     Description: Email address for the application admin
+  AllowOrigins:
+    Type: String
+    Description: Domains allowed by CORS
+  ClientDomains:
+    Type: String
+    Description: Allowed callback URLs for authentication
 
 Resources:
   dynamodb:
@@ -23,7 +35,7 @@ Resources:
       Parameters:
         TableName: !Sub "${AppName}-db"
         AppName: !Ref AppName
-        ClientDomains: "http://localhost:8080/oauth/callback,https://csclfg.com/oauth/callback,https://oauth.pstmn.io/v1/callback"
+        ClientDomains: !Ref ClientDomains
         AdminEmail: !Ref AdminEmail
         AddGroupsToScopes: "true"
 
@@ -33,6 +45,7 @@ Resources:
       Location: ./api/template.yaml
       Parameters:
         TableName: !Sub "${AppName}-db"
-        AllowOrigins: "http://localhost:3000,https://csclfg.com"
+        AllowOrigins: !Ref AllowOrigins
         UserPoolId: !GetAtt cognito.Outputs.UserPoolId
         Audience: !GetAtt cognito.Outputs.UserPoolClientId
+        ENV: !Ref ENV
