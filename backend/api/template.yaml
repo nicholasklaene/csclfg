@@ -21,37 +21,10 @@ Parameters:
     Description: Origins to allow CORS from
 
 Resources:
-  UtilsLambdaLayer:
+  CustomLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: layers/utils_layer
-      CompatibleRuntimes:
-        - python3.9
-    Metadata:
-      BuildMethod: python3.9
-
-  ModelsLambdaLayer:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      ContentUri: layers/models_layer
-      CompatibleRuntimes:
-        - python3.9
-    Metadata:
-      BuildMethod: python3.9
-
-  DataLambdaLayer:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      ContentUri: layers/data_layer
-      CompatibleRuntimes:
-        - python3.9
-    Metadata:
-      BuildMethod: python3.9
-
-  LibLambdaLayer:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      ContentUri: layers/lib_layer
+      ContentUri: ./layer/
       CompatibleRuntimes:
         - python3.9
     Metadata:
@@ -100,10 +73,7 @@ Resources:
         - DynamoDBReadPolicy:
             TableName: !Ref TableName
       Layers:
-        - !Ref ModelsLambdaLayer
-        - !Ref LibLambdaLayer
-        - !Ref UtilsLambdaLayer
-        - !Ref DataLambdaLayer
+        - !Ref CustomLambdaLayer
 
   GetCategoriesFunction:
     Type: AWS::Serverless::Function
@@ -124,10 +94,7 @@ Resources:
         - DynamoDBReadPolicy:
             TableName: !Ref TableName
       Layers:
-        - !Ref LibLambdaLayer
-        - !Ref ModelsLambdaLayer
-        - !Ref UtilsLambdaLayer
-        - !Ref DataLambdaLayer
+        - !Ref CustomLambdaLayer
 
   CreateCategoryFunction:
     Type: AWS::Serverless::Function
@@ -152,10 +119,7 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TableName
       Layers:
-        - !Ref LibLambdaLayer
-        - !Ref UtilsLambdaLayer
-        - !Ref ModelsLambdaLayer
-        - !Ref DataLambdaLayer
+        - !Ref CustomLambdaLayer
 
   CreatePostFunction:
     Type: AWS::Serverless::Function
@@ -181,7 +145,4 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TableName
       Layers:
-        - !Ref LibLambdaLayer
-        - !Ref UtilsLambdaLayer
-        - !Ref ModelsLambdaLayer
-        - !Ref DataLambdaLayer
+        - !Ref CustomLambdaLayer
