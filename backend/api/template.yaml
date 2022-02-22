@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: api.csclfg.com
+Description: API For LFG app
 Globals:
   Function:
     Timeout: 5
@@ -13,9 +13,12 @@ Parameters:
   Audience:
     Type: String
     Description: Client id for user pool
-  Table:
+  TableName:
     Type: String
-    Default: csclfg-db
+    Description: Database for application
+  AllowOrigins:
+    Type: CommaDelimitedList
+    Description: Origins to allow CORS from
 
 Resources:
   UtilsLambdaLayer:
@@ -76,9 +79,7 @@ Resources:
           - POST
           - PUT
           - DELETE
-        AllowOrigins:
-          - http://localhost:3000
-          - https://csclfg.com
+        AllowOrigins: !Ref AllowOrigins
 
   GetPostsFunction:
     Type: AWS::Serverless::Function
@@ -94,10 +95,10 @@ Resources:
             ApiId: !Ref HttpApi
       Environment:
         Variables:
-          TABLE: !Ref Table
+          TABLE: !Ref TableName
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Ref Table
+            TableName: !Ref TableName
       Layers:
         - !Ref ModelsLambdaLayer
         - !Ref LibLambdaLayer
@@ -118,10 +119,10 @@ Resources:
             ApiId: !Ref HttpApi
       Environment:
         Variables:
-          TABLE: !Ref Table
+          TABLE: !Ref TableName
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Ref Table
+            TableName: !Ref TableName
       Layers:
         - !Ref LibLambdaLayer
         - !Ref ModelsLambdaLayer
@@ -146,10 +147,10 @@ Resources:
             ApiId: !Ref HttpApi
       Environment:
         Variables:
-          TABLE: !Ref Table
+          TABLE: !Ref TableName
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref Table
+            TableName: !Ref TableName
       Layers:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer
@@ -175,10 +176,10 @@ Resources:
             ApiId: !Ref HttpApi
       Environment:
         Variables:
-          TABLE: !Ref Table
+          TABLE: !Ref TableName
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref Table
+            TableName: !Ref TableName
       Layers:
         - !Ref LibLambdaLayer
         - !Ref UtilsLambdaLayer

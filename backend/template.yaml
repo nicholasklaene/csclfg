@@ -27,7 +27,12 @@ Resources:
         AdminEmail: !Ref AdminEmail
         AddGroupsToScopes: "true"
 
-  # api:
-  #   Type: AWS::Serverless::Application
-  #   Properties:
-  #     Location: ./api/template.yaml
+  api:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./api/template.yaml
+      Parameters:
+        TableName: !Sub "${AppName}-db"
+        AllowOrigins: "http://localhost:3000,https://csclfg.com"
+        UserPoolId: !GetAtt cognito.Outputs.UserPoolId
+        Audience: !GetAtt cognito.Outputs.UserPoolClientId
