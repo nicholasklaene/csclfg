@@ -3,12 +3,12 @@ Transform: AWS::Serverless-2016-10-31
 Description: Cognito user pool with hosted domain
 
 Parameters:
-  Table:
-    Type: String
-    Default: csclfg-db
   AppName:
     Type: String
     Description: Name of the application
+  TableName:
+    Type: String
+    Description: Name of the DynamoDB table to insert users in
   ClientDomains:
     Type: CommaDelimitedList
     Description: Array of domains allowed to use this UserPool
@@ -20,7 +20,6 @@ Parameters:
     AllowedValues:
       - "true"
       - "false"
-    Default: "false"
 
 Conditions:
   ScopeGroups: !Equals [!Ref AddGroupsToScopes, "true"]
@@ -118,7 +117,7 @@ Resources:
       CodeUri: src/
       Environment:
         Variables:
-          TABLE: !Ref Table
+          TABLE: !Ref TableName
       Events:
         CognitoTrigger:
           Type: Cognito
@@ -127,7 +126,7 @@ Resources:
             UserPool: !Ref UserPool
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref Table
+            TableName: !Ref TableName
         - Version: "2012-10-17"
           Statement:
             - Effect: Allow

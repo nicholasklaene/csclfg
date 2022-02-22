@@ -1,10 +1,16 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  TableName:
+    Type: String
+    Description: Application database name
+
 Resources:
   DynamoDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: csclfg-db
+      TableName: !Ref TableName
       KeySchema:
         - AttributeName: PK
           KeyType: HASH
@@ -56,7 +62,6 @@ Resources:
           ProvisionedThroughput:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
-
         - IndexName: GSI3
           KeySchema:
             - AttributeName: GSI3PK

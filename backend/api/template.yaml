@@ -78,6 +78,7 @@ Resources:
           - DELETE
         AllowOrigins:
           - http://localhost:3000
+          - https://csclfg.com
 
   GetPostsFunction:
     Type: AWS::Serverless::Function
