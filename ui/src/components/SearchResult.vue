@@ -26,7 +26,7 @@ const timeSincePost = () => {
     return `${hours}h`;
   }
 
-  const days = minutes / (60 * 24);
+  const days = Math.floor(minutes / (60 * 24));
   return `${days}d`;
 };
 </script>
