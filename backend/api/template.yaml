@@ -22,10 +22,20 @@ Parameters:
   AllowOrigins:
     Type: CommaDelimitedList
     Description: Origins to allow CORS from
+  Domain:
+    Type: String
+    Description: Application domain
   HostedZoneId:
     Type: String
     Description: Route 53 hosted zone id
     Default: Z07243391BMPB9ANDWTO0
+  CertificateId:
+    Type: String
+    Description: SSL Certificate ID for domain
+    Default: 38b312f9-7cc7-4516-891a-4e15bb73e51c
+
+Conditions:
+  IsProd: !Equals [!Ref ENV, "prod"]
 
 Resources:
   CustomLambdaLayer:
@@ -61,8 +71,9 @@ Resources:
         AllowOrigins: !Ref AllowOrigins
 
       Domain:
-        DomainName: api.csclfg.com
-        CertificateArn: arn:aws:acm:us-east-1:389606398544:certificate/f285b83c-cee7-4eff-baa3-127ec9e628f7
+        DomainName:
+          !If [IsProd, !Sub "api.${Domain}", !Sub "${ENV}.api.${Domain}"]
+        CertificateArn: !Sub "arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/${CertificateId}"
         Route53:
           HostedZoneId: !Ref HostedZoneId
 

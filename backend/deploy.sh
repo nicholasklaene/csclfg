@@ -1,4 +1,4 @@
-# TODO: setup pipeline
+# TODO: setup true cicd
 read -p "Environment: " ENV
 
 if [ "$ENV" != "test" ] && [ "$ENV" != "prod" ];
