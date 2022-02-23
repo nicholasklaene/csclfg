@@ -68,8 +68,8 @@ Resources:
         AllowOrigins:
           !If [
             IsProd,
-            "https://csclfg.com",
-            "http://localhost:3000,https://test.csclfg.com",
+            !Sub "https://${Domain}",
+            !Sub "http://localhost:3000,https://test.${Domain}",
           ]
 
       Domain:
