@@ -22,6 +22,10 @@ Parameters:
   AllowOrigins:
     Type: CommaDelimitedList
     Description: Origins to allow CORS from
+  HostedZoneId:
+    Type: String
+    Description: Route 53 hosted zone id
+    Default: Z07243391BMPB9ANDWTO0
 
 Resources:
   CustomLambdaLayer:
@@ -55,6 +59,12 @@ Resources:
           - PUT
           - DELETE
         AllowOrigins: !Ref AllowOrigins
+
+      Domain:
+        DomainName: api.csclfg.com
+        CertificateArn: arn:aws:acm:us-east-1:389606398544:certificate/f285b83c-cee7-4eff-baa3-127ec9e628f7
+        Route53:
+          HostedZoneId: !Ref HostedZoneId
 
   GetPostsFunction:
     Type: AWS::Serverless::Function
