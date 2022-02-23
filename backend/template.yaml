@@ -13,9 +13,6 @@ Parameters:
   AdminEmail:
     Type: String
     Description: Email address for the application admin
-  AllowOrigins:
-    Type: String
-    Description: Domains allowed by CORS
   ClientDomains:
     Type: String
     Description: Allowed callback URLs for authentication
@@ -48,7 +45,6 @@ Resources:
       Location: ./api/template.yaml
       Parameters:
         TableName: !Sub "${AppName}-db"
-        AllowOrigins: !Ref AllowOrigins
         UserPoolId: !GetAtt cognito.Outputs.UserPoolId
         Audience: !GetAtt cognito.Outputs.UserPoolClientId
         ENV: !Ref ENV

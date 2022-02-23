@@ -19,9 +19,6 @@ Parameters:
   TableName:
     Type: String
     Description: Database for application
-  AllowOrigins:
-    Type: CommaDelimitedList
-    Description: Origins to allow CORS from
   Domain:
     Type: String
     Description: Application domain
@@ -68,7 +65,12 @@ Resources:
           - POST
           - PUT
           - DELETE
-        AllowOrigins: !Ref AllowOrigins
+        AllowOrigins:
+          !If [
+            IsProd,
+            "https://csclfg.com",
+            "http://localhost:3000,https://test.csclfg.com",
+          ]
 
       Domain:
         DomainName:
