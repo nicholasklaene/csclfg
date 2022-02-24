@@ -28,7 +28,7 @@ const handleSubmit = () => {
 <template>
   <form
     @submit.prevent="handleSubmit()"
-    class="flex flex-col gap-4 pt-4 max-w-[95%] mx-auto"
+    class="flex flex-col gap-4 pt-4 pb-8 max-w-[95%] mx-auto"
   >
     <h1 class="text-3xl">Create Post</h1>
     <label>

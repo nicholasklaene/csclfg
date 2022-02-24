@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 import { IdToken, AuthStoreState, AuthStoreInitialState } from "../types/auth";
 import { tokenIsExpired, generatePKCE } from "../utils/auth";
 import { clientId, authServerBaseURL, callbackUrl } from "../config";
+import router from "../router";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthStoreState => AuthStoreInitialState,
@@ -128,6 +129,8 @@ export const useAuthStore = defineStore("auth", {
       this.username = "";
       this.isAdmin = false;
       this._isAuthenticated = false;
+
+      router.push({ name: "Home" });
     },
   },
 });
