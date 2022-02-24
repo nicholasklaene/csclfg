@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
-import Authenticated from "../views/Authenticated.vue";
+import CreatePost from "../views/CreatePost.vue";
 import OAuthCallback from "../views/OAuthCallback.vue";
 
 export const routes: RouteRecordRaw[] = [
@@ -10,9 +10,9 @@ export const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: "/authenticated",
-    name: "Authenticated",
-    component: Authenticated,
+    path: "/create-post",
+    name: "CreatePost",
+    component: CreatePost,
   },
   {
     path: "/oauth/callback",

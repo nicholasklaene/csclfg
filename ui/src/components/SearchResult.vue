@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Post } from "../types/post";
+import AppTag from "./AppTag.vue";
 
 interface Props {
   post: Post;
@@ -49,13 +50,12 @@ const timeSincePost = () => {
       </p>
     </div>
     <div class="flex gap-2 mt-2">
-      <span
+      <AppTag
         v-for="tag in post.tags"
         :key="tag"
-        class="bg-blue-300 text-gray-900 rounded-md px-2"
-      >
-        {{ tag }}
-      </span>
+        :tag="tag"
+        :removeable="false"
+      />
     </div>
   </div>
 </template>
