@@ -2,14 +2,16 @@
 import { defaultCategory } from "../config";
 import { useCategoryStore } from "../stores/categoryStore";
 import { usePostStore } from "../stores/postStore";
+import SearchBarHeader from "./SearchBarHeader.vue";
 
 const categoryStore = useCategoryStore();
 const postStore = usePostStore();
 </script>
 
 <template>
-  <div class="border-b-[1rem] border-gray-900 px-4 py-6">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <div class="border-b-[1rem] border-gray-900 py-6">
+    <SearchBarHeader />
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
       <select class="bg-gray-900 p-2" v-model="postStore.search.category">
         <option v-if="categoryStore.loading" :value="defaultCategory">
           {{ defaultCategory }}
@@ -37,7 +39,7 @@ const postStore = usePostStore();
         Go!
       </button>
     </div>
-    <div class="mt-1">
+    <div class="mt-1 px-4">
       <a href="#" class="text-blue-500 tracking-wider">Add tags to search</a>
     </div>
   </div>

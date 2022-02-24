@@ -17,8 +17,10 @@ onMounted(async () => {
 <template>
   <AppProgressBar v-if="categoryStore.loading" class="absolute max-w-[95%]" />
   <AppNavbar />
-  <div class="py-8 mx-4">
-    <main class="max-w-screen-lg mx-auto bg-gray-800 text-white">
+  <div class="py-8 mx-4 flex">
+    <main
+      class="max-w-screen-lg w-screen mx-auto lg:mt-8 bg-gray-800 text-white"
+    >
       <CreatePostForm />
     </main>
   </div>
