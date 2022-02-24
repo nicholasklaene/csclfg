@@ -17,9 +17,11 @@ class UserInformation:
 
 def lambda_response(status_code: int, headers: Dict, body: Dict) -> Dict:
     headers["Content-Type"] = "application/json"
-    headers["Access-Control-Allow-Headers"] = "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with"
+    headers["Access-Control-Allow-Headers"] = "Content-Type,X-Amz-Date,Authorization,x-requested-with"
     headers["Access-Control-Allow-Origin"] = "*" 
     headers["Access-Control-Allow-Methods"] = "OPTIONS,POST,GET,PUT,DELETE" 
+    headers["Access-Control-Allow-Credentials"] = True
+    
     return {
         'statusCode': status_code,
         'headers': headers,

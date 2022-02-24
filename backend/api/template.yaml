@@ -48,6 +48,7 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       Auth:
+        #AddDefaultAuthorizerToCorsPreflight: false
         Authorizers:
           GeneralAuth:
             AuthorizationScopes:
@@ -60,17 +61,26 @@ Resources:
               audience:
                 - !Ref Audience
       CorsConfiguration:
+        AllowHeaders:
+          - "Content-Type"
+          - "X-Amz-Date"
+          - "Authorization"
+          - "x-requested-with"
+        AllowCredentials: "true"
         AllowMethods:
           - GET
           - POST
           - PUT
           - DELETE
         AllowOrigins:
-          !If [
-            IsProd,
-            !Sub "https://${Domain}",
-            !Sub "http://localhost:3000,https://test.${Domain}",
-          ]
+          - "http://localhost:3000"
+          - !Sub "https://${Domain}"
+          - !Sub "https://test.${Domain}"
+          #!If [
+          #IsProd,
+          #!Sub "https://${Domain}",
+          #!Sub "http://localhost:3000,https://test.${Domain}",
+          #]
 
       Domain:
         DomainName:

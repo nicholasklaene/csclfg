@@ -17,13 +17,13 @@ onMounted(async () => {
 </script>
 
 <template>
+  <AppProgressBar v-if="postStore.loading" class="absolute" />
   <AppNavbar />
   <div class="py-8 mx-4">
     <div class="mb-2">
       <img src="../assets/logo.jpg" class="mx-auto mb-8" />
     </div>
     <main class="max-w-screen-lg mx-auto bg-gray-800 text-white min-h-[800px]">
-      <AppProgressBar v-if="postStore.loading" class="absolute" />
       <SearchBox />
       <SearchResultList />
     </main>
