@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { IdToken, AuthStoreState, AuthStoreInitialState } from "../types/auth";
-
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+
+import { IdToken, AuthStoreState, AuthStoreInitialState } from "../types/auth";
 import { tokenIsExpired, generatePKCE } from "../utils/auth";
 import { clientId, authServerBaseURL, callbackUrl } from "../config";
 
@@ -14,8 +14,9 @@ export const useAuthStore = defineStore("auth", {
 
       if (!idToken || tokenIsExpired()) return false;
 
+      // Make sure state is updated on every route change
       const decodedIdToken: IdToken = jwtDecode(idToken);
-      state.username = "Fake username!";
+      state.username = decodedIdToken.email;
       state.email = decodedIdToken.email;
       state.emailVerified = decodedIdToken.email_verified;
 
@@ -50,9 +51,9 @@ export const useAuthStore = defineStore("auth", {
         config
       );
 
-      localStorage.setItem("access_token", response.data.access_token);
       localStorage.setItem("refresh_token", response.data.refresh_token);
       localStorage.setItem("id_token", response.data.id_token);
+      this.updateState(response.data.id_token);
     },
     async redirectToAuthServer(isLogin: boolean): Promise<void> {
       const { codeChallenge, codeVerifier } = await generatePKCE();
@@ -103,18 +104,22 @@ export const useAuthStore = defineStore("auth", {
           config
         );
 
-        localStorage.setItem("access_token", response.data.access_token);
         localStorage.setItem("id_token", response.data.id_token);
-
+        this.updateState(response.data.id_token);
         return true;
       } catch (e) {
         return false;
       }
     },
+    updateState(idToken: string) {
+      const decodedIdToken: IdToken = jwtDecode(idToken);
+      this.username = decodedIdToken.email;
+      this.email = decodedIdToken.email;
+      this.emailVerified = decodedIdToken.email_verified;
+    },
     logout(): void {
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
       localStorage.removeItem("id_token");
+      localStorage.removeItem("refresh_token");
     },
   },
 });
