@@ -3,4 +3,6 @@ export interface SearchCriteria {
   end: number;
   category: string;
   limit?: number;
+  user?: string;
+  tags?: string[];
 }

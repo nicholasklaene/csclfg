@@ -4,6 +4,7 @@ import { usePostStore } from "../stores/postStore";
 import SearchResult from "./SearchResult.vue";
 
 const postStore = usePostStore();
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
