@@ -18,12 +18,12 @@ onMounted(async () => {
     String(randomString?.toString())
   );
 
-  router.push(`/authenticated`);
+  router.push(`/`);
 });
 </script>
 
 <template>
-  <p>
+  <p class="text-white">
     Please wait to be redirected...
     <br />
     <button text>

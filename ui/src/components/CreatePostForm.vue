@@ -9,12 +9,22 @@ import { usePostStore } from "../stores/postStore";
 import { useCategoryStore } from "../stores/categoryStore";
 import { validate } from "../formValidation/createPost";
 import AppTag from "./AppTag.vue";
+import { CreatePost } from "../types/post";
+import router from "../router";
 
 const postStore = usePostStore();
 const categoryStore = useCategoryStore();
 
 const tag: Ref<string> = ref("");
 const formData: CreatePostForm = CreatePostFormInitialValue();
+
+const resetForm = (): void => {
+  formData.title.value = "";
+  formData.description.value = "";
+  formData.category.value = "-1";
+  formData.tags.value = [];
+  tag.value = "";
+};
 
 const handleAddTag = (): void => {
   if (!tag.value.trim()) return;
@@ -28,7 +38,19 @@ const handleRemoveTag = (tag: string): void => {
 
 const handleSubmit = async (): Promise<void> => {
   if (!validate(formData)) return;
-  console.log("valid");
+
+  const data: CreatePost = {
+    title: formData.title.value,
+    description: formData.description.value,
+    category: formData.category.value,
+    tags: formData.tags.value,
+  };
+
+  const success = await postStore.createPost(data);
+  if (success) {
+    resetForm();
+    router.push("/");
+  }
 };
 </script>
 
@@ -103,7 +125,7 @@ const handleSubmit = async (): Promise<void> => {
         placeholder="tag name"
         :disabled="formData.tags.value.length >= 5"
         v-model="tag"
-        @keyup.enter="handleAddTag()"
+        @keydown.enter.prevent="handleAddTag()"
       />
       <div class="flex gap-2 my-4">
         <AppTag

@@ -10,6 +10,13 @@ export interface Post {
   tags: string[];
 }
 
+export interface CreatePost {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+}
+
 export interface PostStoreState {
   loading: boolean;
   posts: Post[];

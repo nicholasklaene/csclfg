@@ -1,8 +1,13 @@
 import { defineStore } from "pinia";
-import { InitialPostStoreState, PostStoreState } from "../types/post";
+import {
+  CreatePost,
+  InitialPostStoreState,
+  PostStoreState,
+} from "../types/post";
 import buildSearch from "../utils/buildSearch";
 import hoursSinceOldestPost from "../utils/hoursSinceOldestPost";
 import axios from "axios";
+import { baseUrl } from "../config";
 
 export const usePostStore = defineStore("post", {
   state: (): PostStoreState => InitialPostStoreState,
@@ -44,6 +49,19 @@ export const usePostStore = defineStore("post", {
       }
 
       this.loading = false;
+    },
+    async createPost(data: CreatePost): Promise<boolean> {
+      this.loading = true;
+
+      const requestUrl = `${baseUrl}/posts`;
+      const response = await axios.post(requestUrl, data);
+
+      if (response.status !== 201) return false;
+
+      alert("Success!");
+
+      this.loading = false;
+      return true;
     },
   },
 });
