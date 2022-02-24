@@ -9,7 +9,8 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
-  if (to.name === "Authenticated" && !authStore.isAuthenticated) {
+  const isAuthenticated = authStore.isAuthenticated;
+  if (to.name === "Authenticated" && !isAuthenticated) {
     const success = await authStore.refresh();
     if (success) {
       next();

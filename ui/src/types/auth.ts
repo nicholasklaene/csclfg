@@ -3,6 +3,7 @@ export interface AuthStoreState {
   emailVerified: boolean;
   username: string;
   isAdmin: boolean;
+  _isAuthenticated: boolean;
 }
 
 export const AuthStoreInitialState: AuthStoreState = {
@@ -10,6 +11,7 @@ export const AuthStoreInitialState: AuthStoreState = {
   emailVerified: false,
   username: "",
   isAdmin: false,
+  _isAuthenticated: false,
 };
 
 export interface IdToken {

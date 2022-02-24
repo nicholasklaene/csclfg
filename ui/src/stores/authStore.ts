@@ -20,6 +20,7 @@ export const useAuthStore = defineStore("auth", {
       state.email = decodedIdToken.email;
       state.emailVerified = decodedIdToken.email_verified;
 
+      state._isAuthenticated = true;
       return true;
     },
   },
@@ -108,6 +109,7 @@ export const useAuthStore = defineStore("auth", {
         this.updateState(response.data.id_token);
         return true;
       } catch (e) {
+        this._isAuthenticated = false;
         return false;
       }
     },
@@ -116,10 +118,16 @@ export const useAuthStore = defineStore("auth", {
       this.username = decodedIdToken.email;
       this.email = decodedIdToken.email;
       this.emailVerified = decodedIdToken.email_verified;
+      this._isAuthenticated = true;
     },
     logout(): void {
       localStorage.removeItem("id_token");
       localStorage.removeItem("refresh_token");
+      this.email = "";
+      this.emailVerified = false;
+      this.username = "";
+      this.isAdmin = false;
+      this._isAuthenticated = false;
     },
   },
 });
