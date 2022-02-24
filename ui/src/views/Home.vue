@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, Ref, ref } from "vue";
+import { onMounted } from "vue";
 import { usePostStore } from "../stores/postStore";
 import AppProgressBar from "../components/AppProgressBar.vue";
 import SearchResultList from "../components/SearchResultList.vue";
