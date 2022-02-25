@@ -1,7 +1,6 @@
 import json
 from uuid import uuid4
 from typing import List
-from data.tag import TagRepository
 from data.user import UserRepository
 from data.category import CategoryRepository
 from models.post import CreatePostRequest
@@ -56,27 +55,3 @@ class PostRepository:
 
         return { "result": result, "errors": errors }
     
-    @staticmethod
-    def create_post_tags(batch_writer, post, tags: List[str]):
-        result, errors = [], []
-        for tag in tags:
-            post_tag = { 
-                "PK": f"{TagRepository.prefix}#{tag}",
-                "SK": f"{PostRepository.prefix}#{post['post_id']}",
-                "category": f"{CategoryRepository.prefix}#{post['category']}",
-                "attributes": json.dumps(
-                    { 
-                        "title": post["title"],
-                        "description": post["description"], 
-                        "created_at": post["created_at"],
-                        "tags": tags 
-                    })
-            }
-            try:
-                batch_writer.put_item(Item=post_tag)
-                result.append(tag)
-            except Exception as exception:
-                errors.append(f"Error adding tag {tag} to post")
-                logger.error(f"Error inserting post tag: {str(exception)}")
-
-        return { "result": result, "errors": errors }
