@@ -3,6 +3,7 @@ import { defaultCategory } from "../config";
 import { useCategoryStore } from "../stores/categoryStore";
 import { usePostStore } from "../stores/postStore";
 import SearchBarHeader from "./SearchBarHeader.vue";
+import AppButton from "./buttons/AppButton.vue";
 
 const categoryStore = useCategoryStore();
 const postStore = usePostStore();
@@ -32,12 +33,7 @@ const postStore = usePostStore();
         <option :value="24 * 31">Past Month</option>
         <option :value="-1">All Time</option>
       </select>
-      <button
-        class="bg-blue-300 hover:opacity-90 p-2 text-gray-900"
-        @click="postStore.getPosts()"
-      >
-        Go!
-      </button>
+      <AppButton @click="postStore.getPosts()">Go!</AppButton>
     </div>
     <div class="mt-1 px-4">
       <a href="#" class="text-blue-500 tracking-wider">Add tags to search</a>

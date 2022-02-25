@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
+
 import {
   CreatePostForm,
   CreatePostFormInitialValue,
@@ -11,6 +12,7 @@ import { validate } from "../formValidation/createPost";
 import AppTag from "./AppTag.vue";
 import { CreatePost } from "../types/post";
 import router from "../router";
+import AppButton from "./buttons/AppButton.vue";
 
 const postStore = usePostStore();
 const categoryStore = useCategoryStore();
@@ -137,10 +139,6 @@ const handleSubmit = async (): Promise<void> => {
         />
       </div>
     </label>
-    <button
-      class="border border-blue-300 bg-blue-300 hover:opacity-90 py-2 px-8 text-gray-900 md:max-w-[50%]"
-    >
-      Create
-    </button>
+    <AppButton class="md:max-w-[50%]"> Create </AppButton>
   </form>
 </template>
