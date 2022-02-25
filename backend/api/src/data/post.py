@@ -1,6 +1,7 @@
 import json
 from uuid import uuid4
 from typing import List
+from api.src.data.tag import TagRepository
 
 from data.user import UserRepository
 from data.category import CategoryRepository
@@ -62,7 +63,7 @@ class PostRepository:
         for tag in tags:
             post_tag = { 
                 "PK": f"{PostRepository.prefix}#{post['post_id']}",
-                "SK": tag,
+                "SK": f"{TagRepository.prefix}#tag",
                 "category": f"{CategoryRepository.prefix}#{post['category']}",
                 "attributes": json.dumps(
                     { 
