@@ -1,15 +1,53 @@
 import json
+import math
 from uuid import uuid4
 from typing import List
 from data.user import UserRepository
 from data.category import CategoryRepository
 from models.post import CreatePostRequest
 from utils import UserInformation, get_dynamodb, get_logger, get_time, remove_prefix
+from boto3.dynamodb.conditions import Key
 
 logger, dynamodb = get_logger(), get_dynamodb()
 
 class PostRepository:
     prefix = "POST"
+
+    @staticmethod
+    def get_bulk(category: str, start: str, end: str, limit: int, tags: List[str]):
+        kce = Key("GSI3PK").eq(f"{CategoryRepository.prefix}#{category}") 
+
+        if end:
+            kce = kce & Key("GSI3SK").between(end, start)
+        else:    
+            kce = kce & Key("GSI3SK").lt(start)
+
+        results = dynamodb.query(
+            IndexName="GSI3",
+            KeyConditionExpression=kce,
+            ScanIndexForward = False,
+            Limit = limit
+        )["Items"]
+
+        posts = []
+        for result in results:
+            attributes = json.loads(result["attributes"])
+
+            tag_intersection = list(set(tags) & set(attributes["tags"]))
+            if len(tags) > 0 and len(tag_intersection) == 0:
+                continue
+
+            post = {
+                "post_id": remove_prefix(result["PK"]),
+                "category": remove_prefix(result["GSI3PK"]),
+                "created_at": math.floor(float(result["GSI3SK"])),
+                "description": attributes["description"],
+                "title": attributes["title"],
+                "tags": attributes["tags"]
+            }
+            posts.append(post)
+        
+        return posts
 
     @staticmethod
     def create(request: CreatePostRequest, user_information: UserInformation):
