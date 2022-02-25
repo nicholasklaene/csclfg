@@ -1,7 +1,7 @@
 import json
 from uuid import uuid4
 from typing import List
-
+from data.tag import TagRepository
 from data.user import UserRepository
 from data.category import CategoryRepository
 from models.post import CreatePostRequest
@@ -61,8 +61,8 @@ class PostRepository:
         result, errors = [], []
         for tag in tags:
             post_tag = { 
-                "PK": f"{PostRepository.prefix}#{post['post_id']}",
-                "SK": tag,
+                "PK": f"{TagRepository.prefix}#{tag}",
+                "SK": f"{PostRepository.prefix}#{post['post_id']}",
                 "category": f"{CategoryRepository.prefix}#{post['category']}",
                 "attributes": json.dumps(
                     { 
