@@ -139,6 +139,8 @@ const handleSubmit = async (): Promise<void> => {
         />
       </div>
     </label>
-    <AppButton class="md:max-w-[50%]"> Create </AppButton>
+    <AppButton class="md:max-w-[50%]" :disabled="postStore.loading">
+      Create
+    </AppButton>
   </form>
 </template>

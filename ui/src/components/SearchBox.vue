@@ -33,7 +33,9 @@ const postStore = usePostStore();
         <option :value="24 * 31">Past Month</option>
         <option :value="-1">All Time</option>
       </select>
-      <AppButton @click="postStore.getPosts()">Go!</AppButton>
+      <AppButton @click="postStore.getPosts()" :disabled="postStore.loading">
+        Go!
+      </AppButton>
     </div>
     <div class="mt-1 px-4">
       <a href="#" class="text-blue-500 tracking-wider">Add tags to search</a>

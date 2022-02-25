@@ -29,9 +29,10 @@ const handleScroll = (e: Event) => {
         v-for="post in postStore.posts"
         :key="post.post_id"
         :post="post"
+        class="last-of-type:border-b-0"
       />
     </template>
-    <p v-else class="text-center pt-4">
+    <p v-else class="text-center py-4">
       Doesn't look like we found anything...
     </p>
   </section>

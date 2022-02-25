@@ -23,7 +23,7 @@ onMounted(async () => {
     <div class="mb-2">
       <img src="../assets/logo.jpg" class="mx-auto mb-8" />
     </div>
-    <main class="max-w-screen-lg mx-auto bg-gray-800 text-white min-h-[800px]">
+    <main class="max-w-screen-lg mx-auto bg-gray-800 text-white">
       <SearchBox />
       <SearchResultList />
     </main>

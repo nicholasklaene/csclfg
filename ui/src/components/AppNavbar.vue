@@ -12,7 +12,7 @@ const authStore = useAuthStore();
     <ul class="flex text-white">
       <li>
         <router-link
-          class="hover:underline"
+          class="hover:underline font-bold tracking-wide"
           to="/"
           v-if="currentRoute.name !== 'Home'"
         >

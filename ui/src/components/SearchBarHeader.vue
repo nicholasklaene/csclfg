@@ -7,7 +7,7 @@ const authStore = useAuthStore();
 const router = useRouter();
 
 const handleCreateClick = () => {
-  if (authStore.isAuthenticated) {
+  if (authStore._isAuthenticated) {
     router.push({ name: "CreatePost" });
   }
 };
