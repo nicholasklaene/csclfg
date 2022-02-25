@@ -13,6 +13,8 @@ export const usePostStore = defineStore("post", {
   state: (): PostStoreState => InitialPostStoreState,
   actions: {
     async getPosts() {
+      if (this.loading) return;
+
       this.loading = true;
 
       this.search.start = undefined;
@@ -29,6 +31,7 @@ export const usePostStore = defineStore("post", {
     },
     async getMorePosts() {
       if (
+        this.loading ||
         this.posts.length === 0 ||
         this.reachedEnd ||
         hoursSinceOldestPost() > this.search.end
@@ -57,8 +60,6 @@ export const usePostStore = defineStore("post", {
       const response = await axios.post(requestUrl, data);
 
       if (response.status !== 201) return false;
-
-      alert("Success!");
 
       this.loading = false;
       return true;
