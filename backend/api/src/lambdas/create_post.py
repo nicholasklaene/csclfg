@@ -37,9 +37,9 @@ def lambda_handler(event, context):
 
     created_tags = []
     with dynamodb.batch_writer() as batch_writer:
-        tag_create_result = TagRepository.batch_create_tags(batch_writer=batch_writer, tags=create_post_request.tags)
-        created_tags = tag_create_result["result"]
-        post_tags_create_result = PostRepository.create_post_tags(batch_writer=batch_writer, post=create_result, tags=created_tags)
+        # tag_create_result = TagRepository.batch_create_tags(batch_writer=batch_writer, tags=create_post_request.tags)
+        # created_tags = tag_create_result["result"]
+        post_tags_create_result = PostRepository.create_post_tags(batch_writer=batch_writer, post=create_result, tags=create_post_request.tags)
         create_result["tags"] = post_tags_create_result["result"]
 
     logger.info(f"Post with tags created: {json.dumps(create_result)}")

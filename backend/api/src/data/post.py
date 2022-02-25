@@ -62,8 +62,8 @@ class PostRepository:
         result, errors = [], []
         for tag in tags:
             post_tag = { 
-                "PK": f"{PostRepository.prefix}#{post['post_id']}",
-                "SK": f"{TagRepository.prefix}#tag",
+                "PK": f"{TagRepository.prefix}#{tag}",
+                "SK": f"{PostRepository.prefix}#{post['post_id']}",
                 "category": f"{CategoryRepository.prefix}#{post['category']}",
                 "attributes": json.dumps(
                     { 
