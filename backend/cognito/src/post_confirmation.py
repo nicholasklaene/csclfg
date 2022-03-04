@@ -19,9 +19,9 @@ def lambda_handler(event, context):
     logger.info("Recieved event: " + json.dumps(event))
 
     try:
-        email = event["request"]["userAttributes"]["email"]
+        username = event["userName"]
 
-        user_id = f'USER#{email}'
+        user_id = f'USER#{username}'
         data = {
             'PK': user_id,
             'SK': user_id
@@ -37,7 +37,7 @@ def lambda_handler(event, context):
 
     try:
         logger.info("Adding user to Users group")
-        cognito.admin_add_user_to_group(UserPoolId=event["userPoolId"], Username=event["userName"], GroupName="Users")
+        cognito.admin_add_user_to_group(UserPoolId=event["userPoolId"], Username=username, GroupName="Users")
     except Exception as exception:
         logger.error("Error adding user to users group: " + str(exception))
 

@@ -34,12 +34,10 @@ Resources:
           MinimumLength: 8
       AutoVerifiedAttributes:
         - email
-      UsernameAttributes:
-        - email
       Schema:
         - AttributeDataType: String
           Name: email
-          Required: false
+          Required: true
 
   UserPoolClient:
     Type: AWS::Cognito::UserPoolClient
