@@ -3,12 +3,21 @@ import Home from "../views/Home.vue";
 import CreatePost from "../views/CreatePost.vue";
 import OAuthCallback from "../views/OAuthCallback.vue";
 import PersonalProfile from "../views/PersonalProfile.vue";
+import Post from "../views/Post.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      requiresAuth: false,
+    },
+  },
+  {
+    path: "/posts/:id",
+    name: "Post",
+    component: Post,
     meta: {
       requiresAuth: false,
     },
