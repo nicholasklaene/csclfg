@@ -1,11 +1,10 @@
-import { defineStore } from "pinia";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-
+import router from "../router";
+import { defineStore } from "pinia";
 import { IdToken, AuthStoreState, AuthStoreInitialState } from "../types/auth";
 import { tokenIsExpired, generatePKCE } from "../utils/auth";
 import { clientId, authServerBaseURL, callbackUrl } from "../config";
-import router from "../router";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthStoreState => AuthStoreInitialState,
@@ -17,9 +16,11 @@ export const useAuthStore = defineStore("auth", {
 
       // Make sure state is updated on every route change
       const decodedIdToken: IdToken = jwtDecode(idToken);
-      state.username = decodedIdToken.email;
       state.email = decodedIdToken.email;
       state.emailVerified = decodedIdToken.email_verified;
+      state.username = decodedIdToken["cognito:username"];
+      state.groups = decodedIdToken["cognito:groups"];
+      state.isAdmin = state.groups.includes("Admin");
 
       state._isAuthenticated = true;
       return true;
@@ -116,14 +117,17 @@ export const useAuthStore = defineStore("auth", {
     },
     updateState(idToken: string) {
       const decodedIdToken: IdToken = jwtDecode(idToken);
-      this.username = decodedIdToken.email;
       this.email = decodedIdToken.email;
       this.emailVerified = decodedIdToken.email_verified;
+      this.username = decodedIdToken["cognito:username"];
+      this.groups = decodedIdToken["cognito:groups"];
+      this.isAdmin = this.groups.includes("Admin");
       this._isAuthenticated = true;
     },
     logout(): void {
       localStorage.removeItem("id_token");
       localStorage.removeItem("refresh_token");
+
       this.email = "";
       this.emailVerified = false;
       this.username = "";

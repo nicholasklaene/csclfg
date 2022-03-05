@@ -3,6 +3,7 @@ import { useAuthStore } from "../stores/authStore";
 import { useRoute } from "vue-router";
 import AppButton from "./buttons/AppButton.vue";
 import AppOutlinedButton from "./buttons/AppOutlinedButton.vue";
+import AppProfileIcon from "./AppProfileIcon.vue";
 const currentRoute = useRoute();
 const authStore = useAuthStore();
 </script>
@@ -33,6 +34,9 @@ const authStore = useAuthStore();
             Sign out
           </AppOutlinedButton>
         </template>
+        <li v-if="authStore._isAuthenticated">
+          <AppProfileIcon />
+        </li>
       </li>
     </ul>
   </nav>
