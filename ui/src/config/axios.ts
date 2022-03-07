@@ -12,7 +12,7 @@ const beforeRequest = async (
 ): Promise<AxiosRequestConfig> => {
   const authStore = useAuthStore();
 
-  if (authStore.isAuthenticated) {
+  if (authStore._isAuthenticated) {
     let token = localStorage.getItem("id_token");
 
     if (tokenIsExpired()) {

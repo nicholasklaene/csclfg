@@ -8,24 +8,6 @@ import { clientId, authServerBaseURL, callbackUrl } from "../config";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthStoreState => AuthStoreInitialState,
-  getters: {
-    isAuthenticated: (state): boolean => {
-      const idToken = localStorage.getItem("id_token");
-
-      if (!idToken || tokenIsExpired()) return false;
-
-      // Make sure state is updated on every route change
-      const decodedIdToken: IdToken = jwtDecode(idToken);
-      state.email = decodedIdToken.email;
-      state.emailVerified = decodedIdToken.email_verified;
-      state.username = decodedIdToken["cognito:username"];
-      state.groups = decodedIdToken["cognito:groups"];
-      state.isAdmin = state.groups.includes("Admin");
-
-      state._isAuthenticated = true;
-      return true;
-    },
-  },
   actions: {
     async exchangeCodeForAccessToken(
       code: string,
