@@ -8,6 +8,7 @@ from typing import Dict
 class UserInformation:
     def __init__(self, event):
         claims = event["requestContext"]["authorizer"]["jwt"]["claims"]
+        self.username = claims["cognito:username"]
         self.email = claims["email"]
         self.groups = claims["cognito:groups"][1:-1].split(",") 
 

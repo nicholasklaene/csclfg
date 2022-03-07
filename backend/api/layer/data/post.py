@@ -53,7 +53,7 @@ class PostRepository:
     def create(request: CreatePostRequest, user_information: UserInformation):
         category_id = f'{CategoryRepository.prefix}#{request.category}'
         post_id = f'{PostRepository.prefix}#{uuid4().hex}'
-        user_id = f'{UserRepository.prefix}#{user_information.email}'
+        user_id = f'{UserRepository.prefix}#{user_information.username}'
         timestamp = get_time()
         
         attributes = json.dumps({ 
@@ -93,3 +93,30 @@ class PostRepository:
 
         return { "result": result, "errors": errors }
     
+    @staticmethod
+    def get_user_posts(user_id: str):
+        kce = Key("GSI1PK").eq(f"{UserRepository.prefix}#{user_id}")
+        kce = kce & Key("GSI1SK").begins_with(f"{PostRepository.prefix}#") 
+        
+        results = dynamodb.query(
+            IndexName="GSI1",
+            KeyConditionExpression=kce,
+        )["Items"]
+
+        # TODO: create a function to remove this repeated work from other gets
+        posts = []
+        for result in results:
+            attributes = json.loads(result["attributes"])
+
+            post = {
+                "post_id": remove_prefix(result["PK"]),
+                "category": remove_prefix(result["GSI3PK"]),
+                "created_at": math.floor(float(result["GSI3SK"])),
+                "description": attributes["description"],
+                "title": attributes["title"],
+                "tags": attributes["tags"]
+            }
+
+            posts.append(post)
+
+        return posts

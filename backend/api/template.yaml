@@ -48,7 +48,6 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       Auth:
-        #AddDefaultAuthorizerToCorsPreflight: false
         Authorizers:
           GeneralAuth:
             AuthorizationScopes:
@@ -73,14 +72,11 @@ Resources:
           - PUT
           - DELETE
         AllowOrigins:
-          - "http://localhost:3000"
-          - !Sub "https://${Domain}"
-          - !Sub "https://test.${Domain}"
-          #!If [
-          #IsProd,
-          #!Sub "https://${Domain}",
-          #!Sub "http://localhost:3000,https://test.${Domain}",
-          #]
+          !If [
+            IsProd,
+            !Sub "https://${Domain}",
+            !Sub "http://localhost:3000,https://test.${Domain}",
+          ]
 
       Domain:
         DomainName:
@@ -88,6 +84,27 @@ Resources:
         CertificateArn: !Sub "arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/${CertificateId}"
         Route53:
           HostedZoneId: !Ref HostedZoneId
+
+  GetUserPostsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/lambdas
+      Handler: get_posts_for_user.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /users/{id}/posts
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
 
   GetPostsFunction:
     Type: AWS::Serverless::Function
