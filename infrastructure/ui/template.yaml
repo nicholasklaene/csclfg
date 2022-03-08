@@ -17,7 +17,16 @@ Resources:
       BucketName: !Sub "${AppDomain}"
       Tags:
         - Key: application
-          Value: !Sub "${AppName}"
+          Value: !Ref AppName
+
+  CsS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub "cs.${AppDomain}"
+      Tags:
+        - Key: application
+          Value: !Ref ${AppName}
 
   BaseUrlS3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -28,19 +37,32 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}"
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${BaseCloudFrontOriginAccessIdentity}"
             Action: s3:GetObject
             Resource: !Sub "arn:aws:s3:::${AppDomain}/*"
 
-  CloudFrontDistribution:
+  CsS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref CsS3Bucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${SubDomainCloudFrontOriginAccessIdentity}"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::cs.${AppDomain}/*"
+
+  BaseCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
         Origins:
-          - DomainName: !Sub "${AppDomain}.s3.us-east-1.amazonaws.com"
+          - DomainName: !Sub "${AppDomain}.s3.${AWS::Region}.amazonaws.com"
             Id: !Sub "${AppDomain}-Origin"
             S3OriginConfig:
-              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${BaseCloudFrontOriginAccessIdentity}"
         Enabled: true
         DefaultRootObject: index.html
         Aliases:
@@ -58,17 +80,59 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_100
         ViewerCertificate:
-          AcmCertificateArn: !Ref CloudFrontBaseUrlDomainCertificate
+          AcmCertificateArn: !Ref BaseCloudFrontDomainCertificate
           MinimumProtocolVersion: TLSv1
           SslSupportMethod: sni-only
 
-  CloudFrontOriginAccessIdentity:
+  SubDomainCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !Sub "cs.${AppDomain}.s3.${AWS::Region}.amazonaws.com"
+            Id: !Sub "cs.${AppDomain}-Origin"
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${SubDomainCloudFrontOriginAccessIdentity}"
+        Enabled: true
+        DefaultRootObject: index.html
+        Aliases:
+          - !Sub "cs.${AppDomain}"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: !Sub "SubDomain-${AppDomain}-Origin"
+          ForwardedValues:
+            QueryString: true
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Ref SubDomainCloudFrontDomainCertificate
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
+
+  BaseCloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
         Comment: "OAI to access S3"
 
-  CloudFrontBaseUrlDomainCertificate:
+  SubDomainCloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "OAI to access S3"
+
+  BaseCloudFrontDomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref AppDomain
+      ValidationMethod: DNS
+
+  SubDomainCloudFrontDomainCertificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
       DomainName: !Ref AppDomain
@@ -82,5 +146,10 @@ Resources:
         - Name: !Sub "${AppDomain}."
           Type: A
           AliasTarget:
-            DNSName: !GetAtt CloudFrontDistribution.DomainName
+            DNSName: !GetAtt BaseCloudFrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+        - Name: !Sub "cs.${AppDomain}."
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt SubDomainCloudFrontDistribution.DomainName
             HostedZoneId: Z2FDTNDATAQYW2
