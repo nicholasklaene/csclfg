@@ -85,11 +85,32 @@ Resources:
         Route53:
           HostedZoneId: !Ref HostedZoneId
 
+  GetPostByIdFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/lambdas
+      Handler: get_post_by_id.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /posts/{id}
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
   GetUserPostsFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/lambdas
-      Handler: get_posts_for_user.lambda_handler
+      Handler: get_posts_by_user.lambda_handler
       Events:
         ApiGet:
           Type: HttpApi

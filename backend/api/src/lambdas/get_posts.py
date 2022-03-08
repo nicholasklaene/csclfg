@@ -14,6 +14,6 @@ def lambda_handler(event, context):
     tags = query_parameters["tags"].split(",") if "tags" in query_parameters else []
     end = query_parameters["end"] if "end" in query_parameters else None
     
-    posts = PostRepository.get_bulk(category=category, start=start, end=end, limit=10, tags=tags)
+    posts = PostRepository.get_posts(category=category, start=start, end=end, limit=10, tags=tags)
 
     return lambda_response(status_code=200, headers={}, body={ "posts": posts })

@@ -14,42 +14,6 @@ class PostRepository:
     prefix = "POST"
 
     @staticmethod
-    def get_bulk(category: str, start: str, end: str, limit: int, tags: List[str]):
-        kce = Key("GSI3PK").eq(f"{CategoryRepository.prefix}#{category}") 
-
-        if end:
-            kce = kce & Key("GSI3SK").between(end, start)
-        else:    
-            kce = kce & Key("GSI3SK").lt(start)
-
-        results = dynamodb.query(
-            IndexName="GSI3",
-            KeyConditionExpression=kce,
-            ScanIndexForward = False,
-            Limit = limit
-        )["Items"]
-
-        posts = []
-        for result in results:
-            attributes = json.loads(result["attributes"])
-
-            tag_intersection = list(set(tags) & set(attributes["tags"]))
-            if len(tags) > 0 and len(tag_intersection) == 0:
-                continue
-
-            post = {
-                "post_id": remove_prefix(result["PK"]),
-                "category": remove_prefix(result["GSI3PK"]),
-                "created_at": math.floor(float(result["GSI3SK"])),
-                "description": attributes["description"],
-                "title": attributes["title"],
-                "tags": attributes["tags"]
-            }
-            posts.append(post)
-        
-        return posts
-
-    @staticmethod
     def create(request: CreatePostRequest, user_information: UserInformation):
         category_id = f'{CategoryRepository.prefix}#{request.category}'
         post_id = f'{PostRepository.prefix}#{uuid4().hex}'
@@ -92,9 +56,34 @@ class PostRepository:
             errors.append("Error inserting post")
 
         return { "result": result, "errors": errors }
+
+    @staticmethod
+    def get_posts(category: str, start: str, end: str, limit: int, tags: List[str]):
+        kce = Key("GSI3PK").eq(f"{CategoryRepository.prefix}#{category}")         
+        kce = kce & Key("GSI3SK").between(end, start) if end else kce & Key("GSI3SK").lt(start)
+
+        results = dynamodb.query(
+            IndexName="GSI3",
+            KeyConditionExpression=kce,
+            ScanIndexForward = False,
+            Limit = limit
+        )["Items"]
+
+        posts = []
+        for result in results:
+            attributes = json.loads(result["attributes"])
+
+            tag_intersection = list(set(tags) & set(attributes["tags"]))
+            if len(tags) > 0 and len(tag_intersection) == 0:
+                continue
+            
+            post = PostRepository.extract_post(result)
+            posts.append(post)
+        
+        return posts
     
     @staticmethod
-    def get_user_posts(user_id: str):
+    def get_posts_by_user(user_id: str):
         kce = Key("GSI1PK").eq(f"{UserRepository.prefix}#{user_id}")
         kce = kce & Key("GSI1SK").begins_with(f"{PostRepository.prefix}#") 
         
@@ -103,20 +92,35 @@ class PostRepository:
             KeyConditionExpression=kce,
         )["Items"]
 
-        # TODO: create a function to remove this repeated work from other gets
-        posts = []
-        for result in results:
-            attributes = json.loads(result["attributes"])
-
-            post = {
-                "post_id": remove_prefix(result["PK"]),
-                "category": remove_prefix(result["GSI3PK"]),
-                "created_at": math.floor(float(result["GSI3SK"])),
-                "description": attributes["description"],
-                "title": attributes["title"],
-                "tags": attributes["tags"]
-            }
-
-            posts.append(post)
+        posts = [ PostRepository.extract_post(result) for result in results ]
 
         return posts
+
+    @staticmethod
+    def get_post_by_id(post_id: str):
+        kce = Key("PK").eq(f"{PostRepository.prefix}#{post_id}")
+        kce = kce & Key("SK").eq(f"{PostRepository.prefix}#{post_id}") 
+        
+        results = dynamodb.query(
+            KeyConditionExpression=kce,
+            Limit = 1
+        )["Items"]
+
+        if len(results) == 0:
+            return None
+        
+        post = PostRepository.extract_post(results[0]) 
+        return post
+
+    @staticmethod
+    def extract_post(query_result):
+        attributes = json.loads(query_result["attributes"])
+        post = {
+            "post_id": remove_prefix(query_result["PK"]),
+            "category": remove_prefix(query_result["GSI3PK"]),
+            "created_at": math.floor(float(query_result["GSI3SK"])),
+            "description": attributes["description"],
+            "title": attributes["title"],
+            "tags": attributes["tags"]
+        }
+        return post
