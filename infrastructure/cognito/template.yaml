@@ -1,0 +1,116 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Cognito authentication provider
+
+Parameters:
+  AppName:
+    Type: String
+  AppDomain:
+    Type: String
+    Description: Base domain for the application
+  ClientDomains:
+    Type: CommaDelimitedList
+    Description: Authorized domains
+  AdminEmail:
+    Type: String
+    Description: Email address for initial administrator
+
+Resources:
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: !Sub ${AppName}-UserPool
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - AttributeDataType: String
+          Name: email
+          Required: true
+
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref UserPool
+      ClientName: !Sub ${AppName}-UserPoolClient
+      GenerateSecret: false
+      SupportedIdentityProviders:
+        - COGNITO
+      CallbackURLs: !Ref ClientDomains
+      LogoutURLs: !Ref ClientDomains
+      AllowedOAuthFlowsUserPoolClient: true
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - email
+        - openid
+        - profile
+
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      CustomDomainConfig:
+        CertificateArn: !Ref UserPoolDomainCertificate
+      Domain: !Sub "identity.${AppDomain}"
+      UserPoolId: !Ref UserPool
+
+  UserPoolDomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Sub "identity.${AppDomain}"
+      ValidationMethod: DNS
+
+  AdminUser:
+    Type: AWS::Cognito::UserPoolUser
+    Properties:
+      Username: !Ref AdminEmail
+      DesiredDeliveryMediums:
+        - EMAIL
+      ForceAliasCreation: true
+      UserAttributes:
+        - Name: email
+          Value: !Ref AdminEmail
+      UserPoolId: !Ref UserPool
+
+  AdminUserGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: admin
+      Precedence: 0
+      UserPoolId: !Ref UserPool
+
+  AddAdminUserToGroup:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties:
+      GroupName: !Ref AdminUserGroup
+      Username: !Ref AdminUser
+      UserPoolId: !Ref UserPool
+
+  RegularUserGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: user
+      Precedence: 1
+      UserPoolId: !Ref UserPool
+
+  PreTokenGenerationTriggerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 5
+      Handler: pre_token_generation.lambda_handler
+      Runtime: python3.9
+      CodeUri: src/
+      Events:
+        CognitoTrigger:
+          Type: Cognito
+          Properties:
+            Trigger: PreTokenGeneration
+            UserPool: !Ref UserPool
+
+Outputs:
+  UserPoolId:
+    Value: !Ref UserPool
+  UserPoolClientId:
+    Value: !Ref UserPoolClient
