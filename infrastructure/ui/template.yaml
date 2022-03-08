@@ -26,7 +26,7 @@ Resources:
       BucketName: !Sub "cs.${AppDomain}"
       Tags:
         - Key: application
-          Value: !Ref ${AppName}
+          Value: !Ref AppName
 
   BaseUrlS3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -84,7 +84,7 @@ Resources:
           MinimumProtocolVersion: TLSv1
           SslSupportMethod: sni-only
 
-  SubDomainCloudFrontDistribution:
+  CsCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
@@ -102,7 +102,7 @@ Resources:
             - GET
             - HEAD
             - OPTIONS
-          TargetOriginId: !Sub "SubDomain-${AppDomain}-Origin"
+          TargetOriginId: !Sub "cs.${AppDomain}-Origin"
           ForwardedValues:
             QueryString: true
             Cookies:
@@ -135,7 +135,7 @@ Resources:
   SubDomainCloudFrontDomainCertificate:
     Type: AWS::CertificateManager::Certificate
     Properties:
-      DomainName: !Ref AppDomain
+      DomainName: !Sub "*.${AppDomain}"
       ValidationMethod: DNS
 
   DnsRecordSetGroup:
@@ -151,5 +151,5 @@ Resources:
         - Name: !Sub "cs.${AppDomain}."
           Type: A
           AliasTarget:
-            DNSName: !GetAtt SubDomainCloudFrontDistribution.DomainName
+            DNSName: !GetAtt CsCloudFrontDistribution.DomainName
             HostedZoneId: Z2FDTNDATAQYW2
