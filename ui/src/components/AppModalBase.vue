@@ -8,9 +8,9 @@ const handleClose = () => emit("close");
     class="bg-gray-900 opacity-80 fixed top-0 left-0 h-full w-full z-10"
     @click.self="handleClose()"
   ></div>
+
   <div
-    class="modal fade fixed top-0 left-0 w-[400px] max-w-full outline-none overflow-x-hidden overflow-y-auto z-20"
-    role="dialog"
+    class="modal fade fixed mx-auto my-auto inset-x-0 w-[400px] max-w-full outline-none overflow-x-hidden overflow-y-auto z-20"
   >
     <div
       class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none"
