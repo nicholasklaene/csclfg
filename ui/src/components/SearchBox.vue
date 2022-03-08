@@ -10,7 +10,7 @@ const postStore = usePostStore();
 </script>
 
 <template>
-  <div class="border-b-[1rem] border-gray-900 py-6">
+  <div class="bg-gray-800 py-6">
     <SearchBarHeader />
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
       <select class="bg-gray-900 p-2" v-model="postStore.search.category">

@@ -20,6 +20,7 @@ export interface CreatePost {
 export interface PostStoreState {
   loading: boolean;
   posts: Post[];
+  individualPosts: Map<string, Post>;
   search: SearchCriteria;
   reachedEnd: boolean;
 }
@@ -28,6 +29,7 @@ export const InitialPostStoreState: PostStoreState = {
   loading: false,
   reachedEnd: false,
   posts: [],
+  individualPosts: new Map(),
   search: {
     end: defaultSearchTimeSpanHours,
     category: defaultCategory,

@@ -12,6 +12,20 @@ import { baseUrl } from "../config";
 export const usePostStore = defineStore("post", {
   state: (): PostStoreState => InitialPostStoreState,
   actions: {
+    async getPostById(postId: string) {
+      this.loading = true;
+
+      const searchUrl = `${baseUrl}/posts/${postId}`;
+      const response = await axios.get(searchUrl).catch((e) => {});
+      if (!response) return;
+
+      if (response.status === 200) {
+        const post = response.data.post;
+        this.individualPosts.set(postId, post);
+      }
+
+      this.loading = false;
+    },
     async getPosts() {
       if (this.loading) return;
 

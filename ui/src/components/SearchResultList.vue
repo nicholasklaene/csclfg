@@ -23,7 +23,7 @@ const handleScroll = (e: Event) => {
 </script>
 
 <template>
-  <section ref="scrollComponent">
+  <section class="bg-gray-800" ref="scrollComponent">
     <template v-if="postStore.posts.length > 0">
       <SearchResult
         v-for="post in postStore.posts"

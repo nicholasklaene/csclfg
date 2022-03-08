@@ -4,6 +4,7 @@ import CreatePost from "../views/CreatePost.vue";
 import OAuthCallback from "../views/OAuthCallback.vue";
 import PersonalProfile from "../views/PersonalProfile.vue";
 import Post from "../views/Post.vue";
+import NotFound from "../views/NotFound.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -42,6 +43,22 @@ export const routes: RouteRecordRaw[] = [
     path: "/oauth/callback",
     name: "OAuthCallback",
     component: OAuthCallback,
+    meta: {
+      requiresAuth: false,
+    },
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: NotFound,
+    meta: {
+      requiresAuth: false,
+    },
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFound,
     meta: {
       requiresAuth: false,
     },
