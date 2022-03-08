@@ -27,7 +27,7 @@ onMounted(async () => {
       <h1 class="text-4xl text-blue-400 font-bold tracking-widest">
         {{ version }}
         <br />
-        Name TBD
+        Study Seeking
       </h1>
     </div>
     <main class="max-w-screen-lg mx-auto text-white">

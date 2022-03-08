@@ -8,7 +8,7 @@ import AppSignInModal from "./AppSignInModal.vue";
 const authStore = useAuthStore();
 const router = useRouter();
 
-const showModal = ref(true);
+const showModal = ref(false);
 
 const handleCreateClick = () => {
   if (authStore._isAuthenticated) {

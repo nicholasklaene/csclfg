@@ -10,7 +10,7 @@ const handleClose = () => emit("close");
   ></div>
 
   <div
-    class="modal fade fixed mx-auto my-auto inset-x-0 w-[400px] max-w-full outline-none overflow-x-hidden overflow-y-auto z-20"
+    class="modal fade absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] max-w-full outline-none overflow-x-hidden overflow-y-auto z-20"
   >
     <div
       class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none"

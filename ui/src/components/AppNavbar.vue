@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore } from "../stores/authStore";
 import { useRoute } from "vue-router";
-import AppButton from "./buttons/AppButton.vue";
-import AppOutlinedButton from "./buttons/AppOutlinedButton.vue";
 import AppProfileIcon from "./AppProfileIcon.vue";
+import AppSigninButton from "./buttons/AppSigninButton.vue";
+import AppSignupButton from "./buttons/AppSignupButton.vue";
+import AppSignoutButton from "./buttons/AppSignoutButton.vue";
 const currentRoute = useRoute();
 const authStore = useAuthStore();
 </script>
@@ -22,17 +23,11 @@ const authStore = useAuthStore();
       </li>
       <li class="ml-auto flex gap-2">
         <template v-if="!authStore._isAuthenticated">
-          <AppButton @click="authStore.redirectToAuthServer(true)">
-            Sign in
-          </AppButton>
-          <AppOutlinedButton @click="authStore.redirectToAuthServer(false)">
-            Sign up
-          </AppOutlinedButton>
+          <AppSigninButton />
+          <AppSignupButton />
         </template>
         <template v-else>
-          <AppOutlinedButton @click="authStore.logout()">
-            Sign out
-          </AppOutlinedButton>
+          <AppSignoutButton />
         </template>
         <li v-if="authStore._isAuthenticated">
           <AppProfileIcon />
