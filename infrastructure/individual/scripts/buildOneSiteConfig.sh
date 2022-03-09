@@ -1,5 +1,6 @@
 app_name="studyseeking"
 aws_region="us-east-1"
+app_domain="studyseeking.com"
 
 readarray -t cognito_conf < "../config/cognito.txt"
 
@@ -7,7 +8,6 @@ user_pool_id=${cognito_conf[0]}
 user_pool_client_id=${cognito_conf[1]}
 
 read -p "App subdomain: " subdomain
-app_domain="$subdomain.studyseeking.com"
 
 samconfig="
 version = 0.1
@@ -27,6 +27,11 @@ samconfig+="$subdomain-$app_name"
 samconfig+="\\\""
 samconfig+=", "
 
+samconfig+="ENV=\\\""
+samconfig+="$subdomain"
+samconfig+="\\\""
+samconfig+=", "
+
 samconfig+="AppDomain=\\\""
 samconfig+="$app_domain"
 samconfig+="\\\""
@@ -40,6 +45,7 @@ samconfig+=", "
 samconfig+="UserPoolClientId=\\\""
 samconfig+="$user_pool_client_id"
 samconfig+="\\\""
+
 samconfig+="\""
 
 identity_samconfig+=$'\nimage_repositories = []'

@@ -1,6 +1,6 @@
 read -p "App subdomain: " subdomain
 
-echo "$subdomain" | bash buildOneSite.sh
+echo "$subdomain" | bash buildOneSiteConfig.sh
 
 cd ..
 
