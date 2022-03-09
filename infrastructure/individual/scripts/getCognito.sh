@@ -6,7 +6,9 @@ user_pool_id=$(jq -r '.Id' <<< ${user_pool})
 
 all_user_pool_clients_json=`aws cognito-idp list-user-pool-clients --user-pool-id $user_pool_id` 
 
-user_pool_client=$(jq -r '.UserPoolClients[] | select(.ClientName=="studyseeking-UserPoolClient") | .ClientId' <<< "${all_user_pool_clients_json}")
+user_pool_client_id=$(jq -r '.UserPoolClients[] | select(.ClientName=="studyseeking-UserPoolClient") | .ClientId' <<< "${all_user_pool_clients_json}")
 
-echo "$user_pool_id"
-echo "$user_pool_client"
+config="$user_pool_id
+$user_pool_client_id"
+
+echo "$config" > "../config/cognito.txt"
