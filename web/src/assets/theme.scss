@@ -1,0 +1,10 @@
+$body-bg: #353941;
+
+$theme-colors: (
+  "primary": #5f85db,
+  "secondary": #90b8f8,
+  "background": $body-bg,
+  "darkBackground": #26282b,
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
