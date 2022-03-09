@@ -6,17 +6,10 @@ Parameters:
     Description: Which site to deploy
   AppDomain:
     Type: String
-  AppName:
-    Type: String
-  ClientDomains:
-    Type: String
-    Description: Allowed callback URLs for authentication
   UserPoolId:
     Type: String
-    Default: d
   UserPoolClientId:
     Type: String
-    Default: d
 
 Resources:
   dynamodb:
@@ -24,25 +17,23 @@ Resources:
     Properties:
       Location: ./dynamo/template.yaml
       Parameters:
-        TableName: !Sub "${AppName}-db"
+        TableName: !Sub "${ENV}.${AppDomain}-db"
 
   api:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./api/template.yaml
       Parameters:
-        TableName: !Sub "${AppName}-db"
-        UserPoolId: !GetAtt cognito.Outputs.UserPoolId
-        Audience: !GetAtt cognito.Outputs.UserPoolClientId
+        TableName: !Sub "${ENV}.${AppDomain}-db"
+        UserPoolId: !Ref UserPoolId
+        UserPoolClientId: !Ref UserPoolClientId
         ENV: !Ref ENV
-        Domain: !Ref AppDomain
+        AppDomain: !Ref AppDomain
 
   ui:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./ui/template.yaml
       Parameters:
-        UserPoolId: !Ref UserPoolId
-        Audience: !Ref UserPoolClientId
         ENV: !Ref ENV
-        Domain: !Ref Domain
+        AppDomain: !Ref AppDomain

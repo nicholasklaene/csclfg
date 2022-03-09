@@ -1,0 +1,206 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Timeout: 5
+    Runtime: python3.9
+    CodeUri: ../../../backend/api/src/lambdas
+
+Parameters:
+  AppDomain:
+    Type: String
+  ENV:
+    Type: String
+    Description: Deployment enivronment
+  UserPoolId:
+    Type: String
+    Description: User pool id for Cognito provider
+  UserPoolClientId:
+    Type: String
+    Description: Client id for user pool
+  TableName:
+    Type: String
+    Description: Database for application
+
+Resources:
+  CustomLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: ../../../backend/api/layer
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Auth:
+        Authorizers:
+          GeneralAuth:
+            AuthorizationScopes:
+              - email
+              - openid
+              - profile
+            IdentitySource: "$request.header.Authorization"
+            JwtConfiguration:
+              issuer: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPoolId}
+              audience:
+                - !Ref UserPoolClientId
+      CorsConfiguration:
+        AllowHeaders:
+          - "Content-Type"
+          - "X-Amz-Date"
+          - "Authorization"
+          - "x-requested-with"
+        AllowCredentials: "true"
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        AllowOrigins:
+          - !Sub "https://${ENV}.${AppDomain}"
+          - "http://localhost:8080"
+
+      Domain:
+        DomainName: !Sub "api.${ENV}.${AppDomain}"
+        CertificateArn: !Ref ApiDomainCertificate
+        Route53:
+          HostedZoneName: !Sub "${AppDomain}."
+
+  ApiDomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Sub "api.${ENV}.${AppDomain}"
+      ValidationMethod: DNS
+
+  GetPostByIdFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_post_by_id.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /posts/{id}
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  GetUserPostsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_posts_by_user.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /users/{id}/posts
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  GetPostsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_posts.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /posts
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  GetCategoriesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_categories.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /categories
+            Method: GET
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  CreateCategoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: create_category.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Auth:
+              Authorizer: GeneralAuth
+              AuthorizationScopes:
+                - !Sub Admins-${UserPoolClientId}
+            Path: /categories
+            Method: POST
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  CreatePostFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: create_post.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Auth:
+              Authorizer: GeneralAuth
+              AuthorizationScopes:
+                - !Sub Users-${UserPoolClientId}
+                - !Sub Admins-${UserPoolClientId}
+            Path: /posts
+            Method: POST
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
