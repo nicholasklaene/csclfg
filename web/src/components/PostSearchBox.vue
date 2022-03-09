@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
-
-interface Category {
-  label: string;
-}
-
-interface TimeSpan {
-  label: string;
-  value: number;
-}
+import { Category } from "@/types/category";
 
 const categories: Ref<Category[]> = ref([
   {
@@ -17,13 +9,6 @@ const categories: Ref<Category[]> = ref([
   {
     label: "System Design",
   },
-]);
-
-const timespans: Ref<TimeSpan[]> = ref([
-  { label: "Past hour", value: 60 * 60 },
-  { label: "Past day", value: 60 * 60 * 24 },
-  { label: "Past month", value: 60 * 60 * 24 * 30 },
-  { label: "All time", value: -1 },
 ]);
 </script>
 
@@ -42,11 +27,11 @@ const timespans: Ref<TimeSpan[]> = ref([
         </div>
         <div class="col-12 col-md-6">
           <select class="form-control text-text border-background py-2">
-            <template v-for="timespan in timespans" :key="timespan.value">
-              <option :value="timespan.value">
-                {{ timespan.label }}
-              </option>
-            </template>
+            <option :value="1">Past Hour</option>
+            <option :value="24">Past Day</option>
+            <option :value="24 * 7">Past Week</option>
+            <option :value="24 * 31">Past Month</option>
+            <option :value="-1">All Time</option>
           </select>
         </div>
         <div class="col-6">
