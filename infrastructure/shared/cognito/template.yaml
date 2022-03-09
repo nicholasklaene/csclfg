@@ -8,9 +8,12 @@ Parameters:
   AppDomain:
     Type: String
     Description: Base domain for the application
-  ClientDomains:
+  CallbackUrls:
     Type: CommaDelimitedList
-    Description: Authorized domains
+    Description: Authorized callback domains
+  LogoutUrls:
+    Type: CommaDelimitedList
+    Description: Authorized logout domains
   AdminEmail:
     Type: String
     Description: Email address for initial administrator
@@ -38,8 +41,8 @@ Resources:
       GenerateSecret: false
       SupportedIdentityProviders:
         - COGNITO
-      CallbackURLs: !Ref ClientDomains
-      LogoutURLs: !Ref ClientDomains
+      CallbackURLs: !Ref CallbackUrls
+      LogoutURLs: !Ref LogoutUrls
       AllowedOAuthFlowsUserPoolClient: true
       AllowedOAuthFlows:
         - code

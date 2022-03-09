@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Frontend base application infrastructure
+
+Parameters:
+  AppDomain:
+    Type: String
+    Default: studyseeking.com
+
+Resources:
+  BaseUrlS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: !Sub "${AppDomain}"
+
+  BaseUrlS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref BaseUrlS3Bucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${BaseCloudFrontOriginAccessIdentity}"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::${AppDomain}/*"
+
+  BaseCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !Sub "${AppDomain}.s3.${AWS::Region}.amazonaws.com"
+            Id: !Sub "${AppDomain}-Origin"
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${BaseCloudFrontOriginAccessIdentity}"
+        Enabled: true
+        DefaultRootObject: index.html
+        Aliases:
+          - !Ref AppDomain
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: !Sub "${AppDomain}-Origin"
+          ForwardedValues:
+            QueryString: true
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Ref BaseCloudFrontDomainCertificate
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
+
+  BaseCloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "OAI to access S3"
+
+  BaseCloudFrontDomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref AppDomain
+      ValidationMethod: DNS
+
+  DnsRecordSetGroup:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Sub "${AppDomain}."
+      RecordSets:
+        - Name: !Sub "${AppDomain}."
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt BaseCloudFrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
