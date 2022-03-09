@@ -8,9 +8,10 @@ const isLoggedIn = ref(false);
 </script>
 
 <template>
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">Study Seeking</router-link>
+  <nav
+    class="navbar navbar-expand navbar-dark sticky-top bg-backgroundCompliment py-3"
+  >
+    <div class="container-fluid mx-auto px-4">
       <div class="navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <template v-if="isLoggedIn">
@@ -31,3 +32,9 @@ const isLoggedIn = ref(false);
     </div>
   </nav>
 </template>
+
+<style scoped>
+nav > div.container-fluid {
+  max-width: 1024px;
+}
+</style>

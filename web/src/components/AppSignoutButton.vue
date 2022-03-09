@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-outline-primary">Sign out</button>
+  <button class="btn btn-outline-primary px-4">Sign out</button>
 </template>
 
 <style scoped>
