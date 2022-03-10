@@ -24,13 +24,18 @@ export const useAuthStore = defineStore("auth", () => {
     username: "",
     groups: [] as string[],
     isAdmin: false,
-    isAuthenticated: true,
+    isAuthenticated: false,
   });
 
   function authenticationCheck(): boolean {
     const token = localStorage.getItem("id_token");
     if (!token) return false;
-    return !tokenIsExpired();
+
+    const expiredToken = tokenIsExpired();
+    if (expiredToken) return false;
+
+    updateState(token);
+    return true;
   }
 
   function decTohex(dec: number): string {

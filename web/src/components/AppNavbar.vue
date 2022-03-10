@@ -2,9 +2,8 @@
 import AppSigninButton from "./AppSigninButton.vue";
 import AppSignupButton from "./AppSignupButton.vue";
 import AppSignoutButton from "./AppSignoutButton.vue";
-import { ref } from "vue";
-
-const isLoggedIn = ref(false);
+import { useAuthStore } from "@/stores/auth";
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -14,7 +13,7 @@ const isLoggedIn = ref(false);
     <div class="container-fluid mx-auto px-4">
       <div class="navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <template v-if="isLoggedIn">
+          <template v-if="authStore.state.isAuthenticated">
             <li class="nav-item">
               <AppSignoutButton />
             </li>
