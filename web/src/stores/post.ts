@@ -41,7 +41,9 @@ export const usePostStore = defineStore("post", () => {
     setLoading(true);
 
     const searchUrl = `${baseUrl}/posts/${postId}`;
-    const response = await axios.get(searchUrl).catch((e) => {});
+    const response = await axios.get(searchUrl).catch((e) => {
+      //
+    });
     if (!response) return;
 
     if (response.status === 200) {
