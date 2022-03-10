@@ -5,13 +5,19 @@ import PostSearchResults from "../components/PostSearchResults.vue";
 import { getApp } from "@/utils";
 import { onMounted } from "vue";
 import { useCategoryStore } from "@/stores/category";
+import { usePostStore } from "@/stores/post";
 
 const categoryStore = useCategoryStore();
+const postStore = usePostStore();
 const application = getApp();
 
 onMounted(() => {
   if (categoryStore.categories.length === 0) {
     categoryStore.getCategories();
+  }
+
+  if (postStore.searchResults.length === 0) {
+    postStore.getPosts();
   }
 });
 </script>

@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { useCategoryStore } from "@/stores/category";
+import { usePostStore } from "@/stores/post";
 const categoryStore = useCategoryStore();
+const postStore = usePostStore();
 </script>
 
 <template>
   <div class="bg-backgroundCompliment px-4 pt-4 pb-2">
-    <form>
+    <form @submit.prevent="postStore.getPosts()">
       <div class="row gx-4 gy-2">
         <div class="col-12 col-md-6">
-          <select class="form-control text-text border-background py-2">
+          <select
+            class="form-control text-text border-background py-2"
+            v-model="postStore.search.category"
+          >
             <template
               v-for="category in categoryStore.categories"
               :key="category.label"
@@ -20,7 +25,10 @@ const categoryStore = useCategoryStore();
           </select>
         </div>
         <div class="col-12 col-md-6">
-          <select class="form-control text-text border-background py-2">
+          <select
+            class="form-control text-text border-background py-2"
+            v-model="postStore.search.end"
+          >
             <option :value="1">Past Hour</option>
             <option :value="24">Past Day</option>
             <option :value="24 * 7">Past Week</option>
