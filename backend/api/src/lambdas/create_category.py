@@ -1,5 +1,4 @@
 import json
-
 from data.category import CategoryRepository
 from models.category import CreateCategoryRequest
 from utils import get_dynamodb, get_logger, lambda_response

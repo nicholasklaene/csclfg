@@ -2,8 +2,9 @@ import json
 from models.shared import IRequest, ParseResult, Validation
 
 class CreateCategoryRequest(IRequest):
-    def __init__(self, label):
+    def __init__(self, label, suggested_tags):
         self.label = label
+        self.suggested_tags = []
 
     def validate(self):
         errors = []
