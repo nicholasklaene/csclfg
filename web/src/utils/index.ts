@@ -7,8 +7,9 @@ export function getApp() {
 
 export function getApiUrl() {
   const baseDomain = "studyseeking.com";
-  const app = getApp();
-  return `https://${app}.api.${baseDomain}`;
+  let app = getApp();
+  if (app.includes("localhost")) app = "test";
+  return `https://api.${app}.${baseDomain}`;
 }
 
 export function hoursSinceLastPost() {
@@ -43,4 +44,22 @@ export function formatPostDescription(post: Post) {
   return post.description.length < 300
     ? post.description
     : `${post.description.substring(0, 300)} ...`;
+}
+
+export function getOAuthServerUrl() {
+  return "https://identity.studyseeking.com";
+}
+
+export function getOAuthClientId() {
+  return "2lmskmbukto86mhvvqs666bime";
+}
+
+export function getOAuthCallback() {
+  let callbackUrl: string;
+  if (getApp().includes("localhost")) {
+    callbackUrl = "http://localhost:8080/oauth/callback";
+  } else {
+    callbackUrl = `https://${getApp()}.studyseeking.com/oauth/callback`;
+  }
+  return callbackUrl;
 }

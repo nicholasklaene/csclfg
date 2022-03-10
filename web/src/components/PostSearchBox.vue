@@ -1,15 +1,6 @@
 <script setup lang="ts">
-import { Ref, ref } from "vue";
-import { Category } from "@/types/category";
-
-const categories: Ref<Category[]> = ref([
-  {
-    label: "Algorithms",
-  },
-  {
-    label: "System Design",
-  },
-]);
+import { useCategoryStore } from "@/stores/category";
+const categoryStore = useCategoryStore();
 </script>
 
 <template>
@@ -18,7 +9,10 @@ const categories: Ref<Category[]> = ref([
       <div class="row gx-4 gy-2">
         <div class="col-12 col-md-6">
           <select class="form-control text-text border-background py-2">
-            <template v-for="category in categories" :key="category.label">
+            <template
+              v-for="category in categoryStore.categories"
+              :key="category.label"
+            >
               <option :value="category.label">
                 {{ category.label }}
               </option>

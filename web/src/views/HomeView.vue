@@ -2,7 +2,18 @@
 import PostSearchBox from "@/components/PostSearchBox.vue";
 import PostSearchHeader from "@/components/PostSearchHeader.vue";
 import PostSearchResults from "../components/PostSearchResults.vue";
-const application = window.location.href.split(".")[0];
+import { getApp } from "@/utils";
+import { onMounted } from "vue";
+import { useCategoryStore } from "@/stores/category";
+
+const categoryStore = useCategoryStore();
+const application = getApp();
+
+onMounted(() => {
+  if (categoryStore.categories.length === 0) {
+    categoryStore.getCategories();
+  }
+});
 </script>
 
 <template>

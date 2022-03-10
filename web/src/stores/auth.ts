@@ -3,19 +3,13 @@ import axios from "axios";
 import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { IdToken, PKCE } from "../types/auth";
-import { getApp } from "@/utils";
+import { getOAuthCallback, getOAuthClientId, getOAuthServerUrl } from "@/utils";
 import { useRouter } from "vue-router";
 
 export const useAuthStore = defineStore("auth", () => {
-  let callbackUrl: string;
-  if (getApp().includes("localhost")) {
-    callbackUrl = "http://localhost:8080/oauth/callback";
-  } else {
-    callbackUrl = `https://${getApp()}.studyseeking.com/oauth/callback`;
-  }
-
-  const authServerBaseUrl = "https://identity.studyseeking.com";
-  const clientId = "2lmskmbukto86mhvvqs666bime";
+  const callbackUrl = getOAuthCallback();
+  const authServerBaseUrl = getOAuthServerUrl();
+  const clientId = getOAuthClientId();
   const router = useRouter();
 
   const state = reactive({
@@ -139,6 +133,15 @@ export const useAuthStore = defineStore("auth", () => {
     window.location.replace(authServerRedirectURL);
   }
 
+  async function tryCreateUser() {
+    const isReturning = localStorage.getItem("isReturning");
+    if (!isReturning && state.isAuthenticated) {
+      // Create user
+      console.log("creating user");
+      localStorage.setItem("isReturning", "1");
+    }
+  }
+
   async function refresh() {
     const refreshToken = localStorage.getItem("refresh_token");
 
@@ -201,6 +204,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   return {
     state,
+    tryCreateUser,
     authenticationCheck,
     redirectToAuthServer,
     exchangeCodeForAccessToken,

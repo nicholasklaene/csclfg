@@ -8,7 +8,7 @@ const baseUrl = getApiUrl();
 
 export const useCategoryStore = defineStore("category", () => {
   const loading = ref<boolean>(false);
-  const categories = ref<Category[]>();
+  const categories = ref<Category[]>([]);
 
   async function getCategories() {
     setLoading(true);
@@ -22,7 +22,9 @@ export const useCategoryStore = defineStore("category", () => {
   }
 
   return {
+    categories,
     getCategories,
     setLoading,
+    loading,
   };
 });

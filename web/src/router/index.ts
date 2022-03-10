@@ -33,6 +33,8 @@ router.beforeEach(async (to, from, next) => {
   let isAuthenticated = authStore.authenticationCheck();
   isAuthenticated = isAuthenticated && authStore.state.isAuthenticated;
 
+  if (isAuthenticated) await authStore.tryCreateUser();
+
   if (to.meta.requiresAuth && !isAuthenticated) {
     const success = await authStore.refresh();
     if (success) {
