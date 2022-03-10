@@ -6,7 +6,7 @@ import OAuthCallback from "@/views/utils/OAuthCallback.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
     meta: {
       requiresAuth: false,
