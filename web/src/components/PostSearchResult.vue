@@ -23,7 +23,7 @@ const props = defineProps<Props>();
       <p class="ms-auto">{{ timeSincePost(post.created_at) }}</p>
     </div>
     <h6>Category: {{ post.category }}</h6>
-    <p>{{ truncatePostDescription(post.description) }}</p>
+    <p>{{ post.preview }}</p>
     <div class="d-flex gap-2">
       <AppTag v-for="tag in post.tags" :key="tag" :label="tag" />
     </div>

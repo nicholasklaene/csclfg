@@ -2,6 +2,7 @@ export interface Post {
   post_id: string;
   category: string;
   created_at: number;
+  preview: string;
   description: string;
   title: string;
   tags: string[];

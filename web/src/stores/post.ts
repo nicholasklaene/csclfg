@@ -43,6 +43,7 @@ export const usePostStore = defineStore("post", {
 
       if (response.status === 200) {
         this.searchResults = response.data.posts;
+        if (this.searchResults.length < 10) this.reachedEnd = true;
       }
 
       this.setLoading(false);
@@ -67,7 +68,7 @@ export const usePostStore = defineStore("post", {
 
       if (response.status === 200) {
         this.searchResults = [...this.searchResults, ...response.data.posts];
-        if (response.data.posts.length === 0) this.reachedEnd = true;
+        if (response.data.posts.length < 10) this.reachedEnd = true;
       }
 
       this.setLoading(false);
