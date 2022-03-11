@@ -15,7 +15,7 @@ const authStore = useAuthStore();
     <div class="container-fluid mx-auto px-4">
       <div class="navbar-collapse">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item me-4">
             <router-link
               v-if="route.name !== 'Home'"
               class="text-text text-decoration-none fw-bold"
@@ -23,6 +23,24 @@ const authStore = useAuthStore();
             >
               Home
             </router-link>
+          </li>
+          <li class="nav-item me-4">
+            <a
+              href="https://studyseeking.com/about"
+              target="__blank"
+              class="text-text text-decoration-none fw-bold"
+            >
+              About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://studyseeking.com/"
+              target="__blank"
+              class="text-text text-decoration-none fw-bold"
+            >
+              Study Apps
+            </a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
