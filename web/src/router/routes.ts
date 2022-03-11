@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import OnePostView from "../views/OnePostView.vue";
 import OAuthCallback from "@/views/utils/OAuthCallback.vue";
 import NotFound from "@/views/utils/NotFound.vue";
 
@@ -8,6 +9,14 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "Home",
     component: HomeView,
+    meta: {
+      requiresAuth: false,
+    },
+  },
+  {
+    path: "/posts/:id",
+    name: "OnePostView",
+    component: OnePostView,
     meta: {
       requiresAuth: false,
     },

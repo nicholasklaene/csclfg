@@ -16,7 +16,7 @@ const props = defineProps<Props>();
     <div class="d-flex">
       <router-link
         class="text-text align-self-start text-decoration-none"
-        :to="`posts/${post.post_id}`"
+        :to="`/posts/${post.post_id}`"
       >
         <h5>{{ post.title }}</h5>
       </router-link>
