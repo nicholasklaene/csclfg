@@ -9,7 +9,7 @@ import { usePostStore } from "@/stores/post";
 
 const categoryStore = useCategoryStore();
 const postStore = usePostStore();
-const application = getApp();
+const application = getApp().includes("localhost") ? "test" : getApp();
 
 onMounted(() => {
   if (categoryStore.categories.length === 0) {
