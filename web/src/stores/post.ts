@@ -18,13 +18,11 @@ export const usePostStore = defineStore("post", {
       this.setLoading(true);
 
       const searchUrl = `${baseUrl}/posts/${postId}`;
-      const response = await axios.get(searchUrl).catch((e) => {
-        //
+      const response = await axios.get(searchUrl).catch((error) => {
+        alert("Not found!");
       });
 
-      if (!response) return;
-
-      if (response.status === 200) {
+      if (response && response.status === 200) {
         const post = response.data.post;
         this.postCache.set(postId, post);
       }
