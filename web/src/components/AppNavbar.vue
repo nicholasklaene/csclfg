@@ -27,7 +27,7 @@ const authStore = useAuthStore();
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav d-flex gap-2 mb-2">
+        <ul class="navbar-nav d-flex gap-3" id="links">
           <li
             v-if="route.name !== 'Home'"
             class="nav-item d-flex justify-content-center"
@@ -58,7 +58,7 @@ const authStore = useAuthStore();
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav ms-auto d-flex gap-2">
+        <ul class="navbar-nav ms-auto d-flex gap-3">
           <template v-if="authStore.state.isAuthenticated">
             <li class="nav-item d-flex justify-content-center">
               <AppSignoutButton />
@@ -81,5 +81,11 @@ const authStore = useAuthStore();
 <style scoped>
 nav > div.container-fluid {
   max-width: 1024px;
+}
+
+@media screen and (max-width: 988px) {
+  #links {
+    margin-bottom: 1rem;
+  }
 }
 </style>
