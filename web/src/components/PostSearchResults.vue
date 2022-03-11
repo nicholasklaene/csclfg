@@ -33,11 +33,11 @@ const handleScroll = (e: Event) => {
         :post="post"
         class="border-bottom pb-4"
       />
-      <p class="text-center" v-if="postStore.reachedEnd">
+      <p class="text-center px-4" v-if="postStore.reachedEnd">
         You've reached the end... try widening your search criteria
       </p>
     </div>
-    <p class="text-center" v-else>
+    <p class="text-center px-4" v-else>
       Doesn't look like we found anything... try widening your search criteria.
     </p>
   </div>
