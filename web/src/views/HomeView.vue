@@ -30,7 +30,7 @@ onMounted(() => {
       <div class="col-12">
         <div class="d-flex">
           <img src="../assets/logo.png" alt="logo" />
-          <h1 class="ms-4 align-self-center text-secondary">
+          <h1 class="ms-4 align-self-center text-header">
             {{ application }}
             <br />
             Study Seeking

@@ -38,7 +38,7 @@ const postStore = usePostStore();
         </div>
         <div class="col-6">
           <button
-            class="btn btn-primary w-100"
+            class="btn btn-primary text-primaryText w-100"
             :class="{ disabled: postStore.loading }"
           >
             Go!

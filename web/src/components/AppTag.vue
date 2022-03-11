@@ -9,5 +9,5 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-  <span class="text-text bg-primary px-2 py-1 rounded">{{ label }}</span>
+  <span class="text-primaryText bg-primary px-2 py-1 rounded">{{ label }}</span>
 </template>

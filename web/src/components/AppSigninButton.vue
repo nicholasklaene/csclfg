@@ -9,7 +9,7 @@ function signin() {
 </script>
 
 <template>
-  <button class="btn btn-primary px-4 text-light" @click="signin()">
+  <button class="btn btn-primary px-4 text-primaryText" @click="signin()">
     Sign in
   </button>
 </template>

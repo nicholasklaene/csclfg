@@ -1,0 +1,23 @@
+$text: #f2f2f2;
+$body-bg: #111827;
+
+$theme-colors: (
+  "primary": #ff9900,
+  "secondary": #146eb4,
+  "header": #ff9900,
+  "background": $body-bg,
+  "backgroundCompliment": #232f3e,
+  "text": $text,
+  "overlay": #111827,
+  "primaryText": #111827,
+);
+
+body {
+  color: $text !important;
+}
+
+select {
+  appearance: auto !important;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
