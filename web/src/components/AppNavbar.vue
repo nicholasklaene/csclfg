@@ -10,12 +10,28 @@ const authStore = useAuthStore();
 
 <template>
   <nav
-    class="navbar navbar-expand navbar-dark sticky-top bg-backgroundCompliment py-3"
+    class="navbar navbar-expand-lg navbar-dark sticky-top bg-backgroundCompliment py-3"
+    role="navigation"
   >
     <div class="container-fluid mx-auto px-4">
-      <div class="navbar-collapse">
-        <ul class="navbar-nav">
-          <li v-if="route.name !== 'Home'" class="nav-item me-4">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav d-flex gap-2 mb-2">
+          <li
+            v-if="route.name !== 'Home'"
+            class="nav-item d-flex justify-content-center"
+          >
             <router-link
               class="text-text text-decoration-none fw-bold"
               :to="{ name: 'Home' }"
@@ -23,7 +39,7 @@ const authStore = useAuthStore();
               Home
             </router-link>
           </li>
-          <li class="nav-item me-4">
+          <li class="nav-item d-flex justify-content-center">
             <a
               href="https://studyseeking.com/about"
               target="__blank"
@@ -32,7 +48,7 @@ const authStore = useAuthStore();
               About
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex justify-content-center">
             <a
               href="https://studyseeking.com/"
               target="__blank"
@@ -42,17 +58,17 @@ const authStore = useAuthStore();
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto d-flex gap-2">
           <template v-if="authStore.state.isAuthenticated">
-            <li class="nav-item">
+            <li class="nav-item d-flex justify-content-center">
               <AppSignoutButton />
             </li>
           </template>
           <template v-else>
-            <li class="nav-item me-2">
+            <li class="nav-item d-flex justify-content-center">
               <AppSigninButton />
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex justify-content-center">
               <AppSignupButton />
             </li>
           </template>
