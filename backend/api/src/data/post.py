@@ -23,6 +23,7 @@ class PostRepository:
         attributes = json.dumps({ 
             "created_at": timestamp, 
             "title": request.title,
+            "preview": request.preview,
             "description": request.description,
             "tags": request.tags, 
         })
@@ -48,6 +49,7 @@ class PostRepository:
                 "post_id": remove_prefix(post_id),
                 "category": request.category,
                 "created_at": timestamp,
+                "preview": request.preview,
                 "description": request.description,
                 "title": request.title
             }
@@ -119,6 +121,7 @@ class PostRepository:
             "post_id": remove_prefix(query_result["PK"]),
             "category": remove_prefix(query_result["GSI3PK"]),
             "created_at": math.floor(float(query_result["GSI3SK"])),
+            "preview": attributes["preview"],
             "description": attributes["description"],
             "title": attributes["title"],
             "tags": attributes["tags"]
