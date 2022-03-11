@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { truncatePostDescription, timeSincePost } from "@/utils";
+import { timeSincePost } from "@/utils";
 import { Post } from "@/types/post";
 import AppTag from "@/components/AppTag.vue";
 
