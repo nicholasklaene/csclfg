@@ -6,8 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import "./assets/theme.scss";
 import { getApp } from "./utils";
+import { useInterceptors } from "./config/interceptors";
 
 const pinia = createPinia();
+
 document.title = `${getApp()} | Study Seeking`;
+
+useInterceptors();
 
 createApp(App).use(pinia).use(router).mount("#app");

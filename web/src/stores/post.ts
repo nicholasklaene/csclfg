@@ -7,6 +7,7 @@ import axios from "axios";
 
 const baseUrl = getApiUrl();
 
+// Probably want this to be a traditonal store for dev tools
 export const usePostStore = defineStore("post", () => {
   const loading = ref<boolean>(false);
   const reachedEnd = ref<boolean>(false);

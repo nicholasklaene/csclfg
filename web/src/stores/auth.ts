@@ -133,15 +133,6 @@ export const useAuthStore = defineStore("auth", () => {
     window.location.replace(authServerRedirectURL);
   }
 
-  async function tryCreateUser() {
-    const isReturning = localStorage.getItem("isReturning");
-    if (!isReturning && state.isAuthenticated) {
-      // Create user
-      console.log("creating user");
-      localStorage.setItem("isReturning", "1");
-    }
-  }
-
   async function refresh() {
     const refreshToken = localStorage.getItem("refresh_token");
 
@@ -204,7 +195,6 @@ export const useAuthStore = defineStore("auth", () => {
 
   return {
     state,
-    tryCreateUser,
     authenticationCheck,
     redirectToAuthServer,
     exchangeCodeForAccessToken,
