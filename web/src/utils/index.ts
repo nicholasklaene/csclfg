@@ -24,8 +24,8 @@ export function hoursSinceLastPost() {
   return Math.floor((new Date().getTime() - lastPostTime) / 1000 / 60 / 60);
 }
 
-export function timeSincePost(post: Post) {
-  const postTime = new Date(post.created_at * 1000).getTime();
+export function timeSincePost(createdAt: number) {
+  const postTime = new Date(createdAt * 1000).getTime();
 
   const minutes = Math.floor((new Date().getTime() - postTime) / 1000 / 60);
 
@@ -41,10 +41,10 @@ export function timeSincePost(post: Post) {
   return `${days}d`;
 }
 
-export function formatPostDescription(post: Post) {
-  return post.description.length < 300
-    ? post.description
-    : `${post.description.substring(0, 300)} ...`;
+export function truncatePostDescription(description: string) {
+  return description.length < 300
+    ? description
+    : `${description.substring(0, 300)} ...`;
 }
 
 export function getOAuthServerUrl() {
