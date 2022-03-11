@@ -167,7 +167,7 @@ Resources:
             Auth:
               Authorizer: GeneralAuth
               AuthorizationScopes:
-                - !Sub Admins-${UserPoolClientId}
+                - !Sub admin-${UserPoolClientId}
             Path: /categories
             Method: POST
             ApiId: !Ref HttpApi
@@ -191,9 +191,34 @@ Resources:
             Auth:
               Authorizer: GeneralAuth
               AuthorizationScopes:
-                - !Sub Users-${UserPoolClientId}
-                - !Sub Admins-${UserPoolClientId}
+                - !Sub user-${UserPoolClientId}
+                - !Sub admin-${UserPoolClientId}
             Path: /posts
+            Method: POST
+            ApiId: !Ref HttpApi
+      Environment:
+        Variables:
+          TABLE: !Ref TableName
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TableName
+      Layers:
+        - !Ref CustomLambdaLayer
+
+  CreateUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: create_user.lambda_handler
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Auth:
+              Authorizer: GeneralAuth
+              AuthorizationScopes:
+                - !Sub user-${UserPoolClientId}
+                - !Sub admin-${UserPoolClientId}
+            Path: /users
             Method: POST
             ApiId: !Ref HttpApi
       Environment:

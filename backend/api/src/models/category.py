@@ -24,6 +24,9 @@ class CreateCategoryRequest(IRequest):
             errors.append("Label is required")
             return ParseResult(result=None, errors=errors)
 
+        if "suggested_tags" not in body:
+            body["suggested_tags"] = []
+
         try:
             result = CreateCategoryRequest(**body)
             return ParseResult(result=result, errors=errors)
