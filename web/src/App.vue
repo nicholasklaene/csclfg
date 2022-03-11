@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import AppNavbar from "./components/AppNavbar.vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
 </script>
 
 <template>
-  <AppNavbar />
+  <AppNavbar v-if="route.name !== 'OAuthCallback'" />
   <main class="mx-auto px-4">
     <router-view />
   </main>

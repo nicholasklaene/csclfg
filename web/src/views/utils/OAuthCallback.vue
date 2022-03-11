@@ -23,10 +23,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <p class="text-white">
+  <p class="text-white text-center my-4">
     Please wait to be redirected...
     <br />
-    <button text>
+    <button class="btn p-0">
       <router-link to="/">
         If you are not automatically redirected, click here.
       </router-link>
