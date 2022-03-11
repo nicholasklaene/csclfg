@@ -23,25 +23,27 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="row mt-4 gy-3">
-    <div class="col-12">
-      <div class="d-flex">
-        <img src="../assets/logo.png" alt="logo" />
-        <h1 class="ms-4 align-self-center text-secondary">
-          {{ application }}
-          <br />
-          Study Seeking
-        </h1>
+  <main class="mx-auto px-4">
+    <div class="row mt-4 gy-3">
+      <div class="col-12">
+        <div class="d-flex">
+          <img src="../assets/logo.png" alt="logo" />
+          <h1 class="ms-4 align-self-center text-secondary">
+            {{ application }}
+            <br />
+            Study Seeking
+          </h1>
+        </div>
+      </div>
+      <div class="col-12">
+        <PostSearchHeader />
+      </div>
+      <div class="col-12">
+        <PostSearchBox />
+      </div>
+      <div class="col-12">
+        <PostSearchResults />
       </div>
     </div>
-    <div class="col-12">
-      <PostSearchHeader />
-    </div>
-    <div class="col-12">
-      <PostSearchBox />
-    </div>
-    <div class="col-12">
-      <PostSearchResults />
-    </div>
-  </div>
+  </main>
 </template>
