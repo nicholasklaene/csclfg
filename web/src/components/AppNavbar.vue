@@ -15,9 +15,8 @@ const authStore = useAuthStore();
     <div class="container-fluid mx-auto px-4">
       <div class="navbar-collapse">
         <ul class="navbar-nav">
-          <li class="nav-item me-4">
+          <li v-if="route.name !== 'Home'" class="nav-item me-4">
             <router-link
-              v-if="route.name !== 'Home'"
               class="text-text text-decoration-none fw-bold"
               :to="{ name: 'Home' }"
             >
