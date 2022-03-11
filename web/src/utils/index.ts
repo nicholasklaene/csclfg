@@ -41,12 +41,6 @@ export function timeSincePost(createdAt: number) {
   return `${days}d`;
 }
 
-export function truncatePostDescription(description: string) {
-  return description.length < 300
-    ? description
-    : `${description.substring(0, 300)} ...`;
-}
-
 export function getOAuthServerUrl() {
   return "https://identity.studyseeking.com";
 }
