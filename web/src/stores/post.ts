@@ -55,7 +55,7 @@ export const usePostStore = defineStore("post", {
         this.loading ||
         this.searchResults.length === 0 ||
         this.reachedEnd ||
-        hoursSinceLastPost() > this.search.end
+        (hoursSinceLastPost() > this.search.end && this.search.end !== -1)
       ) {
         return;
       }
