@@ -37,7 +37,12 @@ const postStore = usePostStore();
           </select>
         </div>
         <div class="col-6">
-          <button class="btn btn-primary w-100">Go!</button>
+          <button
+            class="btn btn-primary w-100"
+            :class="{ disabled: postStore.loading }"
+          >
+            Go!
+          </button>
         </div>
         <div class="col-12">
           <p class="text-primary fw-bolder" role="button">Advanced Search</p>

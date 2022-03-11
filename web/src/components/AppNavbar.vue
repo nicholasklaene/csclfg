@@ -2,7 +2,9 @@
 import AppSigninButton from "./AppSigninButton.vue";
 import AppSignupButton from "./AppSignupButton.vue";
 import AppSignoutButton from "./AppSignoutButton.vue";
+import { useRoute } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
+const route = useRoute();
 const authStore = useAuthStore();
 </script>
 
@@ -12,6 +14,17 @@ const authStore = useAuthStore();
   >
     <div class="container-fluid mx-auto px-4">
       <div class="navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link
+              v-if="route.name !== 'Home'"
+              class="text-text text-decoration-none fw-bold"
+              :to="{ name: 'Home' }"
+            >
+              Home
+            </router-link>
+          </li>
+        </ul>
         <ul class="navbar-nav ms-auto">
           <template v-if="authStore.state.isAuthenticated">
             <li class="nav-item">
