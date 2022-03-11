@@ -1,5 +1,6 @@
 import { usePostStore } from "@/stores/post";
 import { Post } from "@/types/post";
+import { Search } from "@/types/search";
 
 export function getApp() {
   return window.location.href.split(".")[0];
@@ -62,4 +63,11 @@ export function getOAuthCallback() {
     callbackUrl = `https://${getApp()}.studyseeking.com/oauth/callback`;
   }
   return callbackUrl;
+}
+
+export function getDefaultSearch(): Search {
+  return {
+    end: -1,
+    category: "Algorithms",
+  };
 }

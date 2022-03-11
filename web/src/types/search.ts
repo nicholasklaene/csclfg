@@ -6,10 +6,3 @@ export interface Search {
   user?: string;
   tags?: string[];
 }
-
-export function getDefaultSearch(): Search {
-  return {
-    end: -1,
-    category: "Algorithms",
-  };
-}

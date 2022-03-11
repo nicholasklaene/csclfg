@@ -1,130 +1,122 @@
-import { reactive, ref } from "vue";
 import { defineStore } from "pinia";
 import { Post, CreatePost } from "@/types/post";
-import { getDefaultSearch, Search } from "@/types/search";
-import { getApiUrl, hoursSinceLastPost } from "@/utils";
+import { getApiUrl, hoursSinceLastPost, getDefaultSearch } from "@/utils";
 import axios from "axios";
 
 const baseUrl = getApiUrl();
 
-// Probably want this to be a traditonal store for dev tools
-export const usePostStore = defineStore("post", () => {
-  const loading = ref<boolean>(false);
-  const reachedEnd = ref<boolean>(false);
-  const search = reactive<Search>(getDefaultSearch());
-  const searchResults = ref<Post[]>([]);
-  const postCache = new Map<string, Post>();
+export const usePostStore = defineStore("post", {
+  state: () => ({
+    loading: false,
+    reachedEnd: false,
+    search: getDefaultSearch(),
+    searchResults: [] as Post[],
+    postCache: new Map<string, Post>(),
+  }),
+  actions: {
+    async getPostById(postId: string) {
+      this.setLoading(true);
 
-  function buildSearch() {
-    const searchParams = new URLSearchParams();
+      const searchUrl = `${baseUrl}/posts/${postId}`;
+      const response = await axios.get(searchUrl).catch((e) => {
+        //
+      });
 
-    searchParams.append("category", search.category);
+      if (!response) return;
 
-    if (search.limit) searchParams.append("limit", search.limit.toString());
+      if (response.status === 200) {
+        const post = response.data.post;
+        this.postCache.set(postId, post);
+      }
 
-    if (search.start) searchParams.append("start", search.start.toString());
+      this.setLoading(false);
+    },
 
-    if (search.tags) searchParams.append("tags", search.tags.join(","));
+    async getPosts() {
+      if (this.loading) return;
 
-    if (search.end != -1) {
-      const endDate = new Date();
-      const distanceBack = search.end * 60 * 60 * 1000;
-      endDate.setTime(endDate.getTime() - distanceBack);
+      this.setLoading(true);
 
-      const adjustedEnd = (endDate.getTime() / 1000).toString();
-      searchParams.append("end", adjustedEnd);
-    }
+      this.search.start = undefined;
+      this.reachedEnd = false;
 
-    return `${baseUrl}/posts?${searchParams.toString()}`;
-  }
+      const searchUrl = this.buildSearch();
+      const response = await axios.get(searchUrl);
 
-  async function getPostById(postId: string) {
-    setLoading(true);
+      if (response.status === 200) {
+        this.searchResults = response.data.posts;
+      }
 
-    const searchUrl = `${baseUrl}/posts/${postId}`;
-    const response = await axios.get(searchUrl).catch((e) => {
-      //
-    });
-    if (!response) return;
+      this.setLoading(false);
+    },
 
-    if (response.status === 200) {
-      const post = response.data.post;
-      postCache.set(postId, post);
-    }
+    async getMorePosts() {
+      if (
+        this.loading ||
+        this.searchResults.length === 0 ||
+        this.reachedEnd ||
+        hoursSinceLastPost() > this.search.end
+      ) {
+        return;
+      }
 
-    setLoading(false);
-  }
+      this.setLoading(true);
+      this.search.start = this.searchResults.slice(-1)[0].created_at;
 
-  async function getPosts() {
-    if (loading.value) return;
+      const searchUrl = this.buildSearch();
 
-    setLoading(true);
+      const response = await axios.get(searchUrl);
 
-    search.start = undefined;
-    reachedEnd.value = false;
+      if (response.status === 200) {
+        this.searchResults = [...this.searchResults, ...response.data.posts];
+        if (response.data.posts.length === 0) this.reachedEnd = true;
+      }
 
-    const searchUrl = buildSearch();
-    const response = await axios.get(searchUrl);
+      this.setLoading(false);
+    },
 
-    if (response.status === 200) {
-      searchResults.value = response.data.posts;
-    }
+    async createPost(data: CreatePost) {
+      this.setLoading(true);
 
-    setLoading(false);
-  }
+      const requestUrl = `${baseUrl}/posts`;
+      const response = await axios.post(requestUrl, data);
 
-  async function getMorePosts() {
-    if (
-      loading.value ||
-      searchResults.value.length === 0 ||
-      reachedEnd.value ||
-      hoursSinceLastPost() > search.end
-    ) {
-      return;
-    }
+      if (response.status !== 201) return false;
 
-    setLoading(true);
-    search.start = searchResults.value.slice(-1)[0].created_at;
+      this.setLoading(false);
 
-    const searchUrl = buildSearch();
+      return true;
+    },
+    buildSearch() {
+      const searchParams = new URLSearchParams();
 
-    const response = await axios.get(searchUrl);
+      searchParams.append("category", this.search.category);
 
-    if (response.status === 200) {
-      searchResults.value = [...searchResults.value, ...response.data.posts];
-      if (response.data.posts.length === 0) reachedEnd.value = true;
-    }
+      if (this.search.limit) {
+        searchParams.append("limit", this.search.limit.toString());
+      }
 
-    setLoading(false);
-  }
+      if (this.search.start) {
+        searchParams.append("start", this.search.start.toString());
+      }
 
-  async function createPost(data: CreatePost) {
-    setLoading(true);
+      if (this.search.tags) {
+        searchParams.append("tags", this.search.tags.join(","));
+      }
 
-    const requestUrl = `${baseUrl}/posts`;
-    const response = await axios.post(requestUrl, data);
+      if (this.search.end != -1) {
+        const endDate = new Date();
+        const distanceBack = this.search.end * 60 * 60 * 1000;
+        endDate.setTime(endDate.getTime() - distanceBack);
 
-    if (response.status !== 201) return false;
+        const adjustedEnd = (endDate.getTime() / 1000).toString();
+        searchParams.append("end", adjustedEnd);
+      }
 
-    setLoading(false);
-
-    return true;
-  }
-
-  function setLoading(value: boolean) {
-    loading.value = value;
-  }
-
-  return {
-    loading,
-    reachedEnd,
-    search,
-    searchResults,
-    postCache,
-    getPostById,
-    getPosts,
-    getMorePosts,
-    createPost,
-    setLoading,
-  };
+      return `${baseUrl}/posts?${searchParams.toString()}`;
+    },
+    setLoading(value: boolean) {
+      this.loading = value;
+    },
+  },
 });
