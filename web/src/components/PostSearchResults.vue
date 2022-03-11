@@ -28,13 +28,14 @@ const handleScroll = (e: Event) => {
       v-if="postStore.searchResults.length > 0"
     >
       <PostSearchResult
-        v-for="(post, index) in postStore.searchResults"
+        v-for="post in postStore.searchResults"
         :key="post.post_id"
         :post="post"
-        :class="{
-          'border-bottom pb-4': index !== postStore.searchResults.length - 1,
-        }"
+        class="border-bottom pb-4"
       />
+      <p class="text-center" v-if="postStore.reachedEnd">
+        You've reached the end... try widening your search criteria
+      </p>
     </div>
     <p class="text-center" v-else>
       Doesn't look like we found anything... try widening your search criteria.
