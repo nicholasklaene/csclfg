@@ -11,9 +11,3 @@ const authStore = useAuthStore();
     Sign up
   </button>
 </template>
-
-<style scoped>
-button:hover {
-  color: white;
-}
-</style>

@@ -8,9 +8,3 @@ const authStore = useAuthStore();
     Sign out
   </button>
 </template>
-
-<style scoped>
-button:hover {
-  color: white;
-}
-</style>
