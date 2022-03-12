@@ -31,7 +31,7 @@ const handleScroll = (e: Event) => {
         v-for="post in postStore.searchResults"
         :key="post.post_id"
         :post="post"
-        class="border-bottom pb-4"
+        class="border-bottom border-background pb-4"
       />
       <p class="text-center px-4" v-if="postStore.reachedEnd">
         You've reached the end... try widening your search criteria

@@ -99,7 +99,7 @@ export const usePostStore = defineStore("post", {
         searchParams.append("start", this.search.start.toString());
       }
 
-      if (this.search.tags) {
+      if (this.search.tags && this.search.tags.length > 0) {
         searchParams.append("tags", this.search.tags.join(","));
       }
 
