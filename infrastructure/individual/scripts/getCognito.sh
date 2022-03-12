@@ -11,4 +11,4 @@ user_pool_client_id=$(jq -r '.UserPoolClients[] | select(.ClientName=="studyseek
 config="$user_pool_id
 $user_pool_client_id"
 
-echo "$config" > "./config/cognito.txt"
+echo "$config" > "../config/cognito.conf"

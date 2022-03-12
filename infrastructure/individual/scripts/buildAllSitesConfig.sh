@@ -1,4 +1,4 @@
-readarray -t sites < ../sites.txt
+readarray -t sites < ../../sites.txt
 
 bash getCognito.sh
 

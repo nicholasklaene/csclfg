@@ -2,7 +2,7 @@ app_name="studyseeking"
 aws_region="us-east-1"
 app_domain="studyseeking.com"
 
-readarray -t cognito_conf < "./config/cognito.txt"
+readarray -t cognito_conf < "../config/cognito.conf"
 
 user_pool_id=${cognito_conf[0]}
 user_pool_client_id=${cognito_conf[1]}
@@ -50,4 +50,4 @@ samconfig+="\""
 
 identity_samconfig+=$'\nimage_repositories = []'
 
-echo "$samconfig" > "./config/sam/$subdomain-samconfig.toml"
+echo "$samconfig" > "../config/sam/$subdomain-samconfig.toml"
