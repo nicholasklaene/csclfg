@@ -2,10 +2,6 @@ import router from "@/router";
 import axios, { AxiosRequestConfig } from "axios";
 import { useAuthStore } from "@/stores/auth";
 
-export function useInterceptors(): void {
-  axios.interceptors.request.use(beforeRequest, onReject);
-}
-
 const beforeRequest = async (
   config: AxiosRequestConfig
 ): Promise<AxiosRequestConfig> => {
@@ -34,3 +30,5 @@ const beforeRequest = async (
 };
 
 const onReject = (error: any) => Promise.reject(error);
+
+axios.interceptors.request.use(beforeRequest, onReject);
