@@ -22,7 +22,7 @@ const handleScroll = (e: Event) => {
 </script>
 
 <template>
-  <div class="bg-backgroundCompliment pt-4 pb-2 mb-4" ref="scrollComponent">
+  <div class="bg-backgroundCompliment pt-4 pb-2 mb-5" ref="scrollComponent">
     <div
       class="d-flex flex-column gap-4 pb-4"
       v-if="postStore.searchResults.length > 0"

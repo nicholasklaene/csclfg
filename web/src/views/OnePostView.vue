@@ -30,7 +30,7 @@ onMounted(async () => {
 
 <template>
   <AppProgressBar v-if="postStore.loading" />
-  <div class="mx-auto">
+  <div class="mx-auto mb-5">
     <main class="px-4 mt-4" v-if="!postStore.loading">
       <AppNotFound v-if="!found" />
       <OnePostPost v-else :post="post!" />
