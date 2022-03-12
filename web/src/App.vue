@@ -8,7 +8,7 @@ const route = useRoute();
 <template>
   <AppNavbar v-if="route.name !== 'OAuthCallback'" />
   <router-view class="mb-5" />
-  <AppFooter />
+  <AppFooter class="mt-auto" v-if="route.name !== 'OAuthCallback'" />
 </template>
 
 <style scoped>
