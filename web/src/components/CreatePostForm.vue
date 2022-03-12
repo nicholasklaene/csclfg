@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { usePostStore } from "@/stores/post";
 import { useCategoryStore } from "@/stores/category";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import AppMarkdownEditor from "./AppMarkdownEditor.vue";
 
+const postDescription = ref("");
 const postStore = usePostStore();
 const categoryStore = useCategoryStore();
 
 function submit() {
-  console.log("submit");
+  console.log(postDescription.value);
 }
 
 onMounted(async () => {
@@ -16,6 +17,8 @@ onMounted(async () => {
     await categoryStore.getCategories();
   }
 });
+
+const bindDescription = (value: string) => (postDescription.value = value);
 </script>
 
 <template>
@@ -65,8 +68,8 @@ onMounted(async () => {
         </div>
       </div>
       <div class="col-12">
-        <label class="mb-1" for="category">Description</label>
-        <AppMarkdownEditor />
+        <label class="mb-1" for="category">Post content</label>
+        <AppMarkdownEditor @input="bindDescription" />
       </div>
       <div class="col-12 col-md-6">
         <button class="btn btn-primary text-text w-100">Submit</button>
@@ -74,5 +77,3 @@ onMounted(async () => {
     </div>
   </form>
 </template>
-
-<style></style>
