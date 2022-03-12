@@ -1,0 +1,49 @@
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  ENV:
+    Type: String
+    Description: Which site to deploy
+  AppDomain:
+    Type: String
+  UserPoolId:
+    Type: String
+  UserPoolClientId:
+    Type: String
+Resources:
+  dynamodb:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: dynamodb/template.yaml
+      Parameters:
+        TableName:
+          Fn::Sub: ${ENV}.${AppDomain}-db
+    Metadata:
+      SamResourceId: dynamodb
+  api:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: api/template.yaml
+      Parameters:
+        TableName:
+          Fn::Sub: ${ENV}.${AppDomain}-db
+        UserPoolId:
+          Ref: UserPoolId
+        UserPoolClientId:
+          Ref: UserPoolClientId
+        ENV:
+          Ref: ENV
+        AppDomain:
+          Ref: AppDomain
+    Metadata:
+      SamResourceId: api
+  ui:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ui/template.yaml
+      Parameters:
+        ENV:
+          Ref: ENV
+        AppDomain:
+          Ref: AppDomain
+    Metadata:
+      SamResourceId: ui

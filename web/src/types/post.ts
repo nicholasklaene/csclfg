@@ -1,5 +1,6 @@
 export interface Post {
   post_id: string;
+  user_id: string;
   category: string;
   created_at: number;
   preview: string;

@@ -1,11 +1,11 @@
-rm -rf layer/python/models/* && rm -rf layer/python/data/*
+rm -rf layer/models/* && rm -rf layer/data/*
 
-rmdir layer/python/models && rmdir layer/python/data
+rmdir layer/models && rmdir layer/data
 
-rm -f layer/python/utils.py
+rm -f layer/utils.py
 
-mkdir layer/python/models && mkdir layer/python/data
+mkdir layer/models && mkdir layer/data
 
-cp src/models/* layer/python/models
-cp src/data/* layer/python/data
-cp src/utils.py layer/python/utils.py
+cp src/models/* layer/models
+cp src/data/* layer/data
+cp src/utils.py layer/utils.py

@@ -1,0 +1,92 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Frontend individual application infrastructure
+Parameters:
+  AppDomain:
+    Type: String
+    Default: studyseeking.com
+  ENV:
+    Type: String
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName:
+        Fn::Sub: ${ENV}.${AppDomain}
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: S3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            AWS:
+              Fn::Sub: arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity
+                ${CloudFrontOriginAccessIdentity}
+          Action: s3:GetObject
+          Resource:
+            Fn::Sub: arn:aws:s3:::${ENV}.${AppDomain}/*
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+        - DomainName:
+            Fn::Sub: ${ENV}.${AppDomain}.s3.${AWS::Region}.amazonaws.com
+          Id:
+            Fn::Sub: ${ENV}.${AppDomain}-Origin
+          S3OriginConfig:
+            OriginAccessIdentity:
+              Fn::Sub: origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
+        Enabled: true
+        DefaultRootObject: index.html
+        Aliases:
+        - Fn::Sub: ${ENV}.${AppDomain}
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          TargetOriginId:
+            Fn::Sub: ${ENV}.${AppDomain}-Origin
+          ForwardedValues:
+            QueryString: true
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn:
+            Ref: CloudFrontDomainCertificate
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: OAI to access S3
+  CloudFrontDomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName:
+        Fn::Sub: ${ENV}.${AppDomain}
+      ValidationMethod: DNS
+  DnsRecordSetGroup:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName:
+        Fn::Sub: ${AppDomain}.
+      RecordSets:
+      - Name:
+          Fn::Sub: ${ENV}.${AppDomain}.
+        Type: A
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt:
+            - CloudFrontDistribution
+            - DomainName
+          HostedZoneId: Z2FDTNDATAQYW2
