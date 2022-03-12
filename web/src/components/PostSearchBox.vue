@@ -75,15 +75,18 @@ function suggestedTags() {
         </div>
 
         <div class="col-12" v-if="showAdvancedSearch">
-          <h5>Contains one of these tags:</h5>
-          <div
-            class="mb-2"
-            v-if="!postStore.search.tags || postStore.search.tags?.length === 0"
-            role="text"
-          >
-            <span> no tags selected... </span>
-          </div>
-          <div class="d-flex flex-wrap gap-2 mb-2" v-else>
+          <h6>
+            Contains one of these tags:
+            <span
+              v-if="
+                !postStore.search.tags || postStore.search.tags.length === 0
+              "
+            >
+              &nbsp;no tags selected
+            </span>
+          </h6>
+
+          <div class="d-flex flex-wrap gap-2 mb-2">
             <template v-for="tag in postStore.search.tags" :key="tag">
               <AppTag
                 :label="tag"
@@ -112,7 +115,7 @@ function suggestedTags() {
             role="button"
             @click="toggleAdvancedSearch()"
           >
-            Toggle Advanced Search
+            Add tags to search
           </p>
           <p
             class="ms-auto text-primary fw-bolder"
