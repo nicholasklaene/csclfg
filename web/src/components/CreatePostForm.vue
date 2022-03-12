@@ -19,7 +19,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <form class="bg-backgroundCompliment w-100 p-4" @submit.prevent="submit()">
+  <form
+    class="bg-backgroundCompliment w-100 mw-100 p-4"
+    @submit.prevent="submit()"
+  >
     <div class="row gx-4 gy-2">
       <h2>Create a Post</h2>
       <div class="col-12">
@@ -64,6 +67,9 @@ onMounted(async () => {
       <div class="col-12">
         <label class="mb-1" for="category">Description</label>
         <AppMarkdownEditor />
+      </div>
+      <div class="col-12 col-md-6">
+        <button class="btn btn-primary text-text w-100">Submit</button>
       </div>
     </div>
   </form>

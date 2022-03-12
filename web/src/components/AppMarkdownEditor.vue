@@ -7,7 +7,7 @@ let editor: Editor;
 onMounted(() => {
   editor = new Editor({
     el: editorDiv.value!,
-    height: "500px",
+    height: "420px",
     initialEditType: "wysiwyg",
     previewStyle: "vertical",
     theme: "dark",
@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="editorDiv"></div>
+  <div ref="editorDiv" class="mw-100"></div>
 </template>
 
 <style>
