@@ -23,7 +23,7 @@ onMounted(async () => {
     class="bg-backgroundCompliment w-100 mw-100 p-4"
     @submit.prevent="submit()"
   >
-    <div class="row gx-4 gy-2">
+    <div class="row g-3">
       <h2>Create a Post</h2>
       <div class="col-12">
         <label class="mb-1" for="category">Title</label>
