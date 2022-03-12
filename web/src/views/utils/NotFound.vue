@@ -3,5 +3,7 @@ import AppNotFound from "@/components/AppNotFound.vue";
 </script>
 
 <template>
-  <AppNotFound />
+  <div class="mt-auto">
+    <AppNotFound />
+  </div>
 </template>
