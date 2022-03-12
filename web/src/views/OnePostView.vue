@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { marked } from "marked";
 import { usePostStore } from "@/stores/post";
 import { Post } from "@/types/post";
 import AppNotFound from "@/components/AppNotFound.vue";
+import OnePostPost from "@/components/OnePostPost.vue";
+import AppProgressBar from "@/components/AppProgressBar.vue";
 
 const route = useRoute();
 const postStore = usePostStore();
@@ -28,10 +29,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="mx-auto px-4 mt-4" v-if="!postStore.loading">
-    <AppNotFound v-if="!found" />
-    <div v-else>
-      <div v-html="marked.parse(post!.description)"></div>
-    </div>
-  </main>
+  <AppProgressBar v-if="postStore.loading" />
+  <div class="mx-auto">
+    <main class="px-4 mt-4" v-if="!postStore.loading">
+      <AppNotFound v-if="!found" />
+      <OnePostPost v-else :post="post!" />
+    </main>
+  </div>
 </template>

@@ -54,7 +54,7 @@ import { getYear } from "@/utils";
               <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
                 <font-awesome-icon :icon="['fa', 'envelope']" class="me-2" />
-                <span>admin@studyseeking.com</span>
+                <span>nick@studyseeking.com</span>
               </p>
             </div>
           </div>
