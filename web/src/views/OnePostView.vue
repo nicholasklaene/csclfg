@@ -28,12 +28,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="mx-auto px-4 mt-4">
-    <div v-if="!postStore.loading">
-      <AppNotFound v-if="!found" />
-      <div v-else>
-        <div v-html="marked.parse(post!.description)"></div>
-      </div>
+  <main class="mx-auto px-4 mt-4" v-if="!postStore.loading">
+    <AppNotFound v-if="!found" />
+    <div v-else>
+      <div v-html="marked.parse(post!.description)"></div>
     </div>
   </main>
 </template>

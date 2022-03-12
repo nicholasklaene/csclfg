@@ -39,24 +39,6 @@ const authStore = useAuthStore();
               Home
             </router-link>
           </li>
-          <li class="nav-item d-flex justify-content-center">
-            <a
-              href="https://studyseeking.com/about"
-              target="__blank"
-              class="text-text text-decoration-none fw-bold"
-            >
-              About
-            </a>
-          </li>
-          <li class="nav-item d-flex justify-content-center">
-            <a
-              href="https://studyseeking.com/"
-              target="__blank"
-              class="text-text text-decoration-none fw-bold"
-            >
-              Study Apps
-            </a>
-          </li>
         </ul>
         <ul class="navbar-nav ms-auto d-flex gap-3">
           <template v-if="authStore.state.isAuthenticated">

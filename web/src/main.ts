@@ -5,6 +5,7 @@ import { createApp } from "vue";
 import "@/config/title";
 import "@/config/axios";
 import "@/config/bootstrap";
+import "@/config/toast";
 import FontAwesomeIcon from "@/config/fontawesome";
 import pinia from "@/config/pinia";
 
