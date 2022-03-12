@@ -1,24 +1,52 @@
 <script setup lang="ts">
 import { usePostStore } from "@/stores/post";
 import { useCategoryStore } from "@/stores/category";
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import AppMarkdownEditor from "./AppMarkdownEditor.vue";
+import AppTag from "./AppTag.vue";
 
-const postDescription = ref("");
+const createPost = reactive({
+  title: "",
+  category: "",
+  preview: "",
+  description: "",
+  tags: [] as string[],
+});
+
 const postStore = usePostStore();
 const categoryStore = useCategoryStore();
 
 function submit() {
-  console.log(postDescription.value);
+  //
+}
+
+function addTag(tag: string) {
+  createPost.tags.push(tag);
+}
+
+function removeTag(tag: string) {
+  createPost.tags = createPost.tags.filter((t) => t !== tag);
+}
+
+function suggestedTags() {
+  try {
+    if (categoryStore.loading) return [];
+    return categoryStore.categories.find(
+      (c) => c.label === createPost.category
+    )!.suggested_tags;
+  } catch (e) {
+    return [];
+  }
 }
 
 onMounted(async () => {
   if (categoryStore.categories.length === 0) {
     await categoryStore.getCategories();
   }
+  createPost.category = categoryStore.categories[0].label;
 });
 
-const bindDescription = (value: string) => (postDescription.value = value);
+const bindDescription = (value: string) => (createPost.description = value);
 </script>
 
 <template>
@@ -35,6 +63,7 @@ const bindDescription = (value: string) => (postDescription.value = value);
             class="bg-background w-100 text-text"
             type="text"
             placeholder="My Group Name"
+            v-model="createPost.title"
             required
           />
         </div>
@@ -43,7 +72,7 @@ const bindDescription = (value: string) => (postDescription.value = value);
         <label class="mb-1" for="category">Category</label>
         <select
           class="form-control text-text border-background py-2"
-          v-model="postStore.search.category"
+          v-model="createPost.category"
           required
         >
           <template
@@ -57,19 +86,48 @@ const bindDescription = (value: string) => (postDescription.value = value);
         </select>
       </div>
       <div class="col-12">
-        <label class="mb-1" for="category">Preview Text</label>
+        <label class="mb-1" for="preview">Preview Text</label>
         <div>
           <input
             class="bg-background w-100 text-text"
             type="text"
             placeholder="Preview text for search results page"
+            v-model="createPost.preview"
             required
           />
         </div>
       </div>
       <div class="col-12">
-        <label class="mb-1" for="category">Post content</label>
+        <label class="mb-1" for="content">Post content</label>
         <AppMarkdownEditor @input="bindDescription" />
+      </div>
+      <div class="col-12">
+        <label class="mb-1" for="category">
+          <div class="mb-1" role="text">
+            Post tags:
+            <span v-if="createPost.tags.length === 0"> no tags selected </span>
+          </div>
+          <div class="d-flex flex-wrap mb-2 gap-2">
+            <template v-for="tag in createPost.tags" :key="tag">
+              <AppTag
+                :removeable="true"
+                :label="tag"
+                @remove="removeTag(tag)"
+              />
+            </template>
+          </div>
+          <div class="mb-1" role="text">Suggested tags:</div>
+          <div class="d-flex flex-wrap mb-2 gap-2">
+            <template v-for="tag in suggestedTags()" :key="tag">
+              <AppTag
+                v-if="!createPost.tags.includes(tag)"
+                :label="tag"
+                role="button"
+                @click="addTag(tag)"
+              />
+            </template>
+          </div>
+        </label>
       </div>
       <div class="col-12 col-md-6">
         <button class="btn btn-primary text-text w-100">Submit</button>
