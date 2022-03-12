@@ -21,6 +21,7 @@ function submit() {
 }
 
 function addTag(tag: string) {
+  if (createPost.tags.length === 5) return;
   createPost.tags.push(tag);
 }
 
@@ -126,6 +127,9 @@ const bindDescription = (value: string) => (createPost.description = value);
                 @click="addTag(tag)"
               />
             </template>
+          </div>
+          <div v-if="createPost.tags.length === 5" role="text">
+            You may only select up to 5 tags
           </div>
         </label>
       </div>
