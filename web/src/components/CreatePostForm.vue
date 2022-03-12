@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { usePostStore } from "@/stores/post";
 import { useCategoryStore } from "@/stores/category";
 import { onMounted, reactive } from "vue";
 import AppMarkdownEditor from "./AppMarkdownEditor.vue";
 import AppTag from "./AppTag.vue";
+
+const router = useRouter();
 
 const createPost = reactive({
   title: "",
@@ -25,7 +28,11 @@ const categoryStore = useCategoryStore();
 async function submit() {
   const isValid = validate();
   if (!isValid) return;
-  await postStore.createPost(createPost);
+  const postId = await postStore.createPost(createPost);
+
+  if (postId && postId !== "-1") {
+    router.push(`/posts/${postId}`);
+  }
 }
 
 function validate() {

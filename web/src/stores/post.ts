@@ -80,11 +80,14 @@ export const usePostStore = defineStore("post", {
       const requestUrl = `${baseUrl}/posts`;
       const response = await axios.post(requestUrl, data);
 
-      if (response.status !== 201) return false;
+      if (response.status !== 201) return "-1";
+
+      const post: Post = response.data;
+      this.postCache.set(post.post_id, post);
 
       this.setLoading(false);
 
-      return true;
+      return post.post_id;
     },
     buildSearch() {
       const searchParams = new URLSearchParams();
