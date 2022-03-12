@@ -6,6 +6,7 @@ import { getApp } from "@/utils";
 import { onMounted } from "vue";
 import { useCategoryStore } from "@/stores/category";
 import { usePostStore } from "@/stores/post";
+import AppProgressBar from "@/components/AppProgressBar.vue";
 
 const categoryStore = useCategoryStore();
 const postStore = usePostStore();
@@ -41,6 +42,7 @@ onMounted(() => {
         <PostSearchHeader />
       </div>
       <div class="col-12">
+        <AppProgressBar v-if="postStore.loading || categoryStore.loading" />
         <PostSearchBox />
       </div>
       <div class="col-12">
