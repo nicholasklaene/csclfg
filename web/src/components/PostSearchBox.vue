@@ -18,6 +18,10 @@ function addTagToSearch(tag: string) {
     : (postStore.search.tags = [tag]);
 }
 
+function removeTagFromSearch(tag: string) {
+  postStore.search.tags = postStore.search.tags?.filter((t) => t !== tag);
+}
+
 function suggestedTags() {
   return categoryStore.categories.find(
     (c) => c.label === postStore.search.category
@@ -76,7 +80,11 @@ function suggestedTags() {
           </div>
           <div class="d-flex flex-wrap gap-2 mb-2" v-else>
             <template v-for="tag in postStore.search.tags" :key="tag">
-              <AppTag :label="tag" />
+              <AppTag
+                :label="tag"
+                :removeable="true"
+                @remove="removeTagFromSearch(tag)"
+              />
             </template>
           </div>
 
