@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePostStore } from "@/stores/post";
 import { useCategoryStore } from "@/stores/category";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive } from "vue";
 import AppMarkdownEditor from "./AppMarkdownEditor.vue";
 import AppTag from "./AppTag.vue";
 
@@ -13,11 +13,46 @@ const createPost = reactive({
   tags: [] as string[],
 });
 
+const errors = reactive({
+  title: [] as string[],
+  preview: [] as string[],
+  description: [] as string[],
+});
+
 const postStore = usePostStore();
 const categoryStore = useCategoryStore();
 
-function submit() {
-  //
+async function submit() {
+  const isValid = validate();
+  if (!isValid) return;
+  await postStore.createPost(createPost);
+}
+
+function validate() {
+  let numErrors = 0;
+
+  if (!createPost.title || createPost.title.length > 128) {
+    errors.title.push("Title must be between 0 and 128 characters");
+    numErrors++;
+  } else {
+    errors.title = [];
+  }
+
+  if (!createPost.preview || createPost.preview.length > 256) {
+    errors.preview.push("Preview must be between 0 and 256 characters");
+    numErrors++;
+  } else {
+    errors.preview = [];
+  }
+
+  if (!createPost.description || createPost.description.length > 1024) {
+    errors.description.push("Content must be between 0 and 1024 characters");
+    numErrors++;
+  } else {
+    errors.description = [];
+  }
+
+  return numErrors === 0;
 }
 
 function addTag(tag: string) {
@@ -68,6 +103,12 @@ const bindDescription = (value: string) => (createPost.description = value);
             required
           />
         </div>
+        <small
+          v-for="(error, index) in errors.title"
+          :key="index"
+          class="text-danger"
+          >{{ error }}</small
+        >
       </div>
       <div class="col-12">
         <label class="mb-1" for="category">Category</label>
@@ -97,10 +138,22 @@ const bindDescription = (value: string) => (createPost.description = value);
             required
           />
         </div>
+        <small
+          v-for="(error, index) in errors.preview"
+          :key="index"
+          class="text-danger"
+          >{{ error }}</small
+        >
       </div>
       <div class="col-12">
         <label class="mb-1" for="content">Post content</label>
         <AppMarkdownEditor @input="bindDescription" />
+        <small
+          v-for="(error, index) in errors.description"
+          :key="index"
+          class="text-danger"
+          >{{ error }}</small
+        >
       </div>
       <div class="col-12">
         <label class="mb-1" for="category">
