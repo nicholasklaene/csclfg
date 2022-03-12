@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useCategoryStore } from "@/stores/category";
 import { usePostStore } from "@/stores/post";
 import AppTag from "./AppTag.vue";
+import { getDefaultSearch } from "@/utils";
 const categoryStore = useCategoryStore();
 const postStore = usePostStore();
 
@@ -10,6 +11,10 @@ const showAdvancedSearch = ref(false);
 
 function toggleAdvancedSearch() {
   showAdvancedSearch.value = !showAdvancedSearch.value;
+}
+
+function resetSearch() {
+  postStore.search = getDefaultSearch();
 }
 
 function addTagToSearch(tag: string) {
@@ -101,13 +106,20 @@ function suggestedTags() {
           </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-12 d-flex">
           <p
             class="text-primary fw-bolder"
             role="button"
             @click="toggleAdvancedSearch()"
           >
             Toggle Advanced Search
+          </p>
+          <p
+            class="ms-auto text-primary fw-bolder"
+            role="button"
+            @click="resetSearch()"
+          >
+            Reset Search
           </p>
         </div>
       </div>
