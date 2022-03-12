@@ -1,15 +1,13 @@
-$text: #111827;
-$body-bg: rgb(244, 244, 244);
+$text: #fff;
+$body-bg: #111827;
 
 $theme-colors: (
   "primary": #0067b8,
-  "secondary": #0067b8,
-  "header": #0067b8,
   "background": $body-bg,
-  "backgroundCompliment": #fff,
+  "backgroundCompliment": #1e293b,
   "text": $text,
   "overlay": #111827,
-  "primaryText": #fff,
+  "primaryText": $text,
 );
 
 body {

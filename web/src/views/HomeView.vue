@@ -29,8 +29,8 @@ onMounted(() => {
     <div class="row mt-4 gy-3">
       <div class="col-12">
         <div class="d-flex">
-          <img src="../assets/logo.png" alt="logo" />
-          <h1 class="ms-4 align-self-center text-header">
+          <img class="me-4" src="../assets/logo.png" alt="logo" />
+          <h1 class="align-self-center text-primary">
             {{ application }}
             <br />
             Study Seeking

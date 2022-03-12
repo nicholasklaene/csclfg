@@ -1,6 +1,9 @@
 import { usePostStore } from "@/stores/post";
-import { Post } from "@/types/post";
 import { Search } from "@/types/search";
+
+export function getYear() {
+  return new Date().getFullYear();
+}
 
 export function getApp() {
   return window.location.href.split(".")[0];
