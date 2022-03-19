@@ -23,7 +23,7 @@ public class GetCategoryByIdHandler :
         GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
         var category = _db.Categories.AsNoTracking()
-            .FirstOrDefault(c => c.ApplicationId == request.CategoryId);
+            .FirstOrDefault(c => c.Id == request.CategoryId);
         
         var getCategoryResponse = category == null ? null : _mapper.Map<GetCategoryResponse>(category);
 

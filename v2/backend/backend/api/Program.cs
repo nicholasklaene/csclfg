@@ -1,7 +1,5 @@
 using System.Reflection;
 using api.Data;
-using api.Models;
-using api.Response;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

@@ -18,6 +18,12 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
             .HasForeignKey(c => c.ApplicationId);
 
         builder
+            .Property(c => c.Id)
+            .HasColumnName("id");
+        builder
+            .Property(c => c.ApplicationId)
+            .HasColumnName("application_id");
+        builder
             .Property(c => c.Label)
             .HasColumnName("label")
             .IsRequired()
