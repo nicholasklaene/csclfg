@@ -8,7 +8,7 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
     {
-        builder.ToTable("post");
+        builder.ToTable("posts");
         
         builder.HasKey(p => p.Id);
 

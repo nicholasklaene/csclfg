@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "wX0Z+PHGXbtazlaRAF6tnx3eFHyZQ10kiHuoIEucZmMz+1nxPLaIAtMShCgIO+DBRoublBITIKvFCafBZWmZ/A==",
+  "dgSpecHash": "+Jl/iyFhedEQ7AHMbqJ87WjdF+SEVN8M2a5BOnFFaxVb4KYkjepRWNCh8IV2UDTUTJnd/IJ4QgnJKR3EAar+AQ==",
   "success": true,
   "projectFilePath": "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj",
   "expectedPackageFiles": [
+    "/home/nick/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
+    "/home/nick/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "/home/nick/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/home/nick/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
+    "/home/nick/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/home/nick/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/10.0.1/mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "/home/nick/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/nick/.nuget/packages/microsoft.entityframeworkcore/6.0.3/microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
     "/home/nick/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.3/microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
     "/home/nick/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.3/microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",

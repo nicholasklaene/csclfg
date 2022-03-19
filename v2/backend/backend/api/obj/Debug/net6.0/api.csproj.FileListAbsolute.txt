@@ -33,3 +33,8 @@
 /home/nick/repos/studyseeking/v2/backend/backend/api/obj/Debug/net6.0/ref/api.dll
 /home/nick/repos/studyseeking/v2/backend/backend/api/obj/Debug/net6.0/api.pdb
 /home/nick/repos/studyseeking/v2/backend/backend/api/obj/Debug/net6.0/api.genruntimeconfig.cache
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AutoMapper.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.Contracts.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
