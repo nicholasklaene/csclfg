@@ -6,22 +6,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Response/CreateCategoryResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/GetAllApplicationsHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Queries/GetAllApplicationsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Response/GetAllApplicationsResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Response/GetApplicationResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/tests.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +55,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="HotReloadSettingsPage" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.api">
@@ -100,7 +108,7 @@
       <workItem from="1647639678289" duration="53000" />
       <workItem from="1647639745043" duration="1752000" />
       <workItem from="1647643159864" duration="248000" />
-      <workItem from="1647643423245" duration="17161000" />
+      <workItem from="1647643423245" duration="18980000" />
     </task>
     <servers />
   </component>
@@ -110,6 +118,7 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
