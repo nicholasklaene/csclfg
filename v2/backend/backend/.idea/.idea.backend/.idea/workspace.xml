@@ -6,11 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Response/CreateCategoryResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/CategoryConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/CategoryConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/GetCategoryByIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/GetCategoryByIdHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
@@ -97,7 +100,7 @@
       <workItem from="1647639678289" duration="53000" />
       <workItem from="1647639745043" duration="1752000" />
       <workItem from="1647643159864" duration="248000" />
-      <workItem from="1647643423245" duration="14729000" />
+      <workItem from="1647643423245" duration="17161000" />
     </task>
     <servers />
   </component>

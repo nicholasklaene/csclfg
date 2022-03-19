@@ -1,3 +1,4 @@
+using api.Commands;
 using api.Models;
 using api.Response;
 using AutoMapper;
@@ -9,5 +10,7 @@ public class CategoryProfile : Profile
     public CategoryProfile()
     {
         CreateMap<Category, GetCategoryResponse>();
+        CreateMap<CreateCategoryCommand, Category>();
+        CreateMap<Category, CreateCategoryResponse>();
     }
 }

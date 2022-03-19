@@ -1,6 +1,6 @@
 namespace api.Response;
 
-public class GetCategoryResponse
+public class CreateCategoryResponse
 {
     public int Id { get; set; }
     

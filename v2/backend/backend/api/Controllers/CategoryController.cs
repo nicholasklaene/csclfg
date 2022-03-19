@@ -1,3 +1,4 @@
+using api.Commands;
 using api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,5 +31,13 @@ public class CategoryController : ControllerBase
         var query = new GetCategoryByIdQuery(categoryId);
         var result = await _mediator.Send(query);
         return result == null ? NotFound() : Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
+    {
+        var result = await _mediator.Send(createCategoryCommand);
+        return result != null ? Created($"/api/categories/{result.Id}", result)
+                : BadRequest();
     }
 }
