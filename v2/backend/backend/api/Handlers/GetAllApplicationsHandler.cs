@@ -3,6 +3,7 @@ using api.Queries;
 using api.Response;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Handlers;
 
@@ -19,6 +20,7 @@ public class GetAllApplicationsHandler : IRequestHandler<GetAllApplicationsQuery
     public Task<GetAllApplicationsResponse> Handle(GetAllApplicationsQuery request, CancellationToken cancellationToken)
     {
         var applications = _db.Applications
+            .AsNoTracking()
             .Select(a => _mapper.Map<GetApplicationResponse>(a))
             .ToList();
 

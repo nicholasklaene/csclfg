@@ -7,7 +7,6 @@ public class Category
     public Application Application { get; set; }
     public string Label { get; set; }
  
-    public virtual ICollection<CategoryHasSuggestedTag> CategoryHasSuggestedTags { get; set; }
-    
+    public ICollection<CategoryHasSuggestedTag> CategoryHasSuggestedTags { get; set; }
     public ICollection<Post> Posts { get; set; }
 }

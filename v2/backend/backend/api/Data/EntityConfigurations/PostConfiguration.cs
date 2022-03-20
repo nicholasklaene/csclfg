@@ -44,6 +44,17 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder
             .Property(p => p.IsActive)
             .IsRequired()
+            .HasColumnName("is_active")
             .HasDefaultValue(true);
+        builder
+            .Property(p => p.CreatedAt)
+            .IsRequired()
+            .HasColumnName("created_at")
+            .HasDefaultValue(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()); // This wont work!
+        builder
+            .Property(p => p.UpdatedAt)
+            .IsRequired()
+            .HasColumnName("updated_at")
+            .HasDefaultValue(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
     }
 }

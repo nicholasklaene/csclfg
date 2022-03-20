@@ -14,6 +14,7 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
 
         builder
             .Property(t => t.Label)
+            .HasMaxLength(50)
             .HasColumnName("label");
     }
 }

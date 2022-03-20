@@ -22,11 +22,18 @@ public class GetCategoryByIdHandler :
     public Task<GetCategoryResponse> Handle(
         GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var category = _db.Categories.AsNoTracking()
-            .FirstOrDefault(c => c.Id == request.CategoryId);
-        
-        var getCategoryResponse = category == null ? null : _mapper.Map<GetCategoryResponse>(category);
-
-        return Task.FromResult(getCategoryResponse);
+        var queryResult = _db.Categories.AsNoTracking()
+            .Where(c => c.Id == request.CategoryId)
+            .Include(c => c.CategoryHasSuggestedTags)
+            .ThenInclude(ct => ct.Tag)
+            .ToList()
+            .Select(c =>
+            {
+                var result = _mapper.Map<GetCategoryResponse>(c);
+                result.SuggestedTags = c.CategoryHasSuggestedTags.Select(ct => ct.Tag.Label).ToList();
+                return result;
+            })
+            .FirstOrDefault()!;
+        return Task.FromResult(queryResult);
     }
 }

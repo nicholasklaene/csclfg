@@ -18,5 +18,9 @@ public class Post
     
     public bool IsActive { get; set; }
     
+    public long CreatedAt { get; set; }
+    
+    public long UpdatedAt { get; set; }
+    
     public virtual ICollection<PostHasTag> PostHasTags { get; set; }
 }

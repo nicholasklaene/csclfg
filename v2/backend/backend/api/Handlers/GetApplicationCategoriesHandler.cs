@@ -22,15 +22,19 @@ public class GetApplicationCategoriesHandler :
     public Task<GetApplicationCategoriesResponse> Handle(
         GetApplicationCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var categories = _db.Categories.AsNoTracking()
-            .Where(c => c.ApplicationId == request.ApplicationId);
-
-        var getCategoriesResponseList =
-            categories.Select(c => _mapper.Map<GetCategoryResponse>(c))
-                .ToList();
-
-        var getCategoryResponse = new GetApplicationCategoriesResponse(getCategoriesResponseList);
-
-        return Task.FromResult(getCategoryResponse);
+        var queryResult = _db.Categories.AsNoTracking()
+            .Where(c => c.ApplicationId == request.ApplicationId)
+            .Include(c => c.CategoryHasSuggestedTags)
+            .ThenInclude(ct => ct.Tag)
+            .ToList()
+            .Select(c => {
+                var result = _mapper.Map<GetCategoryResponse>(c);
+                result.SuggestedTags = c.CategoryHasSuggestedTags
+                    .Select(ct => ct.Tag.Label)
+                    .ToList();
+                return result;
+            }).ToList();
+        var response = new GetApplicationCategoriesResponse(queryResult);
+        return Task.FromResult(response);
     }
 }

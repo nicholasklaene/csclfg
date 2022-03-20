@@ -11,7 +11,7 @@ public class PostHasTagConfiguration : IEntityTypeConfiguration<PostHasTag>
         builder.ToTable("post_has_tag");
         
         builder.HasKey(pt => new { pt.PostId, pt.TagLabel });
-
+        
         builder
             .Property(pt => pt.PostId)
             .HasColumnName("post_id");
