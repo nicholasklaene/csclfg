@@ -1,3 +1,5 @@
+using api.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -6,9 +8,18 @@ namespace api.Controllers;
 [Route("/users")]
 public class UserController : ControllerBase
 {
+    private readonly IMediator _mediator;
+
+    public UserController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+    
     [HttpDelete("/{username}")]
     public async Task<IActionResult> DeleteUser([FromRoute] string username)
     {
-        return Ok();
+        var command = new DeleteUserCommand(username);
+        var result = await _mediator.Send(command);
+        return result ? NoContent() : NotFound();
     }
 }

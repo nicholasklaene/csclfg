@@ -9,6 +9,7 @@ public class ApplicationProfile :  Profile
 {
     public ApplicationProfile()
     {
+        CreateMap<Application, UpdateApplicationResponse>();
         CreateMap<CreateApplicationCommand, Application>();
         CreateMap<Application, CreateApplicationResponse>();
         CreateMap<Application, GetApplicationResponse>();

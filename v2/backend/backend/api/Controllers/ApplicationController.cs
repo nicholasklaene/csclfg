@@ -39,6 +39,13 @@ public class ApplicationController : ControllerBase
         return response == null ? StatusCode(500) : Created($"/applications/{response.Id}", response);
     }
 
+    [HttpPut]
+    public async Task<IActionResult> UpdateApplication([FromBody] UpdateApplicationCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return result == null ? NotFound() : Ok(result);
+    }
+
     [HttpDelete("{applicationId}")]
     public async Task<IActionResult> DeleteApplication([FromRoute] short applicationId)
     {
