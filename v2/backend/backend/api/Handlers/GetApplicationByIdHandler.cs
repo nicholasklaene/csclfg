@@ -32,7 +32,9 @@ public class GetApplicationByIdHandler : IRequestHandler<GetApplicationByIdQuery
                 result.Categories = a.Categories.ToList().Select(c =>
                 {
                     var getCategoryResponse = _mapper.Map<GetCategoryResponse>(c);
-                    getCategoryResponse.SuggestedTags = c.CategoryHasSuggestedTags.Select(ct => ct.Tag.Label).ToList();
+                    getCategoryResponse.SuggestedTags = c.CategoryHasSuggestedTags
+                        .Select(ct => ct.Tag.Label)
+                        .ToList();
                     return getCategoryResponse;
                 }).ToList();
                 return result;

@@ -34,10 +34,17 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
+    public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
     {
-        var result = await _mediator.Send(createCategoryCommand);
+        var result = await _mediator.Send(command);
         return result != null ? Created($"/categories/{result.Id}", result): BadRequest();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return result != null ? Ok(result) : NotFound();
     }
 
     [HttpDelete("{categoryId}")]

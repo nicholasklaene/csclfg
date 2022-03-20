@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using api.Commands;
 using api.Models;
 using api.Response;
@@ -13,5 +12,7 @@ public class CategoryProfile : Profile
         CreateMap<Category, GetCategoryResponse>();
         CreateMap<CreateCategoryCommand, Category>();
         CreateMap<Category, CreateCategoryResponse>();
+        CreateMap<UpdateCategoryCommand, Category>();
+        CreateMap<Category, UpdateCategoryResponse>();
     }
 }
