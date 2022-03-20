@@ -37,7 +37,14 @@ public class CategoryController : ControllerBase
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
     {
         var result = await _mediator.Send(createCategoryCommand);
-        return result != null ? Created($"/categories/{result.Id}", result)
-                : BadRequest();
+        return result != null ? Created($"/categories/{result.Id}", result): BadRequest();
+    }
+
+    [HttpDelete("{categoryId}")]
+    public async Task<IActionResult> DeleteCategory([FromRoute] int categoryId)
+    {
+        var command = new DeleteCategoryCommand(categoryId);
+        var result = await _mediator.Send(command);
+        return result ? NoContent() : NotFound();
     }
 }
