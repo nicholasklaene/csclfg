@@ -38,4 +38,12 @@ public class ApplicationController : ControllerBase
         var response = await _mediator.Send(command);
         return response == null ? StatusCode(500) : Created($"/applications/{response.Id}", response);
     }
+
+    [HttpDelete("{applicationId}")]
+    public async Task<IActionResult> DeleteApplication([FromRoute] short applicationId)
+    {
+        var command = new DeleteApplicationCommand(applicationId);
+        var result = await _mediator.Send(command);
+        return result ? NoContent() : NotFound();
+    }
 }

@@ -6,17 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/Commands/DeleteApplicationCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/DeleteApplicationHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +92,7 @@
       <workItem from="1647639745043" duration="1752000" />
       <workItem from="1647643159864" duration="248000" />
       <workItem from="1647643423245" duration="19631000" />
-      <workItem from="1647721859153" duration="24836000" />
+      <workItem from="1647721859153" duration="26259000" />
     </task>
     <servers />
   </component>

@@ -18,8 +18,7 @@ public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, Crea
         _db = db;
         _mapper = mapper;
     }
-
-    // TODO: Abstract tag into helper since it will be needed for update and for post entity actions
+    
     public async Task<CreateCategoryResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         await using var transaction = await _db.Database.BeginTransactionAsync(cancellationToken);
