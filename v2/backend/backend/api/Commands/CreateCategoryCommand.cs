@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using api.Commands.ValidationAttributes;
+using api.ValidationAttributes;
 using api.Request;
 using api.Response;
 using MediatR;

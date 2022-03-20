@@ -1,7 +1,7 @@
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
-namespace api.Commands.ValidationAttributes;
+namespace api.ValidationAttributes;
 
 public class MaxLengthOfAttribute : ValidationAttribute
 {

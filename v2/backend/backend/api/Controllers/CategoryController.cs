@@ -25,7 +25,7 @@ public class CategoryController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("/{categoryId}")]
+    [HttpGet("{categoryId}")]
     public async Task<IActionResult> GetCategoryById([FromRoute] int categoryId)
     {
         var query = new GetCategoryByIdQuery(categoryId);
