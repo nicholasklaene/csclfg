@@ -38,3 +38,8 @@
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.dll
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.Contracts.dll
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Amazon.Extensions.CognitoAuthentication.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.CognitoIdentity.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.CognitoIdentityProvider.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.Core.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.SecurityToken.dll

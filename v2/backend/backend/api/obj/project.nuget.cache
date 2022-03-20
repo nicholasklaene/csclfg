@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "+Jl/iyFhedEQ7AHMbqJ87WjdF+SEVN8M2a5BOnFFaxVb4KYkjepRWNCh8IV2UDTUTJnd/IJ4QgnJKR3EAar+AQ==",
+  "dgSpecHash": "YRwhYeMetYhFvu34ccIcjAa/sn6P+sMZJi61jNiDIjJlrkg4NhtCTrGwV82wkJ1iHwk+JBQdZa52dxheAMYoEQ==",
   "success": true,
   "projectFilePath": "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj",
   "expectedPackageFiles": [
+    "/home/nick/.nuget/packages/amazon.extensions.cognitoauthentication/2.2.2/amazon.extensions.cognitoauthentication.2.2.2.nupkg.sha512",
     "/home/nick/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
     "/home/nick/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "/home/nick/.nuget/packages/awssdk.cognitoidentity/3.7.0.2/awssdk.cognitoidentity.3.7.0.2.nupkg.sha512",
+    "/home/nick/.nuget/packages/awssdk.cognitoidentityprovider/3.7.0.2/awssdk.cognitoidentityprovider.3.7.0.2.nupkg.sha512",
+    "/home/nick/.nuget/packages/awssdk.core/3.7.0.3/awssdk.core.3.7.0.3.nupkg.sha512",
+    "/home/nick/.nuget/packages/awssdk.securitytoken/3.7.0.2/awssdk.securitytoken.3.7.0.2.nupkg.sha512",
     "/home/nick/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/nick/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
     "/home/nick/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
