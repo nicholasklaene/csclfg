@@ -6,22 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/Commands/CreateApplicationCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Handlers/GetApplicationByIdHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Queries/GetApplicationByIdQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Response/CreateApplicationResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Commands/ValidationAttributes/MaxLengthOfAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/ValidationAttributes/MaxLengthOfAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Commands/ValidationAttributes/MinLengthOfAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/ValidationAttributes/MinLengthOfAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" afterDir="false" />
@@ -107,7 +98,7 @@
       <workItem from="1647639745043" duration="1752000" />
       <workItem from="1647643159864" duration="248000" />
       <workItem from="1647643423245" duration="19631000" />
-      <workItem from="1647721859153" duration="20858000" />
+      <workItem from="1647721859153" duration="24836000" />
     </task>
     <servers />
   </component>

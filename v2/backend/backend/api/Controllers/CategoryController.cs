@@ -37,7 +37,7 @@ public class CategoryController : ControllerBase
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
     {
         var result = await _mediator.Send(createCategoryCommand);
-        return result != null ? Created($"/api/categories/{result.Id}", result)
+        return result != null ? Created($"/categories/{result.Id}", result)
                 : BadRequest();
     }
 }
