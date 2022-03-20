@@ -19,11 +19,24 @@ public class GetAllApplicationsHandler : IRequestHandler<GetAllApplicationsQuery
     }
     public Task<GetAllApplicationsResponse> Handle(GetAllApplicationsQuery request, CancellationToken cancellationToken)
     {
-        var applications = _db.Applications
-            .AsNoTracking()
-            .Select(a => _mapper.Map<GetApplicationResponse>(a))
+        var queryResult = _db.Applications.AsNoTracking()
+            .Include(a => a.Categories)
+            .ThenInclude(c => c.CategoryHasSuggestedTags)
+            .ThenInclude(ct => ct.Tag)
+            .ToList()
+            .Select(a =>
+            {
+                var result = _mapper.Map<GetApplicationResponse>(a);
+                result.Categories = a.Categories.ToList().Select(c =>
+                {
+                    var getCategoryResponse = _mapper.Map<GetCategoryResponse>(c);
+                    getCategoryResponse.SuggestedTags = c.CategoryHasSuggestedTags.Select(ct => ct.Tag.Label).ToList();
+                    return getCategoryResponse;
+                }).ToList();
+                return result;
+            })
             .ToList();
-
-        return Task.FromResult(new GetAllApplicationsResponse(applications));
+        var response = new GetAllApplicationsResponse(queryResult);
+        return Task.FromResult(response);
     }
 }

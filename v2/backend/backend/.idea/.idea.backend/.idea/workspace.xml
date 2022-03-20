@@ -6,66 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/Commands/ValidationAttributes/MaxLengthOfAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Commands/ValidationAttributes/MinLengthOfAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Mappings/TagProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220319212421_AddTimeToPost.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220319212421_AddTimeToPost.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220320005053_TryFixFK.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220320005053_TryFixFK.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220320011401_TryFixManyToMany.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Migrations/20220320011401_TryFixManyToMany.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/Dapper.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/ApiApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/CategorySuggestedTag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/CategorySuggestedTagId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/Post.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/Tag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/java/com/studyseeking/models/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_api/src/test/java/com/studyseeking/ApiApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostHasTagConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostHasTagConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/TagConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/TagConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Handlers/GetAllApplicationsHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/GetAllApplicationsHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/GetApplicationCategoriesHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/GetApplicationCategoriesHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Handlers/GetCategoryByIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/GetCategoryByIdHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Post.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/Tag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Tag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Response/CreateCategoryResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/CreateCategoryResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetApplicationResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/GetApplicationResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../documentation/API ERD.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../documentation/Subdomain AWS Architecture.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +101,7 @@
       <workItem from="1647639745043" duration="1752000" />
       <workItem from="1647643159864" duration="248000" />
       <workItem from="1647643423245" duration="19631000" />
-      <workItem from="1647721859153" duration="17602000" />
+      <workItem from="1647721859153" duration="18425000" />
     </task>
     <servers />
   </component>

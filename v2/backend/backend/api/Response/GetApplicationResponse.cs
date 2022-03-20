@@ -7,4 +7,6 @@ public class GetApplicationResponse
     public string Name { get; set; }
 
     public string Subdomain { get; set; }
+
+    public List<GetCategoryResponse> Categories { get; set; }
 }
