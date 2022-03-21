@@ -54,6 +54,11 @@ public class AuthSigninHandler : IRequestHandler<AuthSigninQuery, AuthSigninResp
         {
             response.Errors.Add("User does not exist");
         }
+        catch (UserNotConfirmedException userNotConfirmedException)
+        {
+            response.Errors.Add("You must confirm your email to continue");
+        }
+        
         return response;
     }
 }

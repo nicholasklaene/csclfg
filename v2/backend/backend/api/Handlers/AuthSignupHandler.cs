@@ -1,7 +1,6 @@
+using System.Net;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
-using Amazon.Extensions.CognitoAuthentication;
-using Amazon.Runtime;
 using api.Commands;
 using api.Data;
 using api.Models;
@@ -48,6 +47,20 @@ public class AuthSignupHandler : IRequestHandler<AuthSignupCommand, AuthSignupRe
         try
         {
             await _identityClient.SignUpAsync(signupRequest, cancellationToken);
+
+            var confirmSignup = new AdminConfirmSignUpRequest()
+            {
+                Username = request.Username,
+                UserPoolId = _configuration["AWSCognito:PoolId"]
+            };
+
+            var confirmResponse = await _identityClient.AdminConfirmSignUpAsync(confirmSignup, cancellationToken);
+
+            if (confirmResponse.HttpStatusCode != HttpStatusCode.OK)
+            {
+                response.Errors.Add("Error confirming user");
+            }
+            
             _db.Users.Add(new User() {Username = request.Username, Email = request.Email});
             var numChanges = await _db.SaveChangesAsync(cancellationToken);
 
