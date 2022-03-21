@@ -1,3 +1,4 @@
+using api.Commands;
 using Microsoft.AspNetCore.Mvc;
 using api.Queries;
 using MediatR;
@@ -28,5 +29,12 @@ public class AuthController : ControllerBase
         }
         
         return response.Errors.Count > 0 ? BadRequest(response) : Ok(response);
+    }
+
+    [HttpPost("signup")]
+    public async Task<IActionResult> Signup([FromBody] AuthSignupCommand command)
+    {
+        var response = await _mediator.Send(command);
+        return response.Errors.Count > 0 ? BadRequest(response) : StatusCode(201, response);
     }
 }

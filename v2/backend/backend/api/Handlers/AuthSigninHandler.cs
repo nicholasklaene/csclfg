@@ -12,19 +12,16 @@ public class AuthSigninHandler : IRequestHandler<AuthSigninQuery, AuthSigninResp
 {
     private readonly IConfiguration _configuration;
     private readonly AmazonCognitoIdentityProviderClient _identityClient;
-    private readonly AnonymousAWSCredentials _credentials;
     private readonly CognitoUserPool _userPool;
     
     public AuthSigninHandler(
         IConfiguration configuration,
         AmazonCognitoIdentityProviderClient identityClient,
-        AnonymousAWSCredentials credentials,
         CognitoUserPool userPool
     )
     {
         _configuration = configuration;
         _identityClient = identityClient;
-        _credentials = credentials;
         _userPool = userPool;
     }
     
