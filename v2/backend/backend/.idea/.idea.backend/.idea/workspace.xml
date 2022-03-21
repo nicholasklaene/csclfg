@@ -6,14 +6,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../infrastructure/cognito/main.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../infrastructure/cognito/triggers/preSignup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../infrastructure/cognito/triggers/preTokenGeneration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/ref/api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/ref/api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +108,7 @@
       <workItem from="1647721859153" duration="30644000" />
       <workItem from="1647795089049" duration="231000" />
       <workItem from="1647795332619" duration="4474000" />
-      <workItem from="1647811067941" duration="8968000" />
+      <workItem from="1647811067941" duration="15446000" />
     </task>
     <servers />
   </component>

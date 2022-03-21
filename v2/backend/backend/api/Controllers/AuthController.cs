@@ -37,6 +37,4 @@ public class AuthController : ControllerBase
         var response = await _mediator.Send(command);
         return response.Errors.Count > 0 ? BadRequest(response) : StatusCode(201, response);
     }
-    
-    // [HttpPost()]
 }
