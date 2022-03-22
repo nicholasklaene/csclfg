@@ -55,12 +55,15 @@ public class AuthSignupHandler : IRequestHandler<AuthSignupCommand, AuthSignupRe
             {
                 response.Errors.Add("Error creating user");
             }
+            
+            var addUserToGroupRequest = new AdminAddUserToGroupRequest()
+                { Username = request.Username, UserPoolId = _configuration["AWSCognito:PoolId"], GroupName = "user" };
+            _identityClient.AdminAddUserToGroupAsync(addUserToGroupRequest, cancellationToken);
         }
         catch (UsernameExistsException usernameExistsException)
         {
             response.Errors.Add("Username taken");
         }
-
         return response;
     }
 }

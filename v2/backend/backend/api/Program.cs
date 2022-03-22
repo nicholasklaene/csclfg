@@ -46,7 +46,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidateLifetime = true,
             ValidAudience = clientId,
-            ValidateAudience = false
+            ValidateAudience = false,
+            RoleClaimType = "cognito:groups"
         };
         options.MetadataAddress = 
             $"https://cognito-idp.{region}.amazonaws.com/{poolId}/.well-known/openid-configuration";
