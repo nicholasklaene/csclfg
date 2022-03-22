@@ -4,14 +4,14 @@
     "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj": {}
   },
   "projects": {
-    "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj": {
+    "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj",
-        "projectName": "tests",
-        "projectPath": "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj",
+        "projectUniqueName": "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj",
+        "projectName": "api",
+        "projectPath": "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj",
         "packagesPath": "/home/nick/.nuget/packages/",
-        "outputPath": "/home/nick/repos/studyseeking/v2/backend/backend/tests/obj/",
+        "outputPath": "/home/nick/repos/studyseeking/v2/backend/backend/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/nick/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,113 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Amazon.Extensions.CognitoAuthentication": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj",
+        "projectName": "tests",
+        "projectPath": "/home/nick/repos/studyseeking/v2/backend/backend/tests/tests.csproj",
+        "packagesPath": "/home/nick/.nuget/packages/",
+        "outputPath": "/home/nick/repos/studyseeking/v2/backend/backend/tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/nick/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj": {
+                "projectPath": "/home/nick/repos/studyseeking/v2/backend/backend/api/api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.11.0, )"
@@ -78,6 +185,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
