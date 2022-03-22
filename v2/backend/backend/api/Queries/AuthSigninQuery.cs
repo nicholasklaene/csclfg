@@ -11,4 +11,7 @@ public class AuthSigninQuery : IRequest<AuthSigninResponse>
     
     [Required(ErrorMessage = "password is required")]
     public string Password { get; set; }
+    
+    // Used to set cookie from outside controller
+    public HttpResponse? Response { get; set; }
 }

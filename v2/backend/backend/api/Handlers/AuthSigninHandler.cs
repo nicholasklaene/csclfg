@@ -41,20 +41,27 @@ public class AuthSigninHandler : IRequestHandler<AuthSigninQuery, AuthSigninResp
             var accessToken = authResponse.AuthenticationResult.AccessToken;
             var idToken = authResponse.AuthenticationResult.IdToken;
             var refreshToken = authResponse.AuthenticationResult.RefreshToken;
-            
             response.AccessToken = accessToken;
             response.IdToken = idToken;
-            response.RefreshToken = refreshToken;
+            
+            var cookieOptions = new CookieOptions() 
+                { 
+                    Secure = true,
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.None, 
+                    Expires = DateTimeOffset.Now.AddDays(1) 
+                };
+            request.Response!.Cookies.Append("refresh_token", refreshToken, cookieOptions);
         }
-        catch (NotAuthorizedException notAuthorizedException)
+        catch (NotAuthorizedException)
         {
             response.Errors.Add("Invalid password");
         }
-        catch (UserNotFoundException userNotFoundException)
+        catch (UserNotFoundException)
         {
             response.Errors.Add("User does not exist");
         }
-        catch (UserNotConfirmedException userNotConfirmedException)
+        catch (UserNotConfirmedException)
         {
             response.Errors.Add("You must confirm your email to continue");
         }

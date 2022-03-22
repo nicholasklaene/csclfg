@@ -1,6 +1,7 @@
 using api.Commands;
 using api.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -17,6 +18,7 @@ public class ApplicationController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAllApplications()
     {
         var query = new GetAllApplicationsQuery();

@@ -43,3 +43,11 @@
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.CognitoIdentityProvider.dll
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.Core.dll
 /home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/AWSSDK.SecurityToken.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/home/nick/repos/studyseeking/v2/backend/backend/api/bin/Debug/net6.0/Newtonsoft.Json.dll
