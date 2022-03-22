@@ -1,5 +1,6 @@
 using api.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -16,6 +17,7 @@ public class UserController : ControllerBase
     }
     
     [HttpDelete("/{username}")]
+    [Authorize(Roles = "user")]
     public async Task<IActionResult> DeleteUser([FromRoute] string username)
     {
         var command = new DeleteUserCommand(username);

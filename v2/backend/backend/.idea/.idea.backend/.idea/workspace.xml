@@ -7,8 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
@@ -98,7 +99,7 @@
       <workItem from="1647795089049" duration="231000" />
       <workItem from="1647795332619" duration="4474000" />
       <workItem from="1647811067941" duration="16050000" />
-      <workItem from="1647912716283" duration="7766000" />
+      <workItem from="1647912716283" duration="8004000" />
     </task>
     <servers />
   </component>

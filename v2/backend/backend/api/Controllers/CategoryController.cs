@@ -1,6 +1,7 @@
 using api.Commands;
 using api.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -34,6 +35,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
     {
         var result = await _mediator.Send(command);
@@ -41,6 +43,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommand command)
     {
         var result = await _mediator.Send(command);
@@ -48,6 +51,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpDelete("{categoryId}")]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> DeleteCategory([FromRoute] int categoryId)
     {
         var command = new DeleteCategoryCommand(categoryId);

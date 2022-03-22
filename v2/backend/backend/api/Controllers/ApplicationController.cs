@@ -18,7 +18,6 @@ public class ApplicationController : ControllerBase
     }
     
     [HttpGet]
-    [Authorize]
     public async Task<IActionResult> GetAllApplications()
     {
         var query = new GetAllApplicationsQuery();
@@ -35,6 +34,7 @@ public class ApplicationController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationCommand command)
     {
         var response = await _mediator.Send(command);
@@ -42,6 +42,7 @@ public class ApplicationController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> UpdateApplication([FromBody] UpdateApplicationCommand command)
     {
         var result = await _mediator.Send(command);
@@ -49,6 +50,7 @@ public class ApplicationController : ControllerBase
     }
 
     [HttpDelete("{applicationId}")]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> DeleteApplication([FromRoute] short applicationId)
     {
         var command = new DeleteApplicationCommand(applicationId);
