@@ -6,79 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/CoverletSourceRootsMapping" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/archive/empty.7z" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/archive/empty.bz2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/archive/empty.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/archive/empty.tar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/archive/empty.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/document/empty.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/document/empty.odt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/document/empty.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/document/empty.rtf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.dds" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.dib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.emf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.exif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.heic" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.heif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.j2c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jp2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jpc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jpe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.jxr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.pbm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.pcx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.pgm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.ppm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.rle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.tif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.wdp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/image/empty.wmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/sheet/empty.ods" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/sheet/empty.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/slide/empty.odp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/EmptyFiles/slide/empty.pptx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/runtimes/linux-arm/native/libSystem.IO.Ports.Native.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/runtimes/osx-x64/native/libSystem.IO.Ports.Native.dylib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/tests.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/tests.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.genruntimeconfig.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/UnitTest1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,17 +106,31 @@
       <workItem from="1647795089049" duration="231000" />
       <workItem from="1647795332619" duration="4474000" />
       <workItem from="1647811067941" duration="16050000" />
-      <workItem from="1647912716283" duration="9926000" />
+      <workItem from="1647912716283" duration="10463000" />
+      <workItem from="1647998905701" duration="5425000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints">
+          <properties exception="System.ArgumentException" isInternal="false" displayValue="ArgumentException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

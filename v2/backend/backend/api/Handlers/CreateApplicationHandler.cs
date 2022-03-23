@@ -21,6 +21,9 @@ public class CreateApplicationHandler : IRequestHandler<CreateApplicationCommand
     public async Task<CreateApplicationResponse> Handle(
         CreateApplicationCommand request, CancellationToken cancellationToken)
     {
+        var existingApplication = _db.Applications.FirstOrDefault(
+            a => a.Name == request.Name);
+        if (existingApplication != null) return null!;
         var application = _mapper.Map<Application>(request);
         await _db.Applications.AddAsync(application, cancellationToken);
         var success = await _db.SaveChangesAsync(cancellationToken) > 0;
