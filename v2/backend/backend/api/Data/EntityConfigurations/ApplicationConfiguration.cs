@@ -15,6 +15,14 @@ public class ApplicationConfiguration : IEntityTypeConfiguration<Application>
         builder
             .HasMany(a => a.Categories)
             .WithOne(c => c.Application);
+
+        builder
+            .HasIndex(a => a.Name)
+            .IsUnique();
+
+        builder
+            .HasIndex(a => a.Subdomain)
+            .IsUnique();
         
         builder
             .Property(a => a.Id)

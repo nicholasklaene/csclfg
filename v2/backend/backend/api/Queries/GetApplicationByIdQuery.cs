@@ -3,12 +3,7 @@ using MediatR;
 
 namespace api.Queries;
 
-public class GetApplicationByIdQuery : IRequest<GetApplicationResponse>
+public class GetApplicationByIdQuery : IRequest<GetApplicationByIdResponse?>
 {
-    public readonly short Id;
-
-    public GetApplicationByIdQuery(short Id)
-    {
-        this.Id = Id;
-    }
+    public short Id { get; set; }
 }

@@ -5,13 +5,17 @@ using AutoMapper;
 
 namespace api.Mappings;
 
-public class ApplicationProfile :  Profile
+public class ApplicationProfile : Profile
 {
     public ApplicationProfile()
     {
-        CreateMap<Application, UpdateApplicationResponse>();
+        CreateMap<Application, GetAllApplicationsResponseApplication>();
+        CreateMap<Category, GetAllApplicationsResponseApplicationCategory>();
+        CreateMap<Application, GetApplicationByIdResponse>();
+        CreateMap<Category, GetApplicationByIdResponseCategory>();
         CreateMap<CreateApplicationCommand, Application>();
         CreateMap<Application, CreateApplicationResponse>();
-        CreateMap<Application, GetApplicationResponse>();
+        CreateMap<UpdateApplicationCommand, Application>();
+        CreateMap<Application, UpdateApplicationResponse>();
     }
 }

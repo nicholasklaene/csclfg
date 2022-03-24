@@ -241,3 +241,4 @@
 /home/nick/repos/studyseeking/v2/backend/backend/tests/obj/Debug/net6.0/tests.dll
 /home/nick/repos/studyseeking/v2/backend/backend/tests/obj/Debug/net6.0/ref/tests.dll
 /home/nick/repos/studyseeking/v2/backend/backend/tests/obj/Debug/net6.0/tests.genruntimeconfig.cache
+/home/nick/repos/studyseeking/v2/backend/backend/tests/bin/Debug/net6.0/xunit.runner.json

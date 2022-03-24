@@ -33,9 +33,9 @@ var clientId = builder.Configuration.GetValue<string>("AWSCognito:AppClientId");
 var credentials = new AnonymousAWSCredentials();
 var provider = new AmazonCognitoIdentityProviderClient();
 var userPool = new CognitoUserPool(poolId, clientId, provider);
-builder.Services.AddSingleton<AnonymousAWSCredentials>(credentials);
-builder.Services.AddSingleton<AmazonCognitoIdentityProviderClient>(provider);
-builder.Services.AddSingleton<CognitoUserPool>(userPool);
+builder.Services.AddSingleton(credentials);
+builder.Services.AddSingleton(provider);
+builder.Services.AddSingleton(userPool);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

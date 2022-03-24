@@ -4,10 +4,11 @@ namespace api.Commands;
 
 public class DeleteApplicationCommand : IRequest<bool>
 {
-    public short ApplicationId { get; }
-
-    public DeleteApplicationCommand(short applicationId)
+    public short Id { get; }
+    
+    public DeleteApplicationCommand(short id)
     {
-        ApplicationId = applicationId;
+        Id = id;
     }
 }
+

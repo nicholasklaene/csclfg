@@ -12,6 +12,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasKey(u => u.Username);
 
+        builder.HasIndex(u => u.Email)
+            .IsUnique();
+        
         builder
             .Property(u => u.Username)
             .HasColumnName("username");

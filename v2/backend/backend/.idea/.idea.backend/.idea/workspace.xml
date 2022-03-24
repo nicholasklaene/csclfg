@@ -4,25 +4,126 @@
     <projectFile profileName="api">api/api.csproj</projectFile>
     <projectFile profileName="IIS Express">api/api.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/Repositories/TagRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Handlers/GetAllApplicationsHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/Command/CreateApplicationCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/Command/DeleteApplicationCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/Command/UpdateApplicationCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/Query/GetAllApplicationsQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Handlers/Query/GetApplicationByIdQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Response/GetApplicationByIdResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend.sln.DotSettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/Command/CreateApplicationCommandHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/Command/DeleteApplicationCommandHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/Command/UpdateApplicationCommandHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/DatabaseInitializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/HandlerTestsBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/Query/GetAllApplicationsQueryHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/Query/GetApplicationByIdQueryHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/xunit.runner.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/UpdateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/UpdateCategoryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/AuthSignupCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/CreateApplicationCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Commands/CreateApplicationCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/CreateCategoryCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/DeleteApplicationCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Commands/DeleteApplicationCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/DeleteCategoryCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/DeleteUserCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/UpdateApplicationCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Commands/UpdateApplicationCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Commands/UpdateCategoryCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/ApplicationController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/AuthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/CategoryController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/UserController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/ApplicationConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/ApplicationConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/PostConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Data/EntityConfigurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Data/EntityConfigurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/DeleteApplicationHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/DeleteCategoryHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/DeleteUserHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/GetAllApplicationsHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/GetApplicationByIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/GetApplicationCategoriesHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/GetCategoryByIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/UpdateApplicationHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/UpdateCategoryHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mappings/ApplicationProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Mappings/CategoryProfile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Mappings/TagProfile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319011649_InitDbAndTables.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319011649_InitDbAndTables.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319012423_RenamePostToPosts.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319012423_RenamePostToPosts.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319030133_ChangeCategoriesColumnNames.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319030133_ChangeCategoriesColumnNames.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319212421_AddTimeToPost.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220319212421_AddTimeToPost.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220320005053_TryFixFK.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220320005053_TryFixFK.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220320011401_TryFixManyToMany.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/20220320011401_TryFixManyToMany.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Queries/AuthSigninQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Queries/GetApplicationByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Queries/GetApplicationByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Queries/GetApplicationCategoriesQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Queries/GetCategoryByIdQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Repositories/TagRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Request/CreateTagRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Request/UpdateTagRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/AuthSigninResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/AuthSignupResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/CreateApplicationResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/CreateApplicationResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/CreateCategoryResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetAllApplicationsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Response/GetAllApplicationsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetApplicationCategoriesResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetApplicationResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/GetCategoryResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Response/UpdateCategoryResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/GetAllApplicationsHandlerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bin/Debug/net6.0/tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/tests.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/tests.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -32,8 +133,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/tests/Handlers/Query/GetApplicationByIdQueryHandlerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/xunit.runner.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Handlers/HandlerTestsBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Handlers/Command/CreateApplicationCommandHandlerTests.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26ZgjUb6VRDS6PDsmfPCk17stfz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -50,7 +160,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="settings.editor.selected.configurable" value="inlay.hints" />
+    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.api">
@@ -106,12 +216,27 @@
       <workItem from="1647811067941" duration="16050000" />
       <workItem from="1647912716283" duration="10463000" />
       <workItem from="1647998905701" duration="8613000" />
-      <workItem from="1648078432576" duration="3872000" />
+      <workItem from="1648078432576" duration="23829000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="15" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="15" />
+    <coverage-tree-state>
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 56% 245/563" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
+      <select />
+    </coverage-tree-state>
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
@@ -131,5 +256,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

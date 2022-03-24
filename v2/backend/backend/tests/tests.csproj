@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
         <PackageReference Include="Moq" Version="4.17.2" />
         <PackageReference Include="Shouldly" Version="4.0.3" />
@@ -25,6 +26,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\api\api.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Content Include=".\xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>
