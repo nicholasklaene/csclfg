@@ -1,6 +1,7 @@
 using api.Commands;
 using api.Data;
 using api.Models;
+using api.Repositories;
 using api.Response;
 using AutoMapper;
 using MediatR;
@@ -10,53 +11,64 @@ namespace api.Handlers;
 
 public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, CreateCategoryResponse>
 {
+    private readonly TagRepository _tagRepository;
     private readonly ApplicationDbContext _db;
     private readonly IMapper _mapper;
-    
-    public CreateCategoryHandler(ApplicationDbContext db, IMapper mapper)
+
+    public CreateCategoryHandler(ApplicationDbContext db, IMapper mapper, TagRepository tagRepository)
     {
         _db = db;
         _mapper = mapper;
+        _tagRepository = tagRepository;
     }
     
     public async Task<CreateCategoryResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         await using var transaction = await _db.Database.BeginTransactionAsync(cancellationToken);
-        
-        var application = await _db.Applications.FirstOrDefaultAsync(a => a.Id == request.ApplicationId, 
-            cancellationToken);
+
+        var application = await GetApplication(request, cancellationToken);
         if (application == null) return null!;
 
-        var existingTags = _db.Tags
-            .Where(t => request.SuggestedTags.Select(tt => tt.Label).Contains(t.Label))
-            .ToList();
-        
-        var newTags = request.SuggestedTags.Where(t => !existingTags.Exists(et => et.Label == t.Label))
-            .Select(t => _mapper.Map<Tag>(t)).ToList();
-        await _db.Tags.AddRangeAsync(newTags, cancellationToken);
-
-        var numChanges = await _db.SaveChangesAsync(cancellationToken);
-        if (numChanges != newTags.Count) return null!;
-
-        var category = _mapper.Map<Category>(request);
-        await _db.Categories.AddAsync(category, cancellationToken);
-        numChanges = await _db.SaveChangesAsync(cancellationToken);
-        if (numChanges == 0) return null!;
-
-        var categorySuggestedTags = newTags.Union(existingTags).Select(t => new CategoryHasSuggestedTag()
-        {
-            Tag = t, TagLabel = t.Label, Category = category, CategoryId = category.Id
-        }).ToList();
-
-        await _db.CategoryHasSuggestedTags.AddRangeAsync(categorySuggestedTags, cancellationToken);
-        numChanges = await _db.SaveChangesAsync(cancellationToken);
-        if (numChanges != categorySuggestedTags.Count) return null!;
-        
+        var tags = await CreateTags(request, cancellationToken);
+        var category = await CreateCategory(request, cancellationToken);
+        await CreateCategoryHasSuggestedTags(category, tags, cancellationToken);
         await transaction.CommitAsync(cancellationToken);
 
         var createCategoryResponse = _mapper.Map<CreateCategoryResponse>(category);
-        createCategoryResponse.SuggestedTags = categorySuggestedTags.Select(t => t.TagLabel).ToList();
-
+        createCategoryResponse.SuggestedTags = tags.Select(t => t.Label).ToList();
         return createCategoryResponse;
+    }
+
+    private async Task<Application?> GetApplication(CreateCategoryCommand request, CancellationToken cancellationToken)
+    {
+        return await _db.Applications
+            .FirstOrDefaultAsync(a => a.Id == request.ApplicationId, cancellationToken);
+    }
+
+    private async Task<List<Tag>> CreateTags(CreateCategoryCommand request, CancellationToken cancellationToken)
+    {
+        var requestTags = request.SuggestedTags.Select(t => _mapper.Map<Tag>(t)).ToList();
+        var tags = await _tagRepository.AddRangeIfNotExists(requestTags, cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
+        return tags;
+    }
+
+    private async Task<Category> CreateCategory(CreateCategoryCommand request, CancellationToken cancellationToken)
+    {
+        var category = _mapper.Map<Category>(request);
+        await _db.Categories.AddAsync(category, cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
+        return category;
+    }
+
+    private async Task CreateCategoryHasSuggestedTags(Category category, IEnumerable<Tag> tags,
+        CancellationToken cancellationToken)
+    {
+        var categorySuggestedTags = tags
+            .Select(t => new CategoryHasSuggestedTag() { TagLabel = t.Label, CategoryId = category.Id})
+            .ToList();
+
+        await _db.CategoryHasSuggestedTags.AddRangeAsync(categorySuggestedTags, cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
     }
 }

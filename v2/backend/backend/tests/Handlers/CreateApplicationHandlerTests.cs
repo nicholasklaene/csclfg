@@ -1,13 +1,9 @@
-using System;
 using System.Linq;
 using System.Threading;
 using api.Commands;
-using api.Data;
 using api.Handlers;
 using api.Mappings;
-using api.Models;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using tests.Fixtures;
 using Xunit;
 
@@ -15,18 +11,19 @@ namespace tests.Handlers;
 
 public class CreateApplicationHandlerTests : IClassFixture<CreateApplicationHandlerFixture>
 {
-    IMapper mapper;
-    CreateApplicationHandlerFixture fixture;
-    CancellationToken cancellationToken;
+    private readonly IMapper _mapper;
+    private readonly CreateApplicationHandlerFixture _fixture;
+    private readonly CancellationToken _cancellationToken;
     
     public CreateApplicationHandlerTests(CreateApplicationHandlerFixture fixture)
     {
+        _cancellationToken = new CancellationToken();
         var mappingConfig = new MapperConfiguration(mc =>
         {
             mc.AddProfile(new ApplicationProfile());
         });
-        mapper = mappingConfig.CreateMapper();
-        this.fixture = fixture;
+        _mapper = mappingConfig.CreateMapper();
+        _fixture = fixture;
     }
 
     [Fact]
@@ -34,13 +31,13 @@ public class CreateApplicationHandlerTests : IClassFixture<CreateApplicationHand
     {
         // Arrange
         var command = new CreateApplicationCommand() { Name = "newApp", Subdomain = "new" };
-        var handler = new CreateApplicationHandler(fixture.db, mapper);
-        var originalCount = fixture.db.Applications.Count();
+        var handler = new CreateApplicationHandler(_fixture.Db, _mapper);
+        var originalCount = _fixture.Db.Applications.Count();
         // Act
-        handler.Handle(command, cancellationToken);
+        handler.Handle(command, _cancellationToken);
         // Assert
-        Assert.Contains(fixture.db.Applications, a => a.Name == "newApp");
-        Assert.NotEqual(originalCount, fixture.db.Applications.Count());
+        Assert.Contains(_fixture.Db.Applications, a => a.Name == "newApp");
+        Assert.NotEqual(originalCount, _fixture.Db.Applications.Count());
     }
 
     [Fact]
@@ -48,13 +45,12 @@ public class CreateApplicationHandlerTests : IClassFixture<CreateApplicationHand
     {
         // Arrange
         var command = new CreateApplicationCommand(){ Name = "existingApp", Subdomain = "exists"};
-        var handler = new CreateApplicationHandler(fixture.db, mapper);
-        
-        var originalCount = fixture.db.Applications.Count();
+        var handler = new CreateApplicationHandler(_fixture.Db, _mapper);
+        var originalCount = _fixture.Db.Applications.Count();
         // Act
-        handler.Handle(command, cancellationToken);
+        handler.Handle(command, _cancellationToken);
         // Assert
-        Assert.Equal(originalCount, fixture.db.Applications.Count());
-        Assert.Contains(fixture.db.Applications, a => a.Name == "existingApp");
+        Assert.Equal(originalCount, _fixture.Db.Applications.Count());
+        Assert.Contains(_fixture.Db.Applications, a => a.Name == "existingApp");
     }
 }

@@ -9,13 +9,13 @@ namespace tests.Handlers;
 
 public class DeleteUserHandlerTests : IClassFixture<DeleteUserHandlerFixture>
 {
-    DeleteUserHandlerFixture fixture;
-    CancellationToken cancellationToken;
+    private readonly DeleteUserHandlerFixture _fixture;
+    private readonly CancellationToken _cancellationToken;
     
     public DeleteUserHandlerTests(DeleteUserHandlerFixture fixture)
     {
-        cancellationToken = new CancellationToken();
-        this.fixture = fixture;
+        _cancellationToken = new CancellationToken();
+        _fixture = fixture;
     }
 
     [Fact] 
@@ -23,12 +23,12 @@ public class DeleteUserHandlerTests : IClassFixture<DeleteUserHandlerFixture>
     {
         // Arrange
         var command = new DeleteUserCommand("nick");
-        var handler = new DeleteUserHandler(fixture.db);
+        var handler = new DeleteUserHandler(_fixture.Db);
         // Act
-        handler.Handle(command, cancellationToken);
+        handler.Handle(command, _cancellationToken);
         // Assert
-        Assert.DoesNotContain(fixture.db.Users, u => u.Username == "nick");
-        Assert.Contains(fixture.db.Users, u => u.Username == "admin");
+        Assert.DoesNotContain(_fixture.Db.Users, u => u.Username == "nick");
+        Assert.Contains(_fixture.Db.Users, u => u.Username == "admin");
     }
 
     [Fact]
@@ -36,12 +36,12 @@ public class DeleteUserHandlerTests : IClassFixture<DeleteUserHandlerFixture>
     {
         // Arrange
         var command = new DeleteUserCommand("fakeUser");
-        var handler = new DeleteUserHandler(fixture.db);
-        var numUsers = fixture.db.Users.Count();
+        var handler = new DeleteUserHandler(_fixture.Db);
+        var numUsers = _fixture.Db.Users.Count();
         // Act
-        handler.Handle(command, cancellationToken);
+        handler.Handle(command, _cancellationToken);
         // Assert
-        Assert.DoesNotContain(fixture.db.Users, u => u.Username == "fakeUser");
-        Assert.Equal(numUsers, fixture.db.Users.Count());
+        Assert.DoesNotContain(_fixture.Db.Users, u => u.Username == "fakeUser");
+        Assert.Equal(numUsers, _fixture.Db.Users.Count());
     }
 }

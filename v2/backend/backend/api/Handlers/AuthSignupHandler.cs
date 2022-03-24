@@ -1,4 +1,3 @@
-using System.Net;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
 using api.Commands;
@@ -58,9 +57,9 @@ public class AuthSignupHandler : IRequestHandler<AuthSignupCommand, AuthSignupRe
             
             var addUserToGroupRequest = new AdminAddUserToGroupRequest()
                 { Username = request.Username, UserPoolId = _configuration["AWSCognito:PoolId"], GroupName = "user" };
-            _identityClient.AdminAddUserToGroupAsync(addUserToGroupRequest, cancellationToken);
+            await _identityClient.AdminAddUserToGroupAsync(addUserToGroupRequest, cancellationToken);
         }
-        catch (UsernameExistsException usernameExistsException)
+        catch (UsernameExistsException)
         {
             response.Errors.Add("Username taken");
         }

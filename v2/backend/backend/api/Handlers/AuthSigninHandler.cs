@@ -1,7 +1,6 @@
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
 using Amazon.Extensions.CognitoAuthentication;
-using Amazon.Runtime;
 using api.Queries;
 using api.Response;
 using MediatR;

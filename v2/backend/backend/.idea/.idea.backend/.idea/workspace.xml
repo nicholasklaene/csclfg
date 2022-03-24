@@ -6,20 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/Repositories/TagRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/GetAllApplicationsHandlerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateApplicationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/bin/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/Debug/net6.0/api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/api/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bin/Debug/net6.0/api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSigninHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/AuthSignupHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/CreateCategoryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Handlers/UpdateCategoryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Handlers/UpdateCategoryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Fixtures/CreateApplicationHandlerFixture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Fixtures/DeleteUserHandlerFixture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/CreateApplicationHandlerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Handlers/DeleteUserHandlerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/obj/Debug/net6.0/tests.csproj.CoreCompileInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,8 @@
       <workItem from="1647795332619" duration="4474000" />
       <workItem from="1647811067941" duration="16050000" />
       <workItem from="1647912716283" duration="10463000" />
-      <workItem from="1647998905701" duration="5425000" />
+      <workItem from="1647998905701" duration="8613000" />
+      <workItem from="1648078432576" duration="3872000" />
     </task>
     <servers />
   </component>

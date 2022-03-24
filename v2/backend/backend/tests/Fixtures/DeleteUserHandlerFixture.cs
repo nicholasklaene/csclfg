@@ -8,31 +8,31 @@ namespace tests.Fixtures;
 
 public class DeleteUserHandlerFixture : IDisposable
 {
-    public ApplicationDbContext db;
+    public readonly ApplicationDbContext Db;
     
     public DeleteUserHandlerFixture()
     {
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseInMemoryDatabase("StudySeekingDatabase")
             .Options;
-        db = new ApplicationDbContext(options);
+        Db = new ApplicationDbContext(options);
         
         InitializeUsers();
-        db.SaveChanges();
+        Db.SaveChanges();
     }
     
     public void Dispose()
     {
-        db.Database.EnsureDeleted();
-        db.Dispose();
+        Db.Database.EnsureDeleted();
+        Db.Dispose();
     }
 
     private void InitializeUsers()
     {
-        db.Users.AddRange( new List<User>()
+        Db.Users.AddRange( new List<User>()
             {
-                new User() {Username = "nick", Email = "email"},
-                new User() {Username = "admin", Email = "email"}
+                new User() { Username = "nick", Email = "email"},
+                new User() { Username = "admin", Email = "email"},
             }
         );
     }
