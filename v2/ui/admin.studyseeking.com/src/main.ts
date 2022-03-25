@@ -1,10 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import pinia from './plugins/pinia'
 import { loadFonts } from './plugins/webfontloader'
 
-loadFonts()
+await loadFonts()
 
 createApp(App)
-  .use(vuetify)
-  .mount('#app')
+    .use(vuetify)
+    .use(pinia)
+    .mount('#app')

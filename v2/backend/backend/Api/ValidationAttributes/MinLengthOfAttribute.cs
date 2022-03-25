@@ -1,7 +1,7 @@
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
-namespace Api.Commands.ValidationAttributes;
+namespace Api.ValidationAttributes;
 
 public class MinLengthOfAttribute : ValidationAttribute
 {

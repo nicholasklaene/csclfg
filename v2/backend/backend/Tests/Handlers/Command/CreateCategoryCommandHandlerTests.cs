@@ -1,6 +1,9 @@
+using Xunit;
+
 namespace Tests.Handlers.Command;
 
-public class CreateCategoryCommandHandlerTests
+[Collection("CreateCategoryCommandHandlerTests")]
+public class CreateCategoryCommandHandlerTests : HandlerTestsBase
 {
     
 }

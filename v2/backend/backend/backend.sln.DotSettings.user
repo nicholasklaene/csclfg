@@ -4,9 +4,4 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1c09ea06_002Dfc0f_002D40ee_002Da990_002Da6dfd09628c5/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="1" IsActive="True" Name="All tests from Command" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/home/nick/repos/studyseeking/v2/backend/backend/Tests" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6084b79f_002D04de_002D4a61_002Db1c2_002D4a8f4c2eb6a6/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="True" ContinuousTestingMode="1" Name="DeleteUserTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;And&gt;
-    &lt;Project Location="/home/nick/repos/studyseeking/v2/backend/backend/tests" Presentation="&amp;lt;tests&amp;gt;" /&gt;
-    &lt;Namespace&gt;tests.Handlers&lt;/Namespace&gt;
-  &lt;/And&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	</wpf:ResourceDictionary>

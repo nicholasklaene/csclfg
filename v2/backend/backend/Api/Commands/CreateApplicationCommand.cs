@@ -6,11 +6,11 @@ namespace Api.Commands;
 
 public class CreateApplicationCommand : IRequest<CreateApplicationResponse?>
 {
-    [Required] 
+    [Required(AllowEmptyStrings = false)] 
     [StringLength(50)]
     public string Name { get; set; } = null!;
 
-    [Required] 
+    [Required(AllowEmptyStrings = false)] 
     [StringLength(15)] 
     public string Subdomain { get; set; } = null!;
 }
