@@ -9,70 +9,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba383fc0-1452-4697-8785-1007819e69cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/plugins/pinia.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/stores/applicationStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/request/application.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/request/category.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/components/CreateApplicationForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/components/HomeAddApplicationCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/components/HomeApplicationCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/router/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/router/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/response/application.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/views/CreateApplication.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/views/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/views/layouts/CenteredFormLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Commands/CreateApplicationCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Commands/CreateApplicationCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Commands/UpdateApplicationCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Commands/UpdateApplicationCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/ValidationAttributes/IdAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/ValidationAttributes/IdAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/ValidationAttributes/MinLengthOfAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/ValidationAttributes/MinLengthOfAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Commands/CommandTestsBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Commands/CommandTestsBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Commands/CreateApplicationCommandTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Commands/CreateApplicationCommandTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Commands/UpdateApplicationCommandTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Commands/UpdateApplicationCommandTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/Handlers/Command/CreateCategoryCommandHandlerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Handlers/Command/CreateCategoryCommandHandlerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.idea/ui.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/components/HelloWorld.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/plugins/vuetify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/plugins/vuetify.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/admin/admin.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/admin/admin.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/admin/admin.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/admin/admin.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/home/home.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/home/home.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/home/home.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/home/home.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/shared/services/applications.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/app/shared/services/applications.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ui/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/stores/applicationStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/stores/applicationStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/request/application.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/request/application.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/request/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../ui/admin.studyseeking.com/src/types/response/category.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +135,7 @@
       <workItem from="1648078432576" duration="23829000" />
       <workItem from="1648169795738" duration="12740000" />
       <workItem from="1648193357674" duration="3395000" />
-      <workItem from="1648208805843" duration="820000" />
+      <workItem from="1648208805843" duration="4667000" />
     </task>
     <servers />
   </component>
