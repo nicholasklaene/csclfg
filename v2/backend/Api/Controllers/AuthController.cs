@@ -26,12 +26,20 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Signin([FromBody] AuthSigninCommand request)
     {
         var response = await _mediator.Send(request);
-
         if (response.Errors.Count > 0) return BadRequest(response);
-        
-        var cookieOptions = new CookieOptions() { Secure = true, HttpOnly = true, SameSite = SameSiteMode.None };
-        Response.Cookies.Append("refresh_token", response.RefreshToken, cookieOptions);
-
+        Response.Cookies.Append("refresh_token", response.RefreshToken, new CookieOptions { 
+            Secure = true, HttpOnly = true, SameSite = SameSiteMode.Strict, Path = "/auth/refresh"
+        });
         return Ok(response);
+    }
+
+    [HttpPost("refresh")]
+    public async Task<IActionResult> Refresh()
+    {
+        var refreshToken = Request.Cookies["refresh_token"];
+        if (refreshToken is null) return BadRequest();
+        var request = new AuthRefreshCommand { RefreshToken = refreshToken };
+        var response = await _mediator.Send(request);
+        return response.Errors.Count > 0 ? BadRequest() : Ok(response);
     }
 }

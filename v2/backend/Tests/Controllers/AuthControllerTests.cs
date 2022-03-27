@@ -79,4 +79,12 @@ public class AuthControllerTests
         // Assert
         Assert.IsType<BadRequestObjectResult>(response);
     }
+
+    [Fact]
+    public void AuthControllerRefresh_ShouldReturnBadRequest_WhenRefreshTokenIsNotPresent()
+    {
+        // Cannot figure out how to mock cookies...
+        // Seems like microsoft made this near impossible in .net core 3.1:
+        // https://stackoverflow.com/questions/60445072/in-net-core-3-1-the-requestcookiecollection-can-no-longer-be-used-to-create-co
+    }
 }
