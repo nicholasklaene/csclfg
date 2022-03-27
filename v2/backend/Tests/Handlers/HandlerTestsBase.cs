@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Amazon.CognitoIdentityProvider;
+using Amazon.Extensions.CognitoAuthentication;
 using Api.Data;
 using Api.Mappings;
 using AutoMapper;
@@ -15,18 +16,20 @@ public class HandlerTestsBase : IDisposable
 {
     protected readonly IMapper Mapper;
     protected readonly ApplicationDbContext Db;
-    protected readonly CancellationToken CancellationToken = new CancellationToken();
+    protected readonly CancellationToken CancellationToken = new();
     protected readonly IConfiguration Configuration;
     protected readonly Mock<IAmazonCognitoIdentityProvider> IdentityClientMock;
-    
+    protected readonly Mock<CognitoUserPool> UserPool;
+
     protected HandlerTestsBase()
     {
         var inMemorySettings = new Dictionary<string, string> { {"AWSCognito:ClientId", "FakeClientId"} };
         Configuration = new ConfigurationBuilder().AddInMemoryCollection(inMemorySettings).Build();
         IdentityClientMock = new Mock<IAmazonCognitoIdentityProvider>();
-        
+        UserPool = new Mock<CognitoUserPool>();
+
         var options  = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: new Guid().ToString())
+            .UseInMemoryDatabase(new Guid().ToString())
             .Options;
         Db = new ApplicationDbContext(options);
         Db.Database.EnsureCreated();
@@ -37,7 +40,7 @@ public class HandlerTestsBase : IDisposable
         {
             mc.AddProfile(new ApplicationProfile());
         });
-        Mapper = mappingConfig.CreateMapper();;
+        Mapper = mappingConfig.CreateMapper();
     }
     
     public void Dispose()

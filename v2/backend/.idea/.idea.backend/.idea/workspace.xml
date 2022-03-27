@@ -6,18 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09e43e6e-dfb6-45cc-9507-80f213224d0e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Api/Commands/AuthSignupCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Handlers/Command/AuthSignupCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Response/AuthSignupResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Commands/AuthSignupCommandTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Controllers/AuthControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Handlers/Command/AuthSignupCommandHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/Commands/AuthSigninCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/Handlers/Command/AuthSigninCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/Response/AuthSigninResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Commands/AuthSigninCommandTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Handlers/Command/AuthSigninCommandHandlerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Data/EntityConfigurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Data/EntityConfigurations/UserConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Commands/AuthSignupCommandTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Commands/AuthSignupCommandTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Controllers/AuthControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controllers/AuthControllerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/Handlers/HandlerTestsBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Handlers/HandlerTestsBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +25,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e55b8d912db24732a393dd7e795ab30c77c00/be/165f5b4c/UsernameExistsException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1aebf410e1646e6899dbb523b4ac39e11280/5c/8ba9984b/CognitoUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1aebf410e1646e6899dbb523b4ac39e11280/72/36f7f25d/CognitoUserPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e55b8d912db24732a393dd7e795ab30c77c00/d9/ccfcb9ec/AmazonCognitoIdentityProviderClient.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -88,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648283099794</updated>
       <workItem from="1648283103102" duration="659000" />
-      <workItem from="1648353339161" duration="6736000" />
+      <workItem from="1648353339161" duration="10502000" />
     </task>
     <servers />
   </component>

@@ -2,9 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Api.Commands;
 using Api.Controllers;
-using Api.Queries;
 using Api.Response;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
@@ -42,5 +42,41 @@ public class AuthControllerTests
         var response = await controller.Signup(It.IsAny<AuthSignupCommand>());
         // Assert
         Assert.IsType<ConflictObjectResult>(response);
+    }
+    
+    [Fact]
+    public async Task AuthControllerSignin_ShouldReturnOk_WhenUserCredentialsAreValid()
+    {
+        // Arrange
+        var mediator = new Mock<IMediator>();
+        mediator.Setup(m => m.Send(It.IsAny<AuthSigninCommand>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(new AuthSigninResponse() { RefreshToken = "token" }));
+        
+        var httpResponse = new Mock<HttpResponse>();
+        var cookies = new Mock<IResponseCookies>();
+        var httpContext = new Mock<HttpContext>();
+        httpContext.SetupGet(c=> c.Response).Returns(httpResponse.Object);
+        httpResponse.SetupGet(c => c.Cookies).Returns(cookies.Object);
+        
+        var controllerContext = new ControllerContext() {HttpContext = httpContext.Object};
+        var controller = new AuthController(mediator.Object) { ControllerContext = controllerContext };
+        // Act
+        var response = await controller.Signin(It.IsAny<AuthSigninCommand>());
+        // Assert
+        Assert.IsType<OkObjectResult>(response);
+    }
+    
+    [Fact]
+    public async Task AuthControllerSignin_ShouldReturnBadRequest_WhenCredentialsAreNotValid()
+    {
+        // Arrange
+        var mediator = new Mock<IMediator>();
+        mediator.Setup(m => m.Send(It.IsAny<AuthSigninCommand>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(new AuthSigninResponse{ Errors = { "foo", "bar", "baz" }}));
+        var controller = new AuthController(mediator.Object);
+        // Act
+        var response = await controller.Signin(It.IsAny<AuthSigninCommand>());
+        // Assert
+        Assert.IsType<BadRequestObjectResult>(response);
     }
 }

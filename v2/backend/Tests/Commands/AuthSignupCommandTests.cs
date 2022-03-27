@@ -67,7 +67,7 @@ public class AuthSignupCommandTests : CommandTestsBase
         var command2 = new AuthSignupCommand()
             { Username = "real_username", Password = superLongString, Email = "someEmail@gmail.com"};
         var command3 = new AuthSignupCommand()
-            { Username = "real_username", Password = "password", Email = superLongString};
+            { Username = "real_username", Password = "short", Email = superLongString};
         // Act
         var command1Validation = ValidateModel(command1);
         var command2Validation = ValidateModel(command2);
@@ -87,6 +87,6 @@ public class AuthSignupCommandTests : CommandTestsBase
         
         Assert.True(ValidationHasErrorWithMessage(command3Validation, "Email"));
         Assert.False(ValidationHasErrorWithMessage(command3Validation, "Username"));
-        Assert.False(ValidationHasErrorWithMessage(command3Validation, "Password"));
+        Assert.True(ValidationHasErrorWithMessage(command3Validation, "Password"));
     }
 }
