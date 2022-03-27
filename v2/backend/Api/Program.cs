@@ -33,7 +33,7 @@ var credentials = new AnonymousAWSCredentials();
 var provider = new AmazonCognitoIdentityProviderClient();
 var userPool = new CognitoUserPool(poolId, clientId, provider);
 builder.Services.AddSingleton(credentials);
-builder.Services.AddSingleton(provider);
+builder.Services.AddSingleton<IAmazonCognitoIdentityProvider>(provider);
 builder.Services.AddSingleton(userPool);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

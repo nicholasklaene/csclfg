@@ -17,7 +17,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         
         builder
             .Property(u => u.Username)
-            .HasColumnName("username");
+            .HasColumnName("username")
+            .HasMaxLength(50);
 
         builder
             .Property(u => u.Email)
